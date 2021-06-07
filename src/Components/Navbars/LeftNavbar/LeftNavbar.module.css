@@ -1,0 +1,37 @@
+
+.leftNav {
+    margin-left: 10px;
+    background-color: #e5e5e5;
+    display: grid;
+    grid-template-areas:
+    "feedsNavbar"
+    "pagesNavbar"
+    "accountNavbar";
+    grid-template-rows: 31% 31% 31%;
+    grid-gap: 25px;
+    grid-area: left-nav;
+}
+
+.navBlock {
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.item a {
+    color: black;
+    text-decoration: none;
+}
+
+.item a:hover {
+    color: orangered;
+}
+
+.navbarTitle {
+    font-size: 12px;
+    color: gray;
+}
+
+.item{
+    margin-top: 20px;
+}

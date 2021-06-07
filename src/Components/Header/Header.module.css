@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+.header {
+    font-family: Fredoka One;
+    margin: 0;
+    padding-top: 15px;
+    grid-area: header;
+    width: 100%;
+    display: grid;
+    color: darkblue;
+    grid-template-areas:
+    "logo naming .";
+    grid-template-rows: 1fr 1fr 10fr;
+    grid-template-columns: 100px;
+    grid-gap: 10px;
+    right: 0px;
+    background-color: white;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+h1 {
+    grid-area: naming;
+}
+
+.header img {
+    grid-area: logo;
+    margin: auto;
+    width: 60px;
+    height: 60px;
+}
