@@ -4,7 +4,8 @@ import userAvatar from './img/userAvatar.jpg'
 
 type PostPropsType = {
     content: string,
-    likes: number
+    postLikes: number
+    id: string
 }
 
 function Post(props: PostPropsType) {
@@ -13,7 +14,7 @@ function Post(props: PostPropsType) {
             <img src={userAvatar}/>
             {props.content}
             <div>
-                <span>{props.likes} likes</span>
+                <span>{props.postLikes} likes</span>
             </div>
 
         </div>

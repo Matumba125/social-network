@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from "./Components/Header/Header";
 import LeftNavbar from "./Components/Navbars/LeftNavbar/LeftNavbar";
-import Profile from "./Components/MainContent/MainContent";
+import Profile from "./Components/Profile/Profile";
 import RightNavbar from "./Components/Navbars/RightNavbar/RightNavbar";
 import Dialogs from "./Components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
