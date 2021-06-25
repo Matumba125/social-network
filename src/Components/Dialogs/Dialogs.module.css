@@ -7,25 +7,3 @@
 .dialogs_items{
     padding: 10px;
 }
-
-.dialog{
-    margin: 10px;
-
-}
-
-.messages{
-    padding: 10px;
-}
-
-.message{
-
-}
-
-.dialog a {
-    color: black;
-    text-decoration: none;
-}
-
-.dialog a:hover {
-    color: orangered;
-}

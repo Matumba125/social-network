@@ -1,21 +1,10 @@
 import React from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
+import {PostDataPropsType} from "../../../PropsType";
 
-function UserPosts() {
+function UserPosts(props: PostDataPropsType) {
 
-    let postsData = [
-        {
-            id: "1",
-            postContent: "Hello World !!!",
-            postLikes: 15
-        },
-        {
-            id: "2",
-            postContent: "It's my first post!!",
-            postLikes: 28
-        }
-    ]
 
     return (
         <div className={style.userPosts}>
@@ -23,7 +12,7 @@ function UserPosts() {
                 <textarea></textarea>
                 <button>Add Post</button>
             </div>
-            {postsData.map(m => <Post content={m.postContent} postLikes={m.postLikes} id={m.id}/>)}
+            {props.postsData.map(m => <Post postContent={m.postContent} postLikes={m.postLikes} id={m.id}/>)}
 
         </div>
     );

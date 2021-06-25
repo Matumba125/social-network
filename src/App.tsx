@@ -9,17 +9,24 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
 import Settings from "./Components/Settings/Settings";
+import {AppPropsType} from "./PropsType";
 
 
-const App = () => {
+function App(props: AppPropsType){
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
                 <LeftNavbar/>
                 <div className="app-wrapper-content">
-                    <Route path={"/dialogs"} component={Dialogs}/>
-                    <Route path={"/profile"} component={Profile}/>
+                    <Route path={"/dialogs"} render={() => <Dialogs
+                        dialogsData={props.dialogsBigData}
+                        messageData={props.messageBigData}/> }/>
+
+                    <Route path={"/profile"} render={()=><Profile
+                        postsData={props.postsBigData}
+                    />}/>
+
                     <Route path={"/music"} component={Music}/>
                     <Route path={"/news"} component={News}/>
                     <Route path={"/settings"} component={Settings}/>
