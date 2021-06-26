@@ -1,10 +1,12 @@
 import React from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
-import {PostDataPropsType} from "../../../PropsType";
+import {PostDataPropsType} from "../../../redux/PropsType";
+
 
 function UserPosts(props: PostDataPropsType) {
 
+    let postsElement = props.postsData.map(m => <Post postContent={m.postContent} postLikes={m.postLikes} id={m.id}/>)
 
     return (
         <div className={style.userPosts}>
@@ -12,7 +14,7 @@ function UserPosts(props: PostDataPropsType) {
                 <textarea></textarea>
                 <button>Add Post</button>
             </div>
-            {props.postsData.map(m => <Post postContent={m.postContent} postLikes={m.postLikes} id={m.id}/>)}
+            {postsElement}
 
         </div>
     );

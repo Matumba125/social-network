@@ -1,11 +1,17 @@
 import React from "react";
 import style from './RightNavbar.module.css';
+import Contacts from "./Contacts/Contacts";
+import {RightNavDataPropsType} from "../../../redux/PropsType";
 
-function RightNavbar() {
+function RightNavbar(props: RightNavDataPropsType) {
+
+    let contactsElement = props.contactsData.map(u => <Contacts userName={u.userName} id={u.id} avatar={u.avatar}/>)
+
     return (
         <nav className={style.rightNav}>
-            <div className={style.contactsNavbar}>
+            <div className={style.rightNavItem}>
                 <h2 className={style.navbarTitle}>Contacts</h2>
+             {contactsElement}
             </div>
             <div className={style.groupsNavbar}>
                 <h2 className={style.navbarTitle}>Groups</h2>

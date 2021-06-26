@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Post.module.css'
-import userAvatar from './img/userAvatar.jpg'
-import {PostPropsType} from "../../../../PropsType";
+import userAvatar from '../../../../redux/img/userAvatar.jpg'
+import {PostPropsType} from "../../../../redux/PropsType";
 
 
 function Post(props: PostPropsType) {

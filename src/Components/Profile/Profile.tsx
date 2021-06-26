@@ -1,9 +1,9 @@
 import React from 'react';
 import UserPosts from "./UserPosts/UserPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ProfileDataPropsType} from "../../PropsType";
+import {ProfilePagePropsType} from "../../redux/PropsType";
 
-function Profile(props: ProfileDataPropsType) {
+function Profile(props: ProfilePagePropsType) {
     return (
         <div>
             <ProfileInfo/>

@@ -5,35 +5,32 @@ import LeftNavbar from "./Components/Navbars/LeftNavbar/LeftNavbar";
 import Profile from "./Components/Profile/Profile";
 import RightNavbar from "./Components/Navbars/RightNavbar/RightNavbar";
 import Dialogs from "./Components/Dialogs/Dialogs";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
 import Settings from "./Components/Settings/Settings";
-import {AppPropsType} from "./PropsType";
+import {AppPropsType} from "./redux/PropsType";
 
 
-function App(props: AppPropsType){
+function App(props: AppPropsType) {
     return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                <LeftNavbar/>
-                <div className="app-wrapper-content">
-                    <Route path={"/dialogs"} render={() => <Dialogs
-                        dialogsData={props.dialogsBigData}
-                        messageData={props.messageBigData}/> }/>
+        <div className='app-wrapper'>
+            <Header/>
+            <LeftNavbar/>
+            <div className="app-wrapper-content">
+                <Route path={"/dialogs"} render={() => <Dialogs
+                    {...props.state.dialogsPage}/>}/>
 
-                    <Route path={"/profile"} render={()=><Profile
-                        postsData={props.postsBigData}
-                    />}/>
+                <Route path={"/profile"} render={() => <Profile
+                    {...props.state.profilePage}
+                />}/>
 
-                    <Route path={"/music"} component={Music}/>
-                    <Route path={"/news"} component={News}/>
-                    <Route path={"/settings"} component={Settings}/>
-                </div>
-                <RightNavbar/>
+                <Route path={"/music"} component={Music}/>
+                <Route path={"/news"} component={News}/>
+                <Route path={"/settings"} component={Settings}/>
             </div>
-        </BrowserRouter>
+            <RightNavbar {...props.state.rightNavbar}/>
+        </div>
     );
 }
 
