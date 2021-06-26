@@ -20,4 +20,31 @@
     width: 150px;
     border-radius: 50%;
     border: white solid 5px;
+
+}
+
+.userNewPosts{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 15px;
+}
+
+.textarea{
+    resize: none;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid black;
+    margin-right: 10px;
+}
+
+.textarea:focus{
+    border: 1px solid orangered;
+    outline: none;
+}
+
+.button{
+   background-color: white;
+    border-radius: 15px;
+    border: 1px solid black;
 }

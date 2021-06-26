@@ -11,6 +11,13 @@ function Dialogs(props: DialogsPagePropsType) {
 
     let messageElement = props.messageData.map(m => <Message messageText={m.messageText} id={m.id}/>)
 
+    let newMessageElement = React.createRef<HTMLTextAreaElement>();
+
+    const onClickHandler = () => {
+        let text = newMessageElement.current?.value
+        alert(text)
+    }
+
     return (
         <div className={style.dialogs}>
             <div className={style.dialogs_items}>
@@ -18,6 +25,10 @@ function Dialogs(props: DialogsPagePropsType) {
             </div>
             <div className={style.messages}>
                 {messageElement}
+                <div className={style.addMessage}>
+                    <textarea ref={newMessageElement}></textarea>
+                    <button onClick={onClickHandler}>Send</button>
+                </div>
             </div>
         </div>
 

@@ -7,3 +7,33 @@
 .dialogs_items{
     padding: 10px;
 }
+
+.messages{
+    padding: 10px;
+}
+
+.addMessage{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 15px;
+}
+
+.addMessage textarea{
+    resize: none;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid black;
+    margin-right: 10px;
+}
+
+.addMessage textarea:focus{
+    border: 1px solid orangered;
+    outline: none;
+}
+
+.addMessage button{
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid black;
+}
