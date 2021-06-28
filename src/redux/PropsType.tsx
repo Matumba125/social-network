@@ -10,8 +10,8 @@ export type MessagePropsType = {
 }
 
 export type DialogsPagePropsType = {
-        dialogsData: Array<DialogsItemPropsType>
-        messageData: Array<MessagePropsType>
+    dialogsData: Array<DialogsItemPropsType>
+    messageData: Array<MessagePropsType>
 }
 
 export type PostPropsType={
@@ -22,16 +22,27 @@ export type PostPropsType={
 
 export type PostDataPropsType={
     postsData: Array<PostPropsType>
+    addPost: (postMessage: string)=> void
+    messageForNewPost: string
+    changeNewTextCallback: (newText: string)=> void
+}
+
+export type ProfilePageDataType={
+    postsData: Array<PostPropsType>
+    messageForNewPost: string
 }
 
 export type ProfilePagePropsType={
-        postsData: Array<PostPropsType>
+    postsData: Array<PostPropsType>
+    addPost: (postMessage: string)=>void
+    messageForNewPost: string
+    changeNewTextCallback: (newText: string)=> void
 }
-
-type SidebarType={}
 
 export type AppPropsType={
     state: StateType
+    addPost: (postMessage: string)=>void
+    changeNewTextCallback: (newText: string)=> void
 }
 
 export type ContactsDataPropsType={
@@ -47,6 +58,6 @@ export type RightNavDataPropsType={
 
 export type StateType ={
     dialogsPage: DialogsPagePropsType
-    profilePage:ProfilePagePropsType
+    profilePage:ProfilePageDataType
     rightNavbar: RightNavDataPropsType
 }

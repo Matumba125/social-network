@@ -22,6 +22,8 @@ function App(props: AppPropsType) {
                     {...props.state.dialogsPage}/>}/>
 
                 <Route path={"/profile"} render={() => <Profile
+                    addPost={props.addPost}
+                    changeNewTextCallback={props.changeNewTextCallback}
                     {...props.state.profilePage}
                 />}/>
 

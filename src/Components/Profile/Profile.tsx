@@ -7,7 +7,11 @@ function Profile(props: ProfilePagePropsType) {
     return (
         <div>
             <ProfileInfo/>
-            <UserPosts postsData={props.postsData}/>
+            <UserPosts postsData={props.postsData}
+                       addPost={props.addPost}
+                       messageForNewPost={props.messageForNewPost}
+                       changeNewTextCallback={props.changeNewTextCallback}
+            />
         </div>
     );
 }

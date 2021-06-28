@@ -1,28 +1,3 @@
-
-.mainContent {
-    grid-area: content;
-    display: grid;
-    background-color: white;
-    border-radius: 15px;
-    text-align: center;
-}
-
-.topImage img {
-    height: 300px;
-    width: 95%;
-    border-radius: 15px;
-    margin: 25px;
-
-}
-
-.userInfo img {
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    border: white solid 5px;
-
-}
-
 .userNewPosts{
     display: flex;
     align-items: flex-end;
@@ -48,3 +23,8 @@
     border-radius: 15px;
     border: 1px solid black;
 }
+.button:hover{
+    color: orangered;
+    opacity: 0.5;
+}
+

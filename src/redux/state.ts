@@ -1,8 +1,9 @@
 import {v1} from "uuid";
-import {StateType} from "./PropsType";
+import {PostPropsType, StateType} from "./PropsType";
 import dimych from "./img/dimych.jpg"
 import sveta from "./img/sveta.jpg"
 import andrey from "./img/andrey.jpg"
+import {rerenderEntireTree} from "../render";
 
 const state: StateType = {
     dialogsPage: {
@@ -23,6 +24,7 @@ const state: StateType = {
     },
 
     profilePage: {
+        messageForNewPost: '',
         postsData: [
             {
                 id: v1(),
@@ -39,12 +41,28 @@ const state: StateType = {
 
     rightNavbar: {
         contactsData: [
-                {id: v1(), userName: "Dimych", avatar: dimych},
-                {id: v1(), userName: "Andrey", avatar: andrey},
-                {id: v1(), userName: "Sveta", avatar: sveta}
-            ]
-        }
+            {id: v1(), userName: "Dimych", avatar: dimych},
+            {id: v1(), userName: "Andrey", avatar: andrey},
+            {id: v1(), userName: "Sveta", avatar: sveta}
+        ]
+    }
 
+}
+
+
+export const addPost = (postMessage: string) => {
+    let newPost: PostPropsType = {
+        id: v1(),
+        postContent: postMessage,
+        postLikes: 0
+    };
+    state.profilePage.postsData.push(newPost);
+    rerenderEntireTree(state);
+}
+
+export const changeNewText = (newText: string) => {
+    state.profilePage.messageForNewPost = newText;
+    rerenderEntireTree(state)
 }
 
 export default state
