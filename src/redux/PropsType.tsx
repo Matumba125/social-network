@@ -22,7 +22,7 @@ export type PostPropsType={
 
 export type PostDataPropsType={
     postsData: Array<PostPropsType>
-    addPost: (postMessage: string)=> void
+    addPost: ()=> void
     messageForNewPost: string
     changeNewTextCallback: (newText: string)=> void
 }
@@ -34,14 +34,14 @@ export type ProfilePageDataType={
 
 export type ProfilePagePropsType={
     postsData: Array<PostPropsType>
-    addPost: (postMessage: string)=>void
+    addPost: ()=>void
     messageForNewPost: string
     changeNewTextCallback: (newText: string)=> void
 }
 
 export type AppPropsType={
     state: StateType
-    addPost: (postMessage: string)=>void
+    addPost: ()=>void
     changeNewTextCallback: (newText: string)=> void
 }
 

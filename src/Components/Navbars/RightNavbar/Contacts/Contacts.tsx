@@ -6,7 +6,7 @@ function Contacts(props: ContactsDataPropsType) {
 
     return (
         <div className={style.contact}>
-            {props.avatar ? <img src={props.avatar}/> : ''}
+            {props.avatar ? <img src={props.avatar} alt={'contactImage'}/> : ''}
             <div>{props.userName}</div>
         </div>
     );

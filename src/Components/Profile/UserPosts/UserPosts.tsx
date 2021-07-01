@@ -18,7 +18,7 @@ function UserPosts(props: PostDataPropsType) {
     }
 
     const onClickHandler = () => {
-        props.addPost(props.messageForNewPost)
+        props.addPost()
     }
 
     return (

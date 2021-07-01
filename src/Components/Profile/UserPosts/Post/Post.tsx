@@ -7,7 +7,7 @@ import {PostPropsType} from "../../../../redux/PropsType";
 function Post(props: PostPropsType) {
     return (
         <div className={style.item}>
-            <img src={userAvatar}/>
+            <img src={userAvatar} alt={'userImage'}/>
             {props.postContent}
             <div>
                 <span>{props.postLikes} likes</span>

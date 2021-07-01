@@ -50,19 +50,21 @@ const state: StateType = {
 }
 
 
-export const addPost = (postMessage: string) => {
-    let newPost: PostPropsType = {
-        id: v1(),
-        postContent: postMessage,
-        postLikes: 0
-    };
-    state.profilePage.postsData.push(newPost);
-    rerenderEntireTree(state);
-}
-
 export const changeNewText = (newText: string) => {
     state.profilePage.messageForNewPost = newText;
     rerenderEntireTree(state)
 }
+
+export const addPost = () => {
+    let newPost: PostPropsType = {
+        id: v1(),
+        postContent: state.profilePage.messageForNewPost,
+        postLikes: 0
+    };
+    state.profilePage.postsData.unshift(newPost);
+    changeNewText('')
+    rerenderEntireTree(state);
+}
+
 
 export default state

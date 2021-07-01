@@ -8,7 +8,7 @@ function DialogItem(props: DialogsItemPropsType){
 
     return(
         <div className={style.dialog}>
-            {props.avatar ? <img src={props.avatar}/>:'' }
+            {props.avatar ? <img src={props.avatar} alt={'userImage'}/>:'' }
             <NavLink to={path}>{props.userName}</NavLink>
         </div>
     )
