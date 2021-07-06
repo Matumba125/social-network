@@ -13,8 +13,7 @@ export type DialogsPagePropsType = {
     dialogsData: Array<DialogsItemPropsType>
     messageData: Array<MessagePropsType>
     newMessageText: string
-    addMessage: ()=> void
-    changeMessageTextCallback: (newText: string) => void
+    dispatch: (action: any) => void
 }
 
 export type DialogsPageDataType = {
@@ -31,9 +30,8 @@ export type PostPropsType={
 
 export type PostDataPropsType={
     postsData: Array<PostPropsType>
-    addPost: ()=> void
     messageForNewPost: string
-    changePostTextCallback: (newText: string)=> void
+    dispatch: (action: any) => void
 }
 
 export type ProfilePageDataType={
@@ -43,17 +41,13 @@ export type ProfilePageDataType={
 
 export type ProfilePagePropsType={
     postsData: Array<PostPropsType>
-    addPost: ()=>void
     messageForNewPost: string
-    changePostTextCallback: (newText: string)=> void
+    dispatch: (action: any) => void
+
 }
 
 export type AppPropsType={
-    state: StateType
-    addPost: ()=>void
-    changePostTextCallback: (newText: string)=> void
-    addMessage: ()=> void
-    changeMessageTextCallback: (newText: string) => void
+    store: StoreType
 }
 
 export type ContactsDataPropsType={
@@ -71,4 +65,17 @@ export type StateType ={
     dialogsPage: DialogsPageDataType
     profilePage:ProfilePageDataType
     rightNavbar: RightNavDataPropsType
+}
+
+export type ActionType ={
+    type: 'ADD-POST' | 'CHANGE-POST-TEXT' | 'ADD-MESSAGE' | 'CHANGE-MESSAGE-TEXT'
+    newText: string
+}
+
+export type StoreType ={
+    _state: StateType
+    _onChange: ()=>void
+    observer: (subscriber: ()=> void)=> void
+    getState: ()=> StateType
+    dispatch: (action: ActionType)=> void
 }

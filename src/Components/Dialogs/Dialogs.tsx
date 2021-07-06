@@ -12,11 +12,13 @@ function Dialogs(props: DialogsPagePropsType) {
     let messageElement = props.messageData.map(m => <Message messageText={m.messageText} id={m.id}/>)
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changeMessageTextCallback(e.currentTarget.value)
+        props.dispatch({type:'CHANGE-MESSAGE-TEXT',
+            newText: e.currentTarget.value}
+        )
     }
 
     const onClickHandler = () => {
-        props.addMessage()
+        props.dispatch({type: 'ADD-MESSAGE'})
     }
 
     return (

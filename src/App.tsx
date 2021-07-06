@@ -12,28 +12,29 @@ import Settings from "./Components/Settings/Settings";
 import {AppPropsType} from "./redux/PropsType";
 
 
-function App(props: AppPropsType) {
+const App: React.FC<AppPropsType> = (props) => {
+
+    const state = props.store.getState()
+
     return (
         <div className='app-wrapper'>
             <Header/>
             <LeftNavbar/>
             <div className="app-wrapper-content">
                 <Route path={"/dialogs"} render={() => <Dialogs
-                    addMessage={props.addMessage}
-                    changeMessageTextCallback={props.changeMessageTextCallback}
-                    {...props.state.dialogsPage}/>}/>
+                    dispatch={props.store.dispatch.bind(props.store)}
+                    {...state.dialogsPage}/>}/>
 
                 <Route path={"/profile"} render={() => <Profile
-                    addPost={props.addPost}
-                    changePostTextCallback={props.changePostTextCallback}
-                    {...props.state.profilePage}
+                    dispatch={props.store.dispatch.bind(props.store)}
+                    {...state.profilePage}
                 />}/>
 
                 <Route path={"/music"} component={Music}/>
                 <Route path={"/news"} component={News}/>
                 <Route path={"/settings"} component={Settings}/>
             </div>
-            <RightNavbar {...props.state.rightNavbar}/>
+            <RightNavbar {...state.rightNavbar}/>
         </div>
     );
 }

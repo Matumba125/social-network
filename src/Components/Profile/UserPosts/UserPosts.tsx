@@ -14,11 +14,13 @@ function UserPosts(props: PostDataPropsType) {
         />)
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changePostTextCallback(e.currentTarget.value)
+        props.dispatch({type:'CHANGE-POST-TEXT',
+            newText: e.currentTarget.value}
+        )
     }
 
     const onClickHandler = () => {
-        props.addPost()
+        props.dispatch({type: 'ADD-POST'})
     }
 
     return (

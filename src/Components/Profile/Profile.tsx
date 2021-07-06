@@ -8,9 +8,8 @@ function Profile(props: ProfilePagePropsType) {
         <div>
             <ProfileInfo/>
             <UserPosts postsData={props.postsData}
-                       addPost={props.addPost}
                        messageForNewPost={props.messageForNewPost}
-                       changePostTextCallback={props.changePostTextCallback}
+                       dispatch={props.dispatch}
             />
         </div>
     );
