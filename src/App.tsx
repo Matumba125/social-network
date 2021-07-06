@@ -19,11 +19,13 @@ function App(props: AppPropsType) {
             <LeftNavbar/>
             <div className="app-wrapper-content">
                 <Route path={"/dialogs"} render={() => <Dialogs
+                    addMessage={props.addMessage}
+                    changeMessageTextCallback={props.changeMessageTextCallback}
                     {...props.state.dialogsPage}/>}/>
 
                 <Route path={"/profile"} render={() => <Profile
                     addPost={props.addPost}
-                    changeNewTextCallback={props.changeNewTextCallback}
+                    changePostTextCallback={props.changePostTextCallback}
                     {...props.state.profilePage}
                 />}/>
 

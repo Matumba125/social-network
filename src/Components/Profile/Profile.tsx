@@ -10,7 +10,7 @@ function Profile(props: ProfilePagePropsType) {
             <UserPosts postsData={props.postsData}
                        addPost={props.addPost}
                        messageForNewPost={props.messageForNewPost}
-                       changeNewTextCallback={props.changeNewTextCallback}
+                       changePostTextCallback={props.changePostTextCallback}
             />
         </div>
     );

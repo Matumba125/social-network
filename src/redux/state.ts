@@ -1,9 +1,14 @@
 import {v1} from "uuid";
-import {PostPropsType, StateType} from "./PropsType";
+import {MessagePropsType, PostPropsType, StateType} from "./PropsType";
 import dimych from "./img/dimych.jpg"
 import sveta from "./img/sveta.jpg"
 import andrey from "./img/andrey.jpg"
-import {rerenderEntireTree} from "../render";
+
+let onChange = () =>{}
+
+export const observer = (subscriber: ()=> void ) =>{
+    onChange = subscriber
+}
 
 const state: StateType = {
     dialogsPage: {
@@ -15,7 +20,7 @@ const state: StateType = {
             {id: v1(), userName: "Viktor"},
             {id: v1(), userName: "Valera"}
         ],
-
+        newMessageText: '',
         messageData: [
             {id: v1(), messageText: "HI"},
             {id: v1(), messageText: "Hello"},
@@ -50,9 +55,9 @@ const state: StateType = {
 }
 
 
-export const changeNewText = (newText: string) => {
+export const changePostText = (newText: string) => {
     state.profilePage.messageForNewPost = newText;
-    rerenderEntireTree(state)
+    onChange();
 }
 
 export const addPost = () => {
@@ -62,8 +67,23 @@ export const addPost = () => {
         postLikes: 0
     };
     state.profilePage.postsData.unshift(newPost);
-    changeNewText('')
-    rerenderEntireTree(state);
+    changePostText('')
+    onChange();
+}
+
+export const changeMessageText = (newText: string) => {
+    state.dialogsPage.newMessageText = newText;
+    onChange();
+}
+
+export const addMessage = () => {
+    let newMessage: MessagePropsType = {
+        id: v1(),
+        messageText: state.dialogsPage.newMessageText
+    };
+    state.dialogsPage.messageData.push(newMessage);
+    changeMessageText('')
+    onChange();
 }
 
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import style from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
@@ -11,11 +11,12 @@ function Dialogs(props: DialogsPagePropsType) {
 
     let messageElement = props.messageData.map(m => <Message messageText={m.messageText} id={m.id}/>)
 
-    let newMessageElement = React.createRef<HTMLTextAreaElement>();
+    const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        props.changeMessageTextCallback(e.currentTarget.value)
+    }
 
     const onClickHandler = () => {
-        let text = newMessageElement.current?.value
-        alert(text)
+        props.addMessage()
     }
 
     return (
@@ -26,7 +27,7 @@ function Dialogs(props: DialogsPagePropsType) {
             <div className={style.messages}>
                 {messageElement}
                 <div className={style.addMessage}>
-                    <textarea ref={newMessageElement}></textarea>
+                    <textarea onChange={onChangeHandler} value={props.newMessageText}></textarea>
                     <button onClick={onClickHandler}>Send</button>
                 </div>
             </div>

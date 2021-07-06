@@ -12,6 +12,15 @@ export type MessagePropsType = {
 export type DialogsPagePropsType = {
     dialogsData: Array<DialogsItemPropsType>
     messageData: Array<MessagePropsType>
+    newMessageText: string
+    addMessage: ()=> void
+    changeMessageTextCallback: (newText: string) => void
+}
+
+export type DialogsPageDataType = {
+    dialogsData: Array<DialogsItemPropsType>
+    messageData: Array<MessagePropsType>
+    newMessageText: string
 }
 
 export type PostPropsType={
@@ -24,7 +33,7 @@ export type PostDataPropsType={
     postsData: Array<PostPropsType>
     addPost: ()=> void
     messageForNewPost: string
-    changeNewTextCallback: (newText: string)=> void
+    changePostTextCallback: (newText: string)=> void
 }
 
 export type ProfilePageDataType={
@@ -36,13 +45,15 @@ export type ProfilePagePropsType={
     postsData: Array<PostPropsType>
     addPost: ()=>void
     messageForNewPost: string
-    changeNewTextCallback: (newText: string)=> void
+    changePostTextCallback: (newText: string)=> void
 }
 
 export type AppPropsType={
     state: StateType
     addPost: ()=>void
-    changeNewTextCallback: (newText: string)=> void
+    changePostTextCallback: (newText: string)=> void
+    addMessage: ()=> void
+    changeMessageTextCallback: (newText: string) => void
 }
 
 export type ContactsDataPropsType={
@@ -57,7 +68,7 @@ export type RightNavDataPropsType={
 
 
 export type StateType ={
-    dialogsPage: DialogsPagePropsType
+    dialogsPage: DialogsPageDataType
     profilePage:ProfilePageDataType
     rightNavbar: RightNavDataPropsType
 }
