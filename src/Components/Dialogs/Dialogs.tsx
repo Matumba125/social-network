@@ -3,6 +3,7 @@ import style from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPagePropsType} from "../../redux/PropsType";
+import {addMessageActionCreator, changeMessageTextActionCreator} from "../../redux/state";
 
 
 function Dialogs(props: DialogsPagePropsType) {
@@ -12,13 +13,11 @@ function Dialogs(props: DialogsPagePropsType) {
     let messageElement = props.messageData.map(m => <Message messageText={m.messageText} id={m.id}/>)
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch({type:'CHANGE-MESSAGE-TEXT',
-            newText: e.currentTarget.value}
-        )
+        props.dispatch(changeMessageTextActionCreator(e.currentTarget.value))
     }
 
     const onClickHandler = () => {
-        props.dispatch({type: 'ADD-MESSAGE'})
+        props.dispatch(addMessageActionCreator())
     }
 
     return (
