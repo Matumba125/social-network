@@ -3,7 +3,7 @@ import style from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPagePropsType} from "../../redux/PropsType";
-import {addMessageActionCreator, changeMessageTextActionCreator} from "../../redux/state";
+import {addMessageActionCreator, changeMessageTextActionCreator} from "../../redux/dialogsReducer";
 
 
 function Dialogs(props: DialogsPagePropsType) {

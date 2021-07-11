@@ -1,13 +1,11 @@
 import {v1} from "uuid";
-import {MessagePropsType, PostPropsType, StoreType} from "./PropsType";
+import {StoreType} from "./PropsType";
 import dimych from "./img/dimych.jpg"
 import sveta from "./img/sveta.jpg"
 import andrey from "./img/andrey.jpg"
-
-const ADD_POST = 'ADD-POST';
-const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const CHANGE_MESSAGE_TEXT = 'CHANGE-MESSAGE-TEXT';
+import profileReducer from "./profilleReducer";
+import dialogsReducer from "./dialogsReducer";
+import rightNavbarReducer from "./rightNavbarReducer";
 
 let store: StoreType = {
     _state: {
@@ -64,48 +62,13 @@ let store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost: PostPropsType = {
-                id: v1(),
-                postContent: this._state.profilePage.messageForNewPost,
-                postLikes: 0
-            };
-            this._state.profilePage.postsData.unshift(newPost);
-            this.dispatch({type: CHANGE_POST_TEXT, newText:''})
-            this._onChange();
-        } else if (action.type === CHANGE_POST_TEXT) {
-            this._state.profilePage.messageForNewPost = action.newText;
-            this._onChange();
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage: MessagePropsType = {
-                id: v1(),
-                messageText: this._state.dialogsPage.newMessageText
-            };
-            this._state.dialogsPage.messageData.push(newMessage);
-            this.dispatch({type: CHANGE_MESSAGE_TEXT, newText:''})
-            this._onChange();
-        } else if (action.type === CHANGE_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageText = action.newText;
-            this._onChange();
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.rightNavbar = rightNavbarReducer(this._state.rightNavbar, action);
+
+        this._onChange()
     },
 }
-
-export const addPostActionCreator = () =>({type: ADD_POST})
-
-export const changePostTextActionCreator = (text: string) =>
-    ({
-        type: CHANGE_POST_TEXT,
-        newText: text
-    }
-    )
-
-export const addMessageActionCreator =()=>({type: ADD_MESSAGE})
-
-export const changeMessageTextActionCreator =(text: string)=>({
-        type: CHANGE_MESSAGE_TEXT,
-        newText: text
-    })
-
 
 export default store

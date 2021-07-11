@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
 import {PostDataPropsType} from "../../../redux/PropsType";
-import {addPostActionCreator, changePostTextActionCreator} from "../../../redux/state";
+import {addPostActionCreator, changePostTextActionCreator} from "../../../redux/profilleReducer";
 
 
 
