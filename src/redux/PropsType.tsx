@@ -73,9 +73,14 @@ export type ActionType ={
 }
 
 export type StoreType ={
-    _state: StateType
+    subscribe: (subscriber: ()=> void)=> void
+    getState: ()=> StateType
+    dispatch: (action: ActionType)=> void
+}
+export type OldStoreType ={
     _onChange: ()=>void
-    observer: (subscriber: ()=> void)=> void
+    _state: StateType
+    subscribe: (subscriber: ()=> void)=> void
     getState: ()=> StateType
     dispatch: (action: ActionType)=> void
 }

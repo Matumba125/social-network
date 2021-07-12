@@ -1,10 +1,30 @@
-import {ActionType, DialogsPageDataType, MessagePropsType, PostPropsType} from "./PropsType";
+import {ActionType, DialogsPageDataType, MessagePropsType} from "./PropsType";
 import {v1} from "uuid";
+import dimych from "./img/dimych.jpg";
+import andrey from "./img/andrey.jpg";
+import sveta from "./img/sveta.jpg";
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const CHANGE_MESSAGE_TEXT = 'CHANGE-MESSAGE-TEXT';
 
-const dialogsReducer = (state: DialogsPageDataType, action: ActionType) => {
+const initialState = {
+    dialogsData: [
+        {id: v1(), userName: "Dimych", avatar: dimych},
+        {id: v1(), userName: "Andrey", avatar: andrey},
+        {id: v1(), userName: "Sveta", avatar: sveta},
+        {id: v1(), userName: "Sasha"},
+        {id: v1(), userName: "Viktor"},
+        {id: v1(), userName: "Valera"}
+    ],
+    newMessageText: '',
+    messageData: [
+        {id: v1(), messageText: "HI"},
+        {id: v1(), messageText: "Hello"},
+        {id: v1(), messageText: "YO"}
+    ]
+}
+
+const dialogsReducer = (state: DialogsPageDataType = initialState, action: ActionType) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage: MessagePropsType = {

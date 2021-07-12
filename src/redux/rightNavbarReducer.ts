@@ -1,6 +1,18 @@
 import {ActionType, RightNavDataPropsType} from "./PropsType";
+import {v1} from "uuid";
+import dimych from "./img/dimych.jpg";
+import andrey from "./img/andrey.jpg";
+import sveta from "./img/sveta.jpg";
 
-export const rightNavbarReducer = (state: RightNavDataPropsType, action: ActionType) =>{
+const initialState = {
+    contactsData: [
+        {id: v1(), userName: "Dimych", avatar: dimych},
+        {id: v1(), userName: "Andrey", avatar: andrey},
+        {id: v1(), userName: "Sveta", avatar: sveta}
+    ]
+}
+
+export const rightNavbarReducer = (state: RightNavDataPropsType = initialState, action: ActionType) =>{
 
     return state
 }

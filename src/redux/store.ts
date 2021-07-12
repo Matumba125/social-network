@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {StoreType} from "./PropsType";
+import {ActionType, OldStoreType, StoreType} from "./PropsType";
 import dimych from "./img/dimych.jpg"
 import sveta from "./img/sveta.jpg"
 import andrey from "./img/andrey.jpg"
@@ -7,7 +7,7 @@ import profileReducer from "./profilleReducer";
 import dialogsReducer from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";
 
-let store: StoreType = {
+let store: OldStoreType = {
     _state: {
         dialogsPage: {
             dialogsData: [
@@ -54,7 +54,7 @@ let store: StoreType = {
     _onChange() {
     },
 
-    observer(subscriber: () => void) {
+    subscribe(subscriber: () => void) {
         this._onChange = subscriber
     },
     getState() {

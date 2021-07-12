@@ -5,7 +5,23 @@ import {v1} from "uuid";
 const ADD_POST = 'ADD-POST';
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT';
 
-const profileReducer = (state: ProfilePageDataType, action: ActionType) => {
+let initialState = {
+    messageForNewPost: '',
+    postsData: [
+        {
+            id: v1(),
+            postContent: "Hello World !!!",
+            postLikes: 15
+        },
+        {
+            id: v1(),
+            postContent: "It's my first post!!",
+            postLikes: 28
+        }
+    ]
+}
+
+const profileReducer = (state: ProfilePageDataType = initialState, action: ActionType) => {
     switch (action.type) {
         case ADD_POST:
             let newPost: PostPropsType = {
