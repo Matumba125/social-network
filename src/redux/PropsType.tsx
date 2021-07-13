@@ -31,8 +31,7 @@ export type PostPropsType = {
 }
 
 export type PostDataPropsType = {
-    postsData: Array<PostPropsType>
-    messageForNewPost: string
+    profilePage: ProfilePageDataType
     addPost: () => void
     changePostText: (text: string) => void
 }

@@ -7,7 +7,7 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import {StateType} from "./redux/PropsType";
-import {Provider} from "./StoreContext";
+import {Provider} from "react-redux";
 
 const render = (state: StateType) => {
     ReactDOM.render(

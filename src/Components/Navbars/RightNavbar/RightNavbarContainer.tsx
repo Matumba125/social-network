@@ -1,18 +1,18 @@
-import React from "react";
 import RightNavbar from "./RightNavbar";
-import StoreContext from "../../../StoreContext";
+import {StateType} from "../../../redux/PropsType";
+import {connect} from "react-redux";
 
-const RightNavbarContainer = () => {
 
-
-    return (
-        <StoreContext.Consumer>
-            {(store) =>{
-               return <RightNavbar contactsData={store.getState().rightNavbar.contactsData}/>
-            }
-            }
-        </StoreContext.Consumer>
-    );
+const mapStateToProps = (state: StateType) => {
+    return {
+        contactsData: state.rightNavbar.contactsData
+    }
 }
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+    }
+}
+
+const RightNavbarContainer = connect(mapStateToProps, mapDispatchToProps)(RightNavbar);
 
 export default RightNavbarContainer;

@@ -7,7 +7,9 @@ import {PostDataPropsType} from "../../../redux/PropsType";
 
 function UserPosts(props: PostDataPropsType) {
 
-    let postsElement = props.postsData.map(m =>
+    let state = props.profilePage
+
+    let postsElement = state.postsData.map(m =>
         <Post
             postContent={m.postContent}
             postLikes={m.postLikes}
@@ -27,7 +29,7 @@ function UserPosts(props: PostDataPropsType) {
             <div className={style.userNewPosts}>
                 <textarea className={style.textarea}
                           onChange={onChangeHandler}
-                          value={props.messageForNewPost}></textarea>
+                          value={state.messageForNewPost}></textarea>
                 <button className={style.button} onClick={onClickHandler}>Add Post</button>
             </div>
             {postsElement}
