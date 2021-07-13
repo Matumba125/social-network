@@ -1,4 +1,8 @@
-import {ActionType, PostPropsType, ProfilePageDataType} from "./PropsType";
+import {
+    ActionTypes,
+    PostPropsType,
+    ProfilePageDataType
+} from "./PropsType";
 import {v1} from "uuid";
 
 
@@ -21,7 +25,8 @@ let initialState = {
     ]
 }
 
-const profileReducer = (state: ProfilePageDataType = initialState, action: ActionType) => {
+const profileReducer = (state: ProfilePageDataType = initialState,
+                        action: ActionTypes) => {
     switch (action.type) {
         case ADD_POST:
             let newPost: PostPropsType = {
@@ -40,11 +45,12 @@ const profileReducer = (state: ProfilePageDataType = initialState, action: Actio
     }
 }
 
-export const changePostTextActionCreator = (text: string) =>({
+export const addPostActionCreator = () => ({type: ADD_POST} as const)
+
+export const changePostTextActionCreator = (newText: string) => ({
         type: CHANGE_POST_TEXT,
-        newText: text
-    }
+        newText: newText
+    } as const
 )
-export const addPostActionCreator = () =>({type: ADD_POST})
 
 export default profileReducer

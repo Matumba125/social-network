@@ -7,13 +7,14 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import {StateType} from "./redux/PropsType";
+import {Provider} from "./StoreContext";
 
 const render = (state: StateType) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App
-                store={store}
-            />
+            <Provider store={store}>
+                <App/>
+            </Provider>
         </BrowserRouter>,
         document.getElementById('root')
     );

@@ -1,3 +1,6 @@
+import {addPostActionCreator, changePostTextActionCreator} from './profilleReducer'
+import {addMessageActionCreator, changeMessageTextActionCreator} from "./dialogsReducer";
+
 export type DialogsItemPropsType = {
     id: string
     userName: string
@@ -10,10 +13,9 @@ export type MessagePropsType = {
 }
 
 export type DialogsPagePropsType = {
-    dialogsData: Array<DialogsItemPropsType>
-    messageData: Array<MessagePropsType>
-    newMessageText: string
-    dispatch: (action: any) => void
+    dialogsPage: DialogsPageDataType
+    addMessage: ()=> void
+    changeMessageText: (text: string) => void
 }
 
 export type DialogsPageDataType = {
@@ -22,65 +24,63 @@ export type DialogsPageDataType = {
     newMessageText: string
 }
 
-export type PostPropsType={
+export type PostPropsType = {
     id: string
     postContent: string
     postLikes: number
 }
 
-export type PostDataPropsType={
+export type PostDataPropsType = {
     postsData: Array<PostPropsType>
     messageForNewPost: string
-    dispatch: (action: any) => void
+    addPost: () => void
+    changePostText: (text: string) => void
 }
 
-export type ProfilePageDataType={
+export type ProfilePageDataType = {
     postsData: Array<PostPropsType>
     messageForNewPost: string
 }
 
-export type ProfilePagePropsType={
-    postsData: Array<PostPropsType>
-    messageForNewPost: string
-    dispatch: (action: any) => void
-
-}
-
-export type AppPropsType={
-    store: StoreType
-}
-
-export type ContactsDataPropsType={
+export type ContactsDataPropsType = {
     id: string
     userName: string
     avatar?: string
 }
 
-export type RightNavDataPropsType={
+export type RightNavDataPropsType = {
     contactsData: Array<ContactsDataPropsType>
 }
 
+export type AppPropsType={}
 
-export type StateType ={
+
+//ActionCreators
+
+export type ActionTypes =
+    ReturnType<typeof addPostActionCreator> |
+    ReturnType<typeof changePostTextActionCreator> |
+    ReturnType<typeof addMessageActionCreator> |
+    ReturnType<typeof changeMessageTextActionCreator>
+
+
+//StoreTypes
+
+export type StateType = {
     dialogsPage: DialogsPageDataType
-    profilePage:ProfilePageDataType
+    profilePage: ProfilePageDataType
     rightNavbar: RightNavDataPropsType
 }
 
-export type ActionType ={
-    type: 'ADD-POST' | 'CHANGE-POST-TEXT' | 'ADD-MESSAGE' | 'CHANGE-MESSAGE-TEXT'
-    newText: string
+export type StoreType = {
+    subscribe: (subscriber: () => void) => void
+    getState: () => StateType
+    dispatch: (action: ActionTypes) => void
 }
-
-export type StoreType ={
-    subscribe: (subscriber: ()=> void)=> void
-    getState: ()=> StateType
-    dispatch: (action: ActionType)=> void
-}
-export type OldStoreType ={
-    _onChange: ()=>void
+export type OldStoreType = {
+    _callSubscriber: (state: StateType) => void
     _state: StateType
-    subscribe: (subscriber: ()=> void)=> void
-    getState: ()=> StateType
-    dispatch: (action: ActionType)=> void
+    subscribe: (observer: () => void) => void
+    getState: () => StateType
+    dispatch: (action: ActionTypes) => void
 }

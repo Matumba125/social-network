@@ -2,7 +2,6 @@ import React, {ChangeEvent} from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
 import {PostDataPropsType} from "../../../redux/PropsType";
-import {addPostActionCreator, changePostTextActionCreator} from "../../../redux/profilleReducer";
 
 
 
@@ -16,11 +15,11 @@ function UserPosts(props: PostDataPropsType) {
         />)
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(changePostTextActionCreator(e.currentTarget.value))
+        props.changePostText(e.currentTarget.value)
     }
 
     const onClickHandler = () => {
-        props.dispatch(addPostActionCreator())
+       props.addPost();
     }
 
     return (

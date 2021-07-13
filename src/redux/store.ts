@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {ActionType, OldStoreType, StoreType} from "./PropsType";
+import {ActionTypes, OldStoreType, StateType} from "./PropsType";
 import dimych from "./img/dimych.jpg"
 import sveta from "./img/sveta.jpg"
 import andrey from "./img/andrey.jpg"
@@ -51,23 +51,24 @@ let store: OldStoreType = {
         }
 
     },
-    _onChange() {
+
+    _callSubscriber(state: StateType) {
     },
 
-    subscribe(subscriber: () => void) {
-        this._onChange = subscriber
+    subscribe(observer: () => void) {
+        this._callSubscriber = observer
     },
     getState() {
         return this._state
     },
 
-    dispatch(action) {
+    dispatch(action:ActionTypes) {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._state.rightNavbar = rightNavbarReducer(this._state.rightNavbar, action);
 
-        this._onChange()
+        this._callSubscriber(this._state)
     },
 }
 

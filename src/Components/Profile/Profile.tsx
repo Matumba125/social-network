@@ -1,16 +1,12 @@
 import React from 'react';
-import UserPosts from "./UserPosts/UserPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ProfilePagePropsType} from "../../redux/PropsType";
+import UserPostsContainer from "./UserPosts/UserPostsContainer";
 
-function Profile(props: ProfilePagePropsType) {
+function Profile() {
     return (
         <div>
             <ProfileInfo/>
-            <UserPosts postsData={props.postsData}
-                       messageForNewPost={props.messageForNewPost}
-                       dispatch={props.dispatch}
-            />
+            <UserPostsContainer/>
         </div>
     );
 }

@@ -3,7 +3,8 @@ import style from "./DialogItem.module.css";
 import {NavLink} from "react-router-dom";
 import {DialogsItemPropsType} from "../../../redux/PropsType";
 
-function DialogItem(props: DialogsItemPropsType){
+
+const DialogItem: React.FC<DialogsItemPropsType> =(props) =>{
     let path = "/dialogs/" + props.id;
 
     return(

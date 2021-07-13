@@ -1,4 +1,4 @@
-import {ActionType, RightNavDataPropsType} from "./PropsType";
+import { ActionTypes, RightNavDataPropsType} from "./PropsType";
 import {v1} from "uuid";
 import dimych from "./img/dimych.jpg";
 import andrey from "./img/andrey.jpg";
@@ -12,7 +12,7 @@ const initialState = {
     ]
 }
 
-export const rightNavbarReducer = (state: RightNavDataPropsType = initialState, action: ActionType) =>{
+export const rightNavbarReducer = (state: RightNavDataPropsType = initialState, action: ActionTypes) =>{
 
     return state
 }

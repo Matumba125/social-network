@@ -1,4 +1,8 @@
-import {ActionType, DialogsPageDataType, MessagePropsType} from "./PropsType";
+import {
+    ActionTypes,
+    DialogsPageDataType,
+    MessagePropsType
+} from "./PropsType";
 import {v1} from "uuid";
 import dimych from "./img/dimych.jpg";
 import andrey from "./img/andrey.jpg";
@@ -24,7 +28,8 @@ const initialState = {
     ]
 }
 
-const dialogsReducer = (state: DialogsPageDataType = initialState, action: ActionType) => {
+const dialogsReducer = (state: DialogsPageDataType = initialState,
+                        action: ActionTypes) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage: MessagePropsType = {
@@ -44,11 +49,12 @@ const dialogsReducer = (state: DialogsPageDataType = initialState, action: Actio
 }
 
 
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE} as const)
 
-export const changeMessageTextActionCreator = (text: string) => ({
-    type: CHANGE_MESSAGE_TEXT,
-    newText: text
-})
+export const changeMessageTextActionCreator = (newText: string) => ({
+        type: CHANGE_MESSAGE_TEXT,
+        newText: newText
+    } as const
+)
 
 export default dialogsReducer
