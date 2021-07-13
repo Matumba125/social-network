@@ -9,9 +9,9 @@ const Dialogs: React.FC<DialogsPagePropsType> =(props) =>{
 
     let state = props.dialogsPage
 
-    let dialogsElement = state.dialogsData.map(u => <DialogItem userName={u.userName} id={u.id} avatar={u.avatar}/>)
+    let dialogsElement = state.dialogsData.map(u => <DialogItem key={u.id} userName={u.userName} id={u.id} avatar={u.avatar}/>)
 
-    let messageElement = state.messageData.map(m => <Message messageText={m.messageText} id={m.id}/>)
+    let messageElement = state.messageData.map(m => <Message key={m.id} messageText={m.messageText} id={m.id}/>)
 
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.changeMessageText(e.currentTarget.value)

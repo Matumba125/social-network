@@ -27,19 +27,25 @@ let initialState = {
 
 const profileReducer = (state: ProfilePageDataType = initialState,
                         action: ActionTypes) => {
+    const stateCopy = {...state, postsData: [...state.postsData]};
+
+
     switch (action.type) {
         case ADD_POST:
-            let newPost: PostPropsType = {
+
+            const newPost: PostPropsType = {
                 id: v1(),
                 postContent: state.messageForNewPost,
                 postLikes: 0
             };
-            state.postsData.unshift(newPost);
-            state.messageForNewPost = '';
-            return state;
+            stateCopy.postsData.unshift(newPost);
+            stateCopy.messageForNewPost = '';
+            return stateCopy;
+
         case CHANGE_POST_TEXT:
-            state.messageForNewPost = action.newText;
-            return state;
+            stateCopy.messageForNewPost = action.newText;
+            return stateCopy;
+
         default:
             return state;
     }

@@ -11,6 +11,7 @@ function UserPosts(props: PostDataPropsType) {
 
     let postsElement = state.postsData.map(m =>
         <Post
+            key={m.id}
             postContent={m.postContent}
             postLikes={m.postLikes}
             id={m.id}

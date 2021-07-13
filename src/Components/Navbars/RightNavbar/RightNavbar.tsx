@@ -5,7 +5,7 @@ import {RightNavDataPropsType} from "../../../redux/PropsType";
 
 function RightNavbar(props: RightNavDataPropsType) {
 
-    let contactsElement = props.contactsData.map(u => <Contacts userName={u.userName} id={u.id} avatar={u.avatar}/>)
+    let contactsElement = props.contactsData.map(u => <Contacts key={u.id} userName={u.userName} id={u.id} avatar={u.avatar}/>)
 
     return (
         <nav className={style.rightNav}>
