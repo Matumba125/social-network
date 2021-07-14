@@ -1,13 +1,14 @@
 import React, {ChangeEvent} from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
-import {PostDataPropsType} from "../../../redux/PropsType";
+import {UsersPostsPropsType} from "./UserPostsContainer";
 
 
 
-function UserPosts(props: PostDataPropsType) {
+function UserPosts(props: UsersPostsPropsType) {
 
     let state = props.profilePage
+
 
     let postsElement = state.postsData.map(m =>
         <Post

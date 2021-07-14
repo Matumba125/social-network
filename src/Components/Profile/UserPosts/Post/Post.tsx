@@ -1,8 +1,13 @@
 import React from 'react';
 import style from './Post.module.css'
 import userAvatar from '../../../../redux/img/userAvatar.jpg'
-import {PostPropsType} from "../../../../redux/PropsType";
 
+
+type PostPropsType = {
+    id: string
+    postContent: string
+    postLikes: number
+}
 
 function Post(props: PostPropsType) {
     return (

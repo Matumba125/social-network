@@ -1,8 +1,6 @@
 .rightNav {
     margin-right: 10px;
     grid-area: right-nav;
-    background-color: white;
-    border-radius: 15px;
     padding: 10px;
 }
 

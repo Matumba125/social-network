@@ -1,11 +1,12 @@
 import {v1} from "uuid";
-import {ActionTypes, OldStoreType, StateType} from "./PropsType";
+import {OldStoreType, StateType} from "./PropsType";
 import dimych from "./img/dimych.jpg"
 import sveta from "./img/sveta.jpg"
 import andrey from "./img/andrey.jpg"
 import profileReducer from "./profilleReducer";
 import dialogsReducer from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";
+import {ActionTypes} from "./reduxStore";
 
 let store: OldStoreType = {
     _state: {
@@ -48,8 +49,7 @@ let store: OldStoreType = {
                 {id: v1(), userName: "Andrey", avatar: andrey},
                 {id: v1(), userName: "Sveta", avatar: sveta}
             ]
-        }
-
+        },
     },
 
     _callSubscriber(state: StateType) {
@@ -62,7 +62,7 @@ let store: OldStoreType = {
         return this._state
     },
 
-    dispatch(action:ActionTypes) {
+    dispatch(action: ActionTypes) {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);

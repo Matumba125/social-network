@@ -1,8 +1,9 @@
-import { ActionTypes, RightNavDataPropsType} from "./PropsType";
+import { RightNavDataPropsType} from "./PropsType";
 import {v1} from "uuid";
 import dimych from "./img/dimych.jpg";
 import andrey from "./img/andrey.jpg";
 import sveta from "./img/sveta.jpg";
+import {ActionTypes} from "./reduxStore";
 
 const initialState = {
     contactsData: [

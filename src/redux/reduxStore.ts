@@ -1,15 +1,28 @@
-import {combineReducers, createStore } from "redux";
-import profileReducer from "./profilleReducer";
-import dialogsReducer from "./dialogsReducer";
+import {combineReducers, createStore} from "redux";
+import profileReducer, {addPostActionCreator, changePostTextActionCreator} from "./profilleReducer";
+import dialogsReducer, {addMessageActionCreator, changeMessageTextActionCreator} from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";
+import usersReducer, {followAC, setUsersAC, unfollowAC} from "./usersReducer";
 
-let reducers = combineReducers({
+
+export type ActionTypes =
+    ReturnType<typeof addPostActionCreator> |
+    ReturnType<typeof changePostTextActionCreator> |
+    ReturnType<typeof addMessageActionCreator> |
+    ReturnType<typeof changeMessageTextActionCreator> |
+    ReturnType<typeof followAC> |
+    ReturnType<typeof unfollowAC> |
+    ReturnType<typeof setUsersAC>
+
+export const  rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
-    rightNavbar: rightNavbarReducer
+    rightNavbar: rightNavbarReducer,
+    users: usersReducer
 });
 
-let store = createStore(reducers);
+export type AppStateType = ReturnType<typeof rootReducer>
 
+const store = createStore(rootReducer);
 
 export default store

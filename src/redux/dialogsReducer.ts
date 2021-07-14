@@ -1,12 +1,25 @@
-import {
-    ActionTypes,
-    DialogsPageDataType,
-    MessagePropsType
-} from "./PropsType";
 import {v1} from "uuid";
 import dimych from "./img/dimych.jpg";
 import andrey from "./img/andrey.jpg";
 import sveta from "./img/sveta.jpg";
+import {ActionTypes} from "./reduxStore";
+
+
+export type DialogsItemPropsType = {
+    id: string
+    userName: string
+    avatar?: string
+}
+
+export type MessagePropsType = {
+    messageText: string
+    id: string
+}
+
+export type DialogsInitialStateType = typeof initialState
+
+
+
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const CHANGE_MESSAGE_TEXT = 'CHANGE-MESSAGE-TEXT';
@@ -19,17 +32,19 @@ const initialState = {
         {id: v1(), userName: "Sasha"},
         {id: v1(), userName: "Viktor"},
         {id: v1(), userName: "Valera"}
-    ],
-    newMessageText: '',
+    ] as Array<DialogsItemPropsType>,
+
     messageData: [
         {id: v1(), messageText: "HI"},
         {id: v1(), messageText: "Hello"},
         {id: v1(), messageText: "YO"}
-    ]
+    ] as Array<MessagePropsType>,
+
+    newMessageText: ''
 }
 
-const dialogsReducer = (state: DialogsPageDataType = initialState,
-                        action: ActionTypes) => {
+const dialogsReducer = (state: DialogsInitialStateType = initialState,
+                        action: ActionTypes): DialogsInitialStateType => {
 
 
     switch (action.type) {

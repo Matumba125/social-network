@@ -11,7 +11,7 @@
     grid-template-areas:
     "header header header header header"
     "left-nav . content . right-nav";
-    grid-template-rows: 12% 84%;
+    grid-template-rows: 7% 89%;
     grid-template-columns: 10fr 9fr 57.8fr 9fr 10fr;
     grid-gap: 10px;
 }

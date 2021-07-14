@@ -10,6 +10,8 @@ import Settings from "./Components/Settings/Settings";
 import {AppPropsType} from "./redux/PropsType";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import RightNavbarContainer from "./Components/Navbars/RightNavbar/RightNavbarContainer";
+import {Paper} from "@material-ui/core";
+import UsersPageContainer from "./Components/UsersPage/UsersPageContainer";
 
 
 const App: React.FC<AppPropsType> = (props) => {
@@ -18,15 +20,18 @@ const App: React.FC<AppPropsType> = (props) => {
         <div className='app-wrapper'>
             <Header/>
             <LeftNavbar/>
-            <div className="app-wrapper-content">
+            <Paper className="app-wrapper-content">
                 <Route path={"/dialogs"} render={() => <DialogsContainer/>}/>
 
                 <Route path={"/profile"} render={() => <Profile/>}/>
 
+                <Route path={"/users-page"} render={() => <UsersPageContainer/>}/>
+
+
                 <Route path={"/music"} component={Music}/>
                 <Route path={"/news"} component={News}/>
                 <Route path={"/settings"} component={Settings}/>
-            </div>
+            </Paper>
             <RightNavbarContainer />
         </div>
     );
