@@ -36,7 +36,7 @@ export type ProfilePageDataType = {
 export type ContactsDataPropsType = {
     id: string
     userName: string
-    avatar?: string
+    avatar: string
 }
 
 export type RightNavDataPropsType = {
@@ -49,7 +49,7 @@ export type RightNavDataPropsType = {
 
 //StoreTypes
 
-type StateType = {
+export type StateType = {
     dialogsPage: DialogsPageDataType
     profilePage: ProfilePageDataType
     rightNavbar: RightNavDataPropsType

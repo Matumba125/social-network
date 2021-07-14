@@ -1,14 +1,23 @@
 import RightNavbar from "./RightNavbar";
-import {StateType} from "../../../redux/PropsType";
 import {connect} from "react-redux";
+import {Dispatch} from "redux";
+import {ActionTypes, AppStateType} from "../../../redux/reduxStore";
+import {RightNavInitialStateType} from "../../../redux/rightNavbarReducer";
 
+type MapStateToPropsType ={
+    rightnavData: RightNavInitialStateType
+}
 
-const mapStateToProps = (state: StateType) => {
+type MapDispatchToPropsType ={}
+
+export type RightNavProps = MapStateToPropsType & MapDispatchToPropsType
+
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
-        contactsData: state.rightNavbar.contactsData
+        rightnavData: state.rightNavbar
     }
 }
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch<ActionTypes>) => {
     return {
     }
 }

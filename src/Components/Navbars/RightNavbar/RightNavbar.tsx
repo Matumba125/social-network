@@ -1,12 +1,14 @@
 import React from "react";
 import style from './RightNavbar.module.css';
 import Contacts from "./Contacts/Contacts";
-import {RightNavDataPropsType} from "../../../redux/PropsType";
 import {Paper} from "@material-ui/core";
+import {RightNavProps} from "./RightNavbarContainer";
 
-function RightNavbar(props: RightNavDataPropsType) {
+function RightNavbar(props: RightNavProps) {
 
-    let contactsElement = props.contactsData.map(u => <Contacts key={u.id} userName={u.userName} id={u.id} avatar={u.avatar}/>)
+    const state = props.rightnavData
+
+    let contactsElement = state.contactsData.map(u => <Contacts key={u.id} userName={u.userName} id={u.id} avatar={u.avatar}/>)
 
     return (
         <Paper color={'inherit'} className={style.rightNav}>

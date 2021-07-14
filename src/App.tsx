@@ -7,14 +7,13 @@ import {Route} from "react-router-dom";
 import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
 import Settings from "./Components/Settings/Settings";
-import {AppPropsType} from "./redux/PropsType";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import RightNavbarContainer from "./Components/Navbars/RightNavbar/RightNavbarContainer";
 import {Paper} from "@material-ui/core";
 import UsersPageContainer from "./Components/UsersPage/UsersPageContainer";
 
 
-const App: React.FC<AppPropsType> = (props) => {
+const App: React.FC = () => {
 
     return (
         <div className='app-wrapper'>
