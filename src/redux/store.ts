@@ -1,8 +1,8 @@
 import {v1} from "uuid";
 import {OldStoreType, StateType} from "./PropsType";
-import dimych from "./img/dimych.jpg"
-import sveta from "./img/sveta.jpg"
-import andrey from "./img/andrey.jpg"
+import dimych from "../assets/img/dimych.jpg"
+import sveta from "../assets/img/sveta.jpg"
+import andrey from "../assets/img/andrey.jpg"
 import profileReducer from "./profilleReducer";
 import dialogsReducer from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";

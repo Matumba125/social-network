@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./ProfileInfo.module.css";
-import wrapper from "../../../redux/img/wrapper.png";
-import userAvatar from "../../../redux/img/userAvatar.jpg";
+import wrapper from "../../../assets/img/wrapper.png";
+import userAvatar from "../../../assets/img/userAvatar.jpg";
 
 function ProfileInfo() {
     return (

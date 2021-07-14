@@ -1,7 +1,7 @@
 import {v1} from "uuid";
-import dimych from "./img/dimych.jpg";
-import andrey from "./img/andrey.jpg";
-import sveta from "./img/sveta.jpg";
+import dimych from "../assets/img/dimych.jpg";
+import andrey from "../assets/img/andrey.jpg";
+import sveta from "../assets/img/sveta.jpg";
 import {ActionTypes} from "./reduxStore";
 
 

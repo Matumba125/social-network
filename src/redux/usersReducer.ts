@@ -1,7 +1,7 @@
 import {v1} from "uuid";
-import dimych from "./img/dimych.jpg";
-import andrey from "./img/andrey.jpg";
-import sveta from "./img/sveta.jpg";
+import dimych from "../assets/img/dimych.jpg";
+import andrey from "../assets/img/andrey.jpg";
+import sveta from "../assets/img/sveta.jpg";
 import {ActionTypes} from "./reduxStore";
 
 type AddressType ={
@@ -9,13 +9,19 @@ type AddressType ={
     city: string
 }
 
+type PhotosType ={
+    large: string
+    small: string
+}
+
 export type UserType ={
-    id: string
-    fullName: string
+    id: number
+    name: string
     avatar: string
     followed: boolean
     status: string
-    address: AddressType
+    photos: PhotosType
+    /*address: AddressType*/
 }
 
 export type InitialStateType ={
@@ -27,44 +33,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 
 let initialState: InitialStateType = {
-        users: [
-            {
-                id: v1(),
-                fullName: "Dimych",
-                avatar: dimych,
-                followed: true,
-                status: "React, Redux znat' budesh kruto",
-                address: {
-                    country: 'Belarus',
-                    city: 'Minsk'
-                }
-            },
-            {
-                id: v1(),
-                fullName: "Andrey",
-                avatar: andrey,
-                followed: false,
-                status: ' 0_o ',
-                address: {
-                    country: 'Russia',
-                    city: 'Moscow'
-                }
-            },
-            {
-                id: v1(),
-                fullName: "Sveta",
-                avatar: sveta,
-                followed: true,
-                status: 'Verstay, padla',
-                address: {
-                    country: 'Ukraine',
-                    city: 'Kiev'
-                }
-            }
-            /*{id: v1(), userName: "Sasha"},
-            {id: v1(), userName: "Viktor"},
-            {id: v1(), userName: "Valera"}*/
-        ]
+        users: []
 }
 
 const usersReducer = (state:InitialStateType = initialState,
@@ -90,10 +59,10 @@ const usersReducer = (state:InitialStateType = initialState,
     }
 }
 
-export const followAC = (id: string) => ({
+export const followAC = (id: number) => ({
     type: FOLLOW, id: id
 } as const)
-export const unfollowAC = (id: string) => ({
+export const unfollowAC = (id: number) => ({
     type: UNFOLLOW,
     id: id
 } as const)
