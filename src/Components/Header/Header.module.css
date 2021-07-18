@@ -1,11 +1,9 @@
 
 .header {
-    font-family: Fredoka One;
-    grid-area: header;
+    margin-bottom: 30px;
 }
 
 h1 {
-    grid-area: naming;
 }
 
 .header img {

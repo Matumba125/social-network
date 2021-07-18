@@ -1,18 +1,14 @@
 import React from "react";
-import style from "./ProfileInfo.module.css";
 import wrapper from "../../../assets/img/wrapper.png";
 import userAvatar from "../../../assets/img/userAvatar.jpg";
+import {Card, CardMedia} from "@material-ui/core";
 
 function ProfileInfo() {
     return (
-        <div>
-            <div className={style.topImage}>
-                <img src={wrapper} alt="top"/>
-            </div>
-            <div className={style.userInfo}>
-                <img src={userAvatar} alt="user-avatar"/>
-            </div>
-        </div>
+        <Card style={{padding: '20px'}} elevation={0}>
+                <CardMedia style={{borderRadius: '10px', marginBottom: '10px' }} component="img" src={wrapper}/>
+                <CardMedia style={{borderRadius: '50%', height: '100px', width: '100px'}} component="img" src={userAvatar}/>
+        </Card>
     )
 }
 

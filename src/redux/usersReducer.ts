@@ -1,13 +1,9 @@
-import {v1} from "uuid";
-import dimych from "../assets/img/dimych.jpg";
-import andrey from "../assets/img/andrey.jpg";
-import sveta from "../assets/img/sveta.jpg";
 import {ActionTypes} from "./reduxStore";
 
-type AddressType ={
+/*type AddressType ={
     country: string
     city: string
-}
+}*/
 
 type PhotosType ={
     large: string

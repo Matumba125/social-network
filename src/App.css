@@ -1,25 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .app-wrapper {
-    font-family: Montserrat;
-    font-size: 18px;
-    display: grid;
-    background-color: #e5e5e5;
-    margin: 0 auto;
-    width: 100vw;
-    height: 100vh;
-    grid-template-areas:
-    "header header header header header"
-    "left-nav . content . right-nav";
-    grid-template-rows: 7% 89%;
-    grid-template-columns: 10fr 9fr 57.8fr 9fr 10fr;
-    grid-gap: 10px;
 }
 
 .app-wrapper-content{
-    grid-area: content;
-    display: grid;
-    background-color: white;
-    border-radius: 15px;
-    text-align: center;
+
 }

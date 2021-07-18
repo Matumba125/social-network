@@ -2,6 +2,7 @@ import React, {ChangeEvent} from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
 import {UsersPostsPropsType} from "./UserPostsContainer";
+import {Grid} from "@material-ui/core";
 
 
 
@@ -27,7 +28,7 @@ function UserPosts(props: UsersPostsPropsType) {
     }
 
     return (
-        <div className={style.userPosts}>
+        <Grid item container direction={'column'} alignContent={'center'}>
             <div className={style.userNewPosts}>
                 <textarea className={style.textarea}
                           onChange={onChangeHandler}
@@ -36,7 +37,7 @@ function UserPosts(props: UsersPostsPropsType) {
             </div>
             {postsElement}
 
-        </div>
+        </Grid>
     );
 }
 

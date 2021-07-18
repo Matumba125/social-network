@@ -7,7 +7,7 @@ import {NavLink} from "react-router-dom";
 
 function Header() {
     return (
-        <AppBar color={'inherit'} position={'static'} className={style.header}>
+        <AppBar color={'inherit'} position={'static'} className={style.header} style={{justifyContent: "center"}}>
             <Toolbar style={{justifyContent: "space-between"}}>
                 <IconButton edge="start" color="primary" aria-label="menu">
                     <Menu/>

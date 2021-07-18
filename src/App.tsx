@@ -9,7 +9,7 @@ import News from "./Components/News/News";
 import Settings from "./Components/Settings/Settings";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import RightNavbarContainer from "./Components/Navbars/RightNavbar/RightNavbarContainer";
-import {Paper} from "@material-ui/core";
+import {Container, Grid, Paper} from "@material-ui/core";
 import UsersPageContainer from "./Components/UsersPage/UsersPageContainer";
 
 
@@ -18,20 +18,31 @@ const App: React.FC = () => {
     return (
         <div className='app-wrapper'>
             <Header/>
-            <LeftNavbar/>
-            <Paper className="app-wrapper-content">
-                <Route path={"/dialogs"} render={() => <DialogsContainer/>}/>
+            <Container fixed>
+                <Grid
+                    spacing={6}
+                    container
+                    direction="row"
+                    justifyContent="space-around">
 
-                <Route path={"/profile"} render={() => <Profile/>}/>
+                    <LeftNavbar/>
+                    <Grid item xs={7}>
+                        <Paper className="app-wrapper-content">
+                            <Route path={"/dialogs"} render={() => <DialogsContainer/>}/>
 
-                <Route path={"/users-page"} render={() => <UsersPageContainer/>}/>
+                            <Route path={"/profile"} render={() => <Profile/>}/>
+
+                            <Route path={"/users-page"} render={() => <UsersPageContainer/>}/>
 
 
-                <Route path={"/music"} component={Music}/>
-                <Route path={"/news"} component={News}/>
-                <Route path={"/settings"} component={Settings}/>
-            </Paper>
-            <RightNavbarContainer />
+                            <Route path={"/music"} component={Music}/>
+                            <Route path={"/news"} component={News}/>
+                            <Route path={"/settings"} component={Settings}/>
+                        </Paper>
+                    </Grid>
+                    <RightNavbarContainer/>
+                </Grid>
+            </Container>
         </div>
     );
 }

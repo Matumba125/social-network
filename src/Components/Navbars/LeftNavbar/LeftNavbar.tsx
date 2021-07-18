@@ -1,11 +1,11 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import style from './LeftNavbar.module.css';
-import {Paper} from "@material-ui/core";
+import {Grid, Paper} from "@material-ui/core";
 
 function LeftNavbar() {
     return (
-        <nav className={style.leftNav}>
+        <Grid container item className={style.leftNav} xs zeroMinWidth direction="column">
             <Paper className={style.navBlock}>
                 <h2 className={style.navbarTitle}>New Feeds</h2>
             </Paper>
@@ -31,7 +31,7 @@ function LeftNavbar() {
                 </div>
             </Paper>
 
-        </nav>
+        </Grid>
     );
 }
 
