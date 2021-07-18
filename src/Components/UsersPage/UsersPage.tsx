@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./UsersPage.module.css"
 import {UsersPropsType} from "./UsersPageContainer";
-import {IconButton, Paper} from "@material-ui/core";
+import {Grid, IconButton, Paper} from "@material-ui/core";
 import {PersonAddRounded} from "@material-ui/icons";
 import {NavLink} from 'react-router-dom';
 import axios from "axios";
@@ -19,17 +19,33 @@ class UsersPage extends React.Component<UsersPropsType> {
     }
 
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPage.currentPage}&count=${this.props.usersPage.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            });
+    }
+
+    onPageChanged = (pageNumber: number) =>{
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.usersPage.pageSize}`)
             .then(response => {
                 this.props.setUsers(response.data.items)
             });
     }
 
     render() {
+        let pagesCount = Math.ceil(this.props.usersPage.totalCount / this.props.usersPage.pageSize)
+
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+        debugger
+
         return (
-            <div>
+            <Grid item container direction={'column'} className={style.usersPage}>
                 {this.props.usersPage.users.map(m =>
-                    <div className={style.userInfo} key={m.id}>
+                    <Grid item className={style.userInfo} key={m.id}>
                         <Paper className={style.ava} elevation={0}>
                             <NavLink to={`${m.id}`}>
                                 <img src={m.photos.small !== null ? m.photos.small : defaultImg} alt={m.id + ' avatar'}
@@ -59,10 +75,16 @@ class UsersPage extends React.Component<UsersPropsType> {
                                 " {m.status} "
                             </div>
                         </Paper>
-                    </div>
+                    </Grid>
                 )
                 }
-            </div>
+                <Grid>
+                    {pages.map(m =>
+                        <span className={this.props.usersPage.currentPage === m ? style.selectedPage : ''}
+                        onClick={(e) => {this.onPageChanged(m)}}>{m}</span>
+                    )}
+                </Grid>
+            </Grid>
         );
     }
 }

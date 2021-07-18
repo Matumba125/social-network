@@ -2,7 +2,7 @@ import {combineReducers, createStore} from "redux";
 import profileReducer, {addPostActionCreator, changePostTextActionCreator} from "./profilleReducer";
 import dialogsReducer, {addMessageActionCreator, changeMessageTextActionCreator} from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";
-import usersReducer, {followAC, setUsersAC, unfollowAC} from "./usersReducer";
+import usersReducer, {followAC, setCurrentPageAC, setUsersAC, unfollowAC} from "./usersReducer";
 
 
 export type ActionTypes =
@@ -12,7 +12,8 @@ export type ActionTypes =
     ReturnType<typeof changeMessageTextActionCreator> |
     ReturnType<typeof followAC> |
     ReturnType<typeof unfollowAC> |
-    ReturnType<typeof setUsersAC>
+    ReturnType<typeof setUsersAC>|
+    ReturnType<typeof setCurrentPageAC>
 
 export const  rootReducer = combineReducers({
     profilePage: profileReducer,

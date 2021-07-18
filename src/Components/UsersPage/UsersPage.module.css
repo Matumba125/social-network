@@ -1,7 +1,7 @@
 .userInfo{
     display: flex;
     padding: 20px;
-    align-content: center;
+    align-items: center;
 }
 
 .img {
@@ -27,4 +27,11 @@
     display: flex;
     justify-content: flex-start;
     padding: 10px;
+}
+
+.usersPage{
+    align-items: center;
+}
+.selectedPage{
+    font-weight: bold;
 }
