@@ -11,6 +11,8 @@
 }
 
 .ava{
+    display: grid;
+    margin: 10px;
 }
 .description{
     width: 400px;

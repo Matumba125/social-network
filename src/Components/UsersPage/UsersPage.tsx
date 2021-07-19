@@ -1,92 +1,73 @@
-import React from "react";
-import style from "./UsersPage.module.css"
-import {UsersPropsType} from "./UsersPageContainer";
+import React from 'react';
 import {Grid, IconButton, Paper} from "@material-ui/core";
+import style from "./UsersPage.module.css";
+import {NavLink} from "react-router-dom";
+import defaultImg from "../../assets/img/sveta.jpg";
 import {PersonAddRounded} from "@material-ui/icons";
-import {NavLink} from 'react-router-dom';
-import axios from "axios";
-import defaultImg from '../../assets/img/sveta.jpg'
+import {UserType} from "../../redux/usersReducer";
 
-
-class UsersPage extends React.Component<UsersPropsType> {
-
-    changeFollowStatus = (id: number, follow: boolean) => {
-        if (follow) {
-            this.props.unFollow(id)
-        } else {
-            this.props.follow(id)
-        }
-    }
-
-    componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPage.currentPage}&count=${this.props.usersPage.pageSize}`)
-            .then(response => {
-                this.props.setUsers(response.data.items)
-            });
-    }
-
-    onPageChanged = (pageNumber: number) =>{
-        this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.usersPage.pageSize}`)
-            .then(response => {
-                this.props.setUsers(response.data.items)
-            });
-    }
-
-    render() {
-        let pagesCount = Math.ceil(this.props.usersPage.totalCount / this.props.usersPage.pageSize)
-
-        let pages = [];
-        for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i)
-        }
-        debugger
-
-        return (
-            <Grid item container direction={'column'} className={style.usersPage}>
-                {this.props.usersPage.users.map(m =>
-                    <Grid item className={style.userInfo} key={m.id}>
-                        <Paper className={style.ava} elevation={0}>
-                            <NavLink to={`${m.id}`}>
-                                <img src={m.photos.small !== null ? m.photos.small : defaultImg} alt={m.id + ' avatar'}
-                                     className={style.img}/>
-                            </NavLink>
-                            <IconButton size={'small'} onClick={() => this.changeFollowStatus(m.id, m.followed)}
-                                        color={m.followed ? 'inherit' : 'primary'}
-                                        style={{opacity: m.followed ? '0.5' : '1'}}>
-                                <PersonAddRounded fontSize={'small'}/>
-                            </IconButton>
-                        </Paper>
-                        <Paper className={style.description}>
-                            <div className={style.descriptionTop}>
-                                <NavLink to={`${m.id}`} style={{textDecoration: 'none', color: 'black'}}>
-                                    {m.name}
-                                </NavLink>
-                                <div style={{fontSize: "15px"}}>
-                                    <div>
-                                        Belarus,
-                                    </div>
-                                    <div>
-                                        Minsk
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={style.descriptionBot} style={{fontSize: "13px"}}>
-                                " {m.status} "
-                            </div>
-                        </Paper>
-                    </Grid>
-                )
-                }
-                <Grid>
-                    {pages.map(m =>
-                        <span className={this.props.usersPage.currentPage === m ? style.selectedPage : ''}
-                        onClick={(e) => {this.onPageChanged(m)}}>{m}</span>
-                    )}
-                </Grid>
-            </Grid>
-        );
-    }
+type UsersPagePropsType ={
+    users: Array<UserType>
+    pageSize: number
+    totalCount: number
+    currentPage: number
+    onPageChanged: (pageNumber: number)=> void
+    changeFollowStatus: (id: number, follow: boolean) => void
 }
 
-export default UsersPage
+const UsersPage: React.FC<UsersPagePropsType> = (props) => {
+
+    // let pagesCount = Math.ceil(props.totalCount / props.pageSize)
+
+    let pages = [];
+    for (let i = 1; i <=10; i++) {
+        pages.push(i)
+    }
+
+    return (
+        <Grid item container direction={'column'} className={style.usersPage}>
+            {props.users.map(m =>
+                <Grid item className={style.userInfo} key={m.id}>
+                    <Paper className={style.ava} elevation={0}>
+                        <NavLink to={`${m.id}`}>
+                            <img src={m.photos.small !== null ? m.photos.small : defaultImg} alt={m.id + ' avatar'}
+                                 className={style.img}/>
+                        </NavLink>
+                        <IconButton size={'small'} onClick={() => props.changeFollowStatus(m.id, m.followed)}
+                                    color={m.followed ? 'inherit' : 'primary'}
+                                    style={{opacity: m.followed ? '0.5' : '1'}}>
+                            <PersonAddRounded fontSize={'small'}/>
+                        </IconButton>
+                    </Paper>
+                    <Paper className={style.description}>
+                        <div className={style.descriptionTop}>
+                            <NavLink to={`${m.id}`} style={{textDecoration: 'none', color: 'black'}}>
+                                {m.name}
+                            </NavLink>
+                            <div style={{fontSize: "15px"}}>
+                                <div>
+                                    Belarus,
+                                </div>
+                                <div>
+                                    Minsk
+                                </div>
+                            </div>
+                        </div>
+                        <div className={style.descriptionBot} style={{fontSize: "13px"}}>
+                            " {m.status} "
+                        </div>
+                    </Paper>
+                </Grid>
+            )
+            }
+            <Grid>
+                {pages.map(m =>
+                    <span className={props.currentPage === m ? style.selectedPage : ''}
+                          onClick={(e) => {props.onPageChanged(m)}}>{m} </span>
+                )}
+            </Grid>
+        </Grid>
+    );
+};
+
+export default UsersPage;
