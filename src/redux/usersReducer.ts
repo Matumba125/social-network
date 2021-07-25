@@ -25,6 +25,7 @@ export type InitialStateType ={
     pageSize: number
     totalCount: number
     currentPage: number
+    isFetching: boolean
 }
 
 const FOLLOW = 'FOLLOW';
@@ -32,12 +33,14 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
+const CHANGE_FETCHING_STATUS = 'CHANGE-FETCHING-STATUS';
 
 let initialState: InitialStateType = {
         users: [],
         pageSize: 5,
         totalCount: 0,
-        currentPage: 1
+        currentPage: 1,
+        isFetching: false
 }
 
 const usersReducer = (state:InitialStateType = initialState,
@@ -66,30 +69,38 @@ const usersReducer = (state:InitialStateType = initialState,
         {
             return {...state, totalCount: action.totalCount}
         }
+        case CHANGE_FETCHING_STATUS:
+        {
+            return {...state, isFetching: action.isFetching}
+        }
         default:
             return state;
     }
 }
 
-export const followAC = (id: number) => ({
+export const follow = (id: number) => ({
     type: FOLLOW,
     id
 } as const)
-export const unfollowAC = (id: number) => ({
+export const unfollow = (id: number) => ({
     type: UNFOLLOW,
     id
 } as const)
-export const setUsersAC = (users: Array<UserType>) => ({
+export const setUsers = (users: Array<UserType>) => ({
     type: SET_USERS,
     users
 } as const)
-export const setCurrentPageAC = (currentPage: number) => ({
+export const setCurrentPage = (currentPage: number) => ({
     type: SET_CURRENT_PAGE,
     currentPage
 } as const)
-export const  setTotalUsersCountAC = (totalCount: number) => ({
+export const  setTotalUsersCount = (totalCount: number) => ({
     type: SET_TOTAL_USERS_COUNT,
     totalCount
+} as const)
+export const changeFetchingStatus = (isFetching: boolean) =>({
+    type: CHANGE_FETCHING_STATUS,
+    isFetching
 } as const)
 
 

@@ -44,7 +44,7 @@ const UsersPage: React.FC<UsersPagePropsType> = (props) => {
                             <NavLink to={`${m.id}`} style={{textDecoration: 'none', color: 'black'}}>
                                 {m.name}
                             </NavLink>
-                            <div style={{fontSize: "15px"}}>
+                            <div style={{fontSize: "15px", textAlign: 'center'}}>
                                 <div>
                                     Belarus,
                                 </div>

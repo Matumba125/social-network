@@ -5,12 +5,12 @@ import {Grid} from "@material-ui/core";
 
 function Profile() {
     return (
-        <div>
+        <>
             <Grid container direction="column">
                 <ProfileInfo/>
                 <UserPostsContainer/>
             </Grid>
-        </div>
+        </>
     );
 }
 

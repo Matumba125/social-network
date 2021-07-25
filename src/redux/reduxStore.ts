@@ -3,11 +3,12 @@ import profileReducer, {addPostActionCreator, changePostTextActionCreator} from 
 import dialogsReducer, {addMessageActionCreator, changeMessageTextActionCreator} from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";
 import usersReducer, {
-    followAC,
-    setCurrentPageAC,
-    setTotalUsersCountAC,
-    setUsersAC,
-    unfollowAC
+    changeFetchingStatus,
+    follow,
+    setCurrentPage,
+    setTotalUsersCount,
+    setUsers,
+    unfollow
 } from "./usersReducer";
 
 
@@ -16,11 +17,12 @@ export type ActionTypes =
     ReturnType<typeof changePostTextActionCreator> |
     ReturnType<typeof addMessageActionCreator> |
     ReturnType<typeof changeMessageTextActionCreator> |
-    ReturnType<typeof followAC> |
-    ReturnType<typeof unfollowAC> |
-    ReturnType<typeof setUsersAC>|
-    ReturnType<typeof setCurrentPageAC>|
-    ReturnType<typeof setTotalUsersCountAC>
+    ReturnType<typeof follow> |
+    ReturnType<typeof unfollow> |
+    ReturnType<typeof setUsers>|
+    ReturnType<typeof setCurrentPage>|
+    ReturnType<typeof setTotalUsersCount>|
+    ReturnType<typeof changeFetchingStatus>
 
 export const  rootReducer = combineReducers({
     profilePage: profileReducer,
