@@ -1,15 +1,9 @@
 import React from 'react';
 import style from './Post.module.css'
 import userAvatar from '../../../../assets/img/userAvatar.jpg'
+import { PostType } from '../../../../redux/profilleReducer';
 
-
-type PostPropsType = {
-    id: string
-    postContent: string
-    postLikes: number
-}
-
-function Post(props: PostPropsType) {
+function Post(props: PostType) {
     return (
         <div className={style.item}>
             <img src={userAvatar} alt={'userImage'}/>

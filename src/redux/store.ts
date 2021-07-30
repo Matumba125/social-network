@@ -28,6 +28,13 @@ let store: OldStoreType = {
         },
 
         profilePage: {
+            profile:{
+                photos:{
+                    small: sveta,
+                    large: sveta,
+                },
+                fullName: "Nikita"
+            },
             messageForNewPost: '',
             postsData: [
                 {
@@ -40,7 +47,7 @@ let store: OldStoreType = {
                     postContent: "It's my first post!!",
                     postLikes: 28
                 }
-            ]
+            ],
         },
 
         rightNavbar: {

@@ -1,5 +1,7 @@
 import {v1} from "uuid";
 import {ActionTypes} from "./reduxStore";
+import {PhotosType} from "./usersReducer";
+import myPhoto from "../assets/img/userAvatar.jpg"
 
 
 export type PostType = {
@@ -8,33 +10,65 @@ export type PostType = {
     postLikes: number
 }
 
+type ContactsType ={
+    facebook: string
+    website: string
+    vk: string
+    twitter: string
+    instagram: string
+    youtube: string
+    github: string
+    mainLink: string
+}
+
+
+
+export type ProfileDataType = {
+    aboutMe?: string
+    contacts?: ContactsType
+    lookingForAJob?: boolean
+    lookingForAJobDescription?: string
+    userID?: number
+    photos: PhotosType
+    fullName: string
+}
+
 export type ProfileInitialStateType = {
-    postsData: Array<PostType>
+    profile: ProfileDataType
     messageForNewPost: string
+    postsData: Array<PostType>
 }
 
 const ADD_POST = 'ADD-POST';
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState: ProfileInitialStateType = {
+    profile:{
+        photos:{
+            large: myPhoto,
+            small: myPhoto,
+        },
+        fullName: 'Nikita'
+    },
     messageForNewPost: '',
     postsData: [
         {
             id: v1(),
             postContent: "Hello World !!!",
-            postLikes: 15
+            postLikes: 15,
+
         },
         {
             id: v1(),
             postContent: "It's my first post!!",
             postLikes: 28
         }
-    ]
+    ],
 }
 
-const profileReducer = (state:ProfileInitialStateType = initialState,
+const profileReducer = (state: ProfileInitialStateType = initialState,
                         action: ActionTypes): ProfileInitialStateType => {
-
     switch (action.type) {
         case ADD_POST:
             const newPost: PostType = {
@@ -42,18 +76,21 @@ const profileReducer = (state:ProfileInitialStateType = initialState,
                 postContent: state.messageForNewPost,
                 postLikes: 0
             };
-            return{
+            return {
                 ...state,
-                postsData: [newPost, ...state.postsData],
-                messageForNewPost: ''
+                    postsData: [newPost, ...state.postsData],
+                    messageForNewPost: ''
             }
 
         case CHANGE_POST_TEXT:
             return {
                 ...state,
-                messageForNewPost: action.newText
+                    messageForNewPost: action.newText
             }
-
+        case SET_USER_PROFILE: {
+            debugger
+            return {...state, profile: action.profile}
+        }
         default:
             return state;
     }
@@ -66,5 +103,10 @@ export const changePostTextActionCreator = (newText: string) => ({
         newText: newText
     } as const
 )
+
+export const setUserProfile = (profile: ProfileDataType) => ({
+    type: SET_USER_PROFILE,
+    profile
+} as const)
 
 export default profileReducer

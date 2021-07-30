@@ -5,7 +5,7 @@ import {DialogsItemPropsType} from "../../../redux/dialogsReducer";
 
 
 const DialogItem: React.FC<DialogsItemPropsType> =(props) =>{
-    let path = "/dialogs/" + props.id;
+    let path = "/social-network/profile/" + props.id;
 
     return(
         <div className={style.dialog}>

@@ -1,15 +1,36 @@
 import React from "react";
 import wrapper from "../../../assets/img/wrapper.png";
-import userAvatar from "../../../assets/img/userAvatar.jpg";
-import {Card, CardMedia} from "@material-ui/core";
+import {CardMedia} from "@material-ui/core";
+import {ProfileDataType} from "../../../redux/profilleReducer";
+import defaultImg from "../../../assets/img/sveta.jpg";
+import Preloader from "../../common/Preloader/Preloader";
+import style from "./ProfileInfo.module.css"
 
-function ProfileInfo() {
-    return (
-        <Card style={{padding: '20px'}} elevation={0}>
-                <CardMedia style={{borderRadius: '10px', marginBottom: '10px' }} component="img" src={wrapper}/>
-                <CardMedia style={{borderRadius: '50%', height: '100px', width: '100px'}} component="img" src={userAvatar}/>
-        </Card>
-    )
+type ProfileInfoPropsType = {
+    profile: ProfileDataType
+}
+
+function ProfileInfo(props: ProfileInfoPropsType) {
+    if (!props.profile) {
+        return <Preloader/>
+    } else {
+
+        return (
+            <div className={style.infoContainer}>
+                <CardMedia style={{borderRadius: '10px', marginBottom: '10px'}} component="img" src={wrapper}/>
+                <div className={style.mainInfo}>
+                    <CardMedia style={{borderRadius: '50%', height: '100px', width: '100px'}} component="img"
+                               className={style.ava}
+                               src={props.profile.photos.small !== null ? props.profile.photos.small : defaultImg}/>
+                    <div className={style.description}>
+                        <span className={style.fullName}>{props.profile.fullName}</span>
+                        <span>{props.profile.aboutMe}</span>
+                    </div>
+                </div>
+            </div>
+
+        )
+    }
 }
 
 export default ProfileInfo

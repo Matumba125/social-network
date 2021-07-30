@@ -29,7 +29,7 @@ const UsersPage: React.FC<UsersPagePropsType> = (props) => {
             {props.users.map(m =>
                 <Grid item className={style.userInfo} key={m.id}>
                     <Paper className={style.ava} elevation={0}>
-                        <NavLink to={`${m.id}`}>
+                        <NavLink to={'/social-network/profile/' + m.id}>
                             <img src={m.photos.small !== null ? m.photos.small : defaultImg} alt={m.id + ' avatar'}
                                  className={style.img}/>
                         </NavLink>
@@ -41,7 +41,7 @@ const UsersPage: React.FC<UsersPagePropsType> = (props) => {
                     </Paper>
                     <Paper className={style.description}>
                         <div className={style.descriptionTop}>
-                            <NavLink to={`${m.id}`} style={{textDecoration: 'none', color: 'black'}}>
+                            <NavLink to={'/social-network/profile/' + m.id} style={{textDecoration: 'none', color: 'black'}}>
                                 {m.name}
                             </NavLink>
                             <div style={{fontSize: "15px", textAlign: 'center'}}>

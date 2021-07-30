@@ -13,7 +13,7 @@ function Header() {
                     <Menu/>
                 </IconButton>
                 <Typography variant="h6">
-                    Lavazza
+                    Social Network
                 </Typography>
                 <TextField
                     size={'small'}
@@ -21,7 +21,7 @@ function Header() {
                     color={'primary'}
                     placeholder="Title"
                 />
-                <NavLink to="/users-page">
+                <NavLink to="/social-network/users-page">
                     <IconButton>
                         <PeopleRounded color={'primary'}/>
                     </IconButton>

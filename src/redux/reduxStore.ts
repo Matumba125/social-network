@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import profileReducer, {addPostActionCreator, changePostTextActionCreator} from "./profilleReducer";
+import profileReducer, {addPostActionCreator, changePostTextActionCreator, setUserProfile} from "./profilleReducer";
 import dialogsReducer, {addMessageActionCreator, changeMessageTextActionCreator} from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";
 import usersReducer, {
@@ -22,7 +22,8 @@ export type ActionTypes =
     ReturnType<typeof setUsers>|
     ReturnType<typeof setCurrentPage>|
     ReturnType<typeof setTotalUsersCount>|
-    ReturnType<typeof changeFetchingStatus>
+    ReturnType<typeof changeFetchingStatus>|
+    ReturnType<typeof setUserProfile>
 
 export const  rootReducer = combineReducers({
     profilePage: profileReducer,

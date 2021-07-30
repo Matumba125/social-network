@@ -1,7 +1,6 @@
 .dialogs{
-    display: grid;
-    grid-template-columns: 4fr 8fr;
-
+    display: flex;
+    justify-content: space-around;
 }
 
 .dialogs_items{

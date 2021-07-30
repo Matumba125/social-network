@@ -12,22 +12,22 @@ function LeftNavbar() {
             <Paper className={style.navBlock}>
                 <h2 className={style.navbarTitle}>More Pages</h2>
                 <div className={style.item}>
-                    <NavLink to="/profile">Profile</NavLink>
+                    <NavLink to="/social-network/profile/">Profile</NavLink>
                 </div>
                 <div className={style.item}>
-                    <NavLink to="/dialogs">Messages</NavLink>
+                    <NavLink to="/social-network/dialogs/">Messages</NavLink>
                 </div>
                 <div className={style.item}>
-                    <NavLink to="/news">News</NavLink>
+                    <NavLink to="/social-network/news/">News</NavLink>
                 </div>
                 <div className={style.item}>
-                    <NavLink to="music">Music</NavLink>
+                    <NavLink to="/social-network/music/">Music</NavLink>
                 </div>
             </Paper>
             <Paper className={style.navBlock}>
                 <h2 className={style.navbarTitle}>Account</h2>
                 <div className={style.item}>
-                    <NavLink to="/settings">Settings</NavLink>
+                    <NavLink to="/social-network/settings/">Settings</NavLink>
                 </div>
             </Paper>
 

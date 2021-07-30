@@ -5,7 +5,7 @@ import {ActionTypes} from "./reduxStore";
     city: string
 }*/
 
-type PhotosType ={
+export type PhotosType ={
     large: string
     small: string
 }

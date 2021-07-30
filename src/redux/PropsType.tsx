@@ -1,4 +1,5 @@
 import {ActionTypes} from "./reduxStore";
+import {ProfileInitialStateType} from "./profilleReducer";
 
 type DialogsItemPropsType = {
     id: string
@@ -51,7 +52,7 @@ export type RightNavDataPropsType = {
 
 export type StateType = {
     dialogsPage: DialogsPageDataType
-    profilePage: ProfilePageDataType
+    profilePage: ProfileInitialStateType
     rightNavbar: RightNavDataPropsType
 }
 export type OldStoreType = {
