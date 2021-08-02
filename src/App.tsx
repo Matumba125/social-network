@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Header from "./Components/Header/Header";
 import LeftNavbar from "./Components/Navbars/LeftNavbar/LeftNavbar";
 import {Route} from "react-router-dom";
 import Music from "./Components/Music/Music";
@@ -11,13 +10,14 @@ import RightNavbarContainer from "./Components/Navbars/RightNavbar/RightNavbarCo
 import {Container, Grid, Paper} from "@material-ui/core";
 import UsersPageContainer from "./Components/UsersPage/UsersPageContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 
 
 const App: React.FC = () => {
 
     return (
         <div className='app-wrapper'>
-            <Header/>
+            <HeaderContainer/>
             <Container fixed>
                 <Grid
                     spacing={6}

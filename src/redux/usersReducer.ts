@@ -5,12 +5,12 @@ import {ActionTypes} from "./reduxStore";
     city: string
 }*/
 
-export type PhotosType ={
+export type PhotosType = {
     large: string
     small: string
 }
 
-export type UserType ={
+export type UserType = {
     id: number
     name: string
     avatar: string
@@ -20,7 +20,7 @@ export type UserType ={
     /*address: AddressType*/
 }
 
-export type InitialStateType ={
+export type InitialStateType = {
     users: Array<UserType>
     pageSize: number
     totalCount: number
@@ -36,41 +36,38 @@ const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const CHANGE_FETCHING_STATUS = 'CHANGE-FETCHING-STATUS';
 
 let initialState: InitialStateType = {
-        users: [],
-        pageSize: 5,
-        totalCount: 0,
-        currentPage: 1,
-        isFetching: false
+    users: [],
+    pageSize: 5,
+    totalCount: 0,
+    currentPage: 1,
+    isFetching: false
 }
 
-const usersReducer = (state:InitialStateType = initialState,
+const usersReducer = (state: InitialStateType = initialState,
                       action: ActionTypes): InitialStateType => {
 
     switch (action.type) {
         case FOLLOW:
             return {
                 ...state,
-               users: state.users.map(m =>
-                   m.id === action.id ? {...m, followed: true} : m),
+                users: state.users.map(m =>
+                    m.id === action.id ? {...m, followed: true} : m),
             }
         case UNFOLLOW:
             return {
                 ...state,
                 users: state.users.map(m =>
-                m.id === action.id ? {...m, followed: false} : m)
+                    m.id === action.id ? {...m, followed: false} : m)
             }
         case SET_USERS:
-            return {...state, users: [ ...action.users]}
-        case  SET_CURRENT_PAGE:
-        {
-                return {...state, currentPage: action.currentPage}
+            return {...state, users: [...action.users]}
+        case  SET_CURRENT_PAGE: {
+            return {...state, currentPage: action.currentPage}
         }
-        case SET_TOTAL_USERS_COUNT:
-        {
+        case SET_TOTAL_USERS_COUNT: {
             return {...state, totalCount: action.totalCount}
         }
-        case CHANGE_FETCHING_STATUS:
-        {
+        case CHANGE_FETCHING_STATUS: {
             return {...state, isFetching: action.isFetching}
         }
         default:
@@ -94,11 +91,11 @@ export const setCurrentPage = (currentPage: number) => ({
     type: SET_CURRENT_PAGE,
     currentPage
 } as const)
-export const  setTotalUsersCount = (totalCount: number) => ({
+export const setTotalUsersCount = (totalCount: number) => ({
     type: SET_TOTAL_USERS_COUNT,
     totalCount
 } as const)
-export const changeFetchingStatus = (isFetching: boolean) =>({
+export const changeFetchingStatus = (isFetching: boolean) => ({
     type: CHANGE_FETCHING_STATUS,
     isFetching
 } as const)

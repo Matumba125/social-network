@@ -3,9 +3,15 @@ import style from './Header.module.css'
 import {AppBar, Button, IconButton, TextField, Toolbar, Typography} from "@material-ui/core";
 import {Menu, PeopleRounded} from "@material-ui/icons";
 import {NavLink} from "react-router-dom";
+import {DataType} from "../../redux/authReducer";
+
+type HeaderPropsType = {
+    data: DataType
+    isAuth: boolean
+}
 
 
-function Header() {
+function Header(props: HeaderPropsType) {
     return (
         <AppBar color={'inherit'} position={'static'} className={style.header} style={{justifyContent: "center"}}>
             <Toolbar style={{justifyContent: "space-between"}}>
@@ -26,7 +32,10 @@ function Header() {
                         <PeopleRounded color={'primary'}/>
                     </IconButton>
                 </NavLink>
-                <Button variant={"outlined"} color="primary" >Login</Button>
+                {props.isAuth ? <NavLink to="/social-network/profile">{props.data.login}</NavLink>
+                    : <NavLink to="/social-network/login-page">
+                        <Button variant={"outlined"} color="primary">Login</Button>
+                    </NavLink>}
             </Toolbar>
         </AppBar>
     )
