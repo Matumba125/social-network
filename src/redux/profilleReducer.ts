@@ -2,6 +2,9 @@ import {v1} from "uuid";
 import {ActionTypes} from "./reduxStore";
 import {PhotosType} from "./usersReducer";
 import myPhoto from "../assets/img/userAvatar.jpg"
+import {Dispatch} from "redux";
+import {AuthorizeAPI, ProfileAPI} from "../api/api";
+import {setUserData} from "./authReducer";
 
 
 export type PostType = {
@@ -10,7 +13,7 @@ export type PostType = {
     postLikes: number
 }
 
-type ContactsType ={
+type ContactsType = {
     facebook: string
     website: string
     vk: string
@@ -20,7 +23,6 @@ type ContactsType ={
     github: string
     mainLink: string
 }
-
 
 
 export type ProfileDataType = {
@@ -44,8 +46,8 @@ const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState: ProfileInitialStateType = {
-    profile:{
-        photos:{
+    profile: {
+        photos: {
             large: myPhoto,
             small: myPhoto,
         },
@@ -78,17 +80,16 @@ const profileReducer = (state: ProfileInitialStateType = initialState,
             };
             return {
                 ...state,
-                    postsData: [newPost, ...state.postsData],
-                    messageForNewPost: ''
+                postsData: [newPost, ...state.postsData],
+                messageForNewPost: ''
             }
 
         case CHANGE_POST_TEXT:
             return {
                 ...state,
-                    messageForNewPost: action.newText
+                messageForNewPost: action.newText
             }
         case SET_USER_PROFILE: {
-            debugger
             return {...state, profile: action.profile}
         }
         default:
@@ -108,5 +109,13 @@ export const setUserProfile = (profile: ProfileDataType) => ({
     type: SET_USER_PROFILE,
     profile
 } as const)
+
+export const getProfile = (userId: string) => {
+    return (dispatch: Dispatch<ActionTypes>) => {
+        ProfileAPI.getProfileInfo(userId).then(data => {
+            dispatch(setUserProfile(data))
+        });
+    }
+}
 
 export default profileReducer

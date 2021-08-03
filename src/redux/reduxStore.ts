@@ -1,9 +1,9 @@
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import profileReducer, {addPostActionCreator, changePostTextActionCreator, setUserProfile} from "./profilleReducer";
 import dialogsReducer, {addMessageActionCreator, changeMessageTextActionCreator} from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";
 import usersReducer, {
-    changeFetchingStatus,
+    changeFetchingStatus, changeResponseStatus,
     follow,
     setCurrentPage,
     setTotalUsersCount,
@@ -11,6 +11,7 @@ import usersReducer, {
     unfollow
 } from "./usersReducer";
 import authReducer, {setUserData} from "./authReducer";
+import thunkMiddleware from "redux-thunk"
 
 
 export type ActionTypes =
@@ -20,14 +21,15 @@ export type ActionTypes =
     ReturnType<typeof changeMessageTextActionCreator> |
     ReturnType<typeof follow> |
     ReturnType<typeof unfollow> |
-    ReturnType<typeof setUsers>|
-    ReturnType<typeof setCurrentPage>|
-    ReturnType<typeof setTotalUsersCount>|
-    ReturnType<typeof changeFetchingStatus>|
-    ReturnType<typeof setUserProfile>|
-    ReturnType<typeof setUserData>
+    ReturnType<typeof setUsers> |
+    ReturnType<typeof setCurrentPage> |
+    ReturnType<typeof setTotalUsersCount> |
+    ReturnType<typeof changeFetchingStatus> |
+    ReturnType<typeof setUserProfile> |
+    ReturnType<typeof setUserData> |
+    ReturnType<typeof changeResponseStatus>
 
-export const  rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     rightNavbar: rightNavbarReducer,
@@ -37,6 +39,6 @@ export const  rootReducer = combineReducers({
 
 export type AppStateType = ReturnType<typeof rootReducer>
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 export default store

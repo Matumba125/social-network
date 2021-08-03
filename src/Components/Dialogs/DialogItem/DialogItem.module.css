@@ -1,4 +1,4 @@
-.dialog{
+.dialog {
     display: flex;
     margin: 15px;
     text-align: left;
@@ -15,7 +15,7 @@
     color: orangered;
 }
 
-.dialog img{
+.dialog img {
     width: 30px;
     height: 30px;
     border-radius: 50%;

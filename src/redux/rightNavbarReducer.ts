@@ -20,9 +20,9 @@ const InitialState = {
     ] as Array<ContactsDataType>
 }
 
-export const rightNavbarReducer = (state: RightNavInitialStateType = InitialState, action: ActionTypes): RightNavInitialStateType =>{
+export const rightNavbarReducer = (state: RightNavInitialStateType = InitialState, action: ActionTypes): RightNavInitialStateType => {
 
     return state
 }
 
-export default  rightNavbarReducer
+export default rightNavbarReducer

@@ -1,16 +1,20 @@
-import {addPostActionCreator, changePostTextActionCreator, ProfileInitialStateType} from "../../../redux/profilleReducer";
+import {
+    addPostActionCreator,
+    changePostTextActionCreator,
+    ProfileInitialStateType
+} from "../../../redux/profilleReducer";
 import UserPosts from "./UserPosts";
 import {connect} from "react-redux";
 import {ActionTypes, AppStateType} from "../../../redux/reduxStore";
-import { Dispatch } from "redux";
+import {Dispatch} from "redux";
 
 
 type MapStatePropsType = {
     profilePage: ProfileInitialStateType
 }
 
-type MapDispatchPropsType ={
-    addPost: ()=>void
+type MapDispatchPropsType = {
+    addPost: () => void
     changePostText: (text: string) => void
 }
 
@@ -27,7 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ActionTypes>) => {
         addPost: () => {
             dispatch(addPostActionCreator())
         },
-        changePostText: (text: string) =>{
+        changePostText: (text: string) => {
             dispatch(changePostTextActionCreator(text))
         }
 
@@ -35,7 +39,6 @@ const mapDispatchToProps = (dispatch: Dispatch<ActionTypes>) => {
 }
 
 const UserPostsContainer = connect(mapStateToProps, mapDispatchToProps)(UserPosts);
-
 
 
 export default UserPostsContainer;

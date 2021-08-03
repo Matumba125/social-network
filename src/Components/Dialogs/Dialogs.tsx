@@ -5,11 +5,12 @@ import Message from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
 
 
-const Dialogs: React.FC<DialogsPropsType> =(props) =>{
+const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
     let state = props.dialogsPage
 
-    let dialogsElement = state.dialogsData.map(u => <DialogItem key={u.id} userName={u.userName} id={u.id} avatar={u.avatar}/>)
+    let dialogsElement = state.dialogsData.map(u => <DialogItem key={u.id} userName={u.userName} id={u.id}
+                                                                avatar={u.avatar}/>)
 
     let messageElement = state.messageData.map(m => <Message key={m.id} messageText={m.messageText} id={m.id}/>)
 

@@ -12,13 +12,12 @@ type MapStatePropsType = {
     dialogsPage: DialogsInitialStateType
 }
 
-type MapDispatchPropsType ={
-    addMessage: ()=>void
+type MapDispatchPropsType = {
+    addMessage: () => void
     changeMessageText: (text: string) => void
 }
 
 export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
-
 
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
@@ -31,7 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ActionTypes>): MapDispatchPropsTy
         addMessage: () => {
             dispatch(addMessageActionCreator())
         },
-        changeMessageText: (text: string) =>{
+        changeMessageText: (text: string) => {
             dispatch(changeMessageTextActionCreator(text))
 
         }

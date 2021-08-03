@@ -1,24 +1,24 @@
-.dialogs{
+.dialogs {
     display: flex;
     justify-content: space-around;
 }
 
-.dialogs_items{
+.dialogs_items {
     padding: 10px;
 }
 
-.messages{
+.messages {
     padding: 10px;
 }
 
-.addMessage{
+.addMessage {
     display: flex;
     align-items: flex-end;
     justify-content: center;
     margin: 15px;
 }
 
-.addMessage textarea{
+.addMessage textarea {
     resize: none;
     background-color: white;
     border-radius: 15px;
@@ -26,12 +26,12 @@
     margin-right: 10px;
 }
 
-.addMessage textarea:focus{
+.addMessage textarea:focus {
     border: 1px solid orangered;
     outline: none;
 }
 
-.addMessage button{
+.addMessage button {
     background-color: white;
     border-radius: 15px;
     border: 1px solid black;

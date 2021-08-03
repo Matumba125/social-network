@@ -5,7 +5,6 @@ import {UsersPostsPropsType} from "./UserPostsContainer";
 import {Grid} from "@material-ui/core";
 
 
-
 function UserPosts(props: UsersPostsPropsType) {
 
     let state = props.profilePage
@@ -24,7 +23,7 @@ function UserPosts(props: UsersPostsPropsType) {
     }
 
     const onClickHandler = () => {
-       props.addPost();
+        props.addPost();
     }
 
     return (

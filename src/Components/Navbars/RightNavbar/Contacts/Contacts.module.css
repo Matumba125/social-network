@@ -1,4 +1,4 @@
-.contact{
+.contact {
     display: flex;
     margin: 15px;
     text-align: left;
@@ -6,7 +6,7 @@
 
 }
 
-.contact img{
+.contact img {
     width: 30px;
     height: 30px;
     border-radius: 50%;

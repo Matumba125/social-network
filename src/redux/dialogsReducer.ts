@@ -19,8 +19,6 @@ export type MessagePropsType = {
 export type DialogsInitialStateType = typeof initialState
 
 
-
-
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const CHANGE_MESSAGE_TEXT = 'CHANGE-MESSAGE-TEXT';
 

@@ -1,76 +1,38 @@
 import {connect} from "react-redux";
-import {
-    changeFetchingStatus,
-    follow,
+import { followUnfollow, getUsers,
     InitialStateType,
-    setCurrentPage,
-    setTotalUsersCount,
-    setUsers,
-    unfollow,
-    UserType
 } from "../../redux/usersReducer";
-import { AppStateType} from "../../redux/reduxStore";
+import {AppStateType} from "../../redux/reduxStore";
 import React from "react";
 import UsersPage from "./UsersPage";
 import Preloader from "../common/Preloader/Preloader";
-import {FollowAPI, UsersAPI} from "../../api/api";
 
 type MapStatePropsType = {
     usersPage: InitialStateType
 }
 
 type MapDispatchPropsType = {
-    follow: (id: number) => void
-    unfollow: (id: number) => void
-    setUsers: (users: Array<UserType>) => void
-    setCurrentPage: (currentPage: number) => void
-    setTotalUsersCount: (totalCount: number) => void
-    changeFetchingStatus: (isFetching: boolean) => void
+    getUsers: (currentPage: number, pageSize: number) => void
+    followUnfollow: (id: number, following: boolean) => void
+
 }
 
 export type UsersPropsType = MapStatePropsType & MapDispatchPropsType
 
 
-class UsersPageContainer extends React.Component<UsersPropsType>{
+class UsersPageContainer extends React.Component<UsersPropsType> {
 
 
     changeFollowStatus = (id: number, follow: boolean) => {
-        if (follow) {
-                FollowAPI.unfollowUser(id)
-                .then(data => {
-                    if(data.resultCode === 0){
-                        this.props.unfollow(id)
-                    }
-                })
-        } else {
-            FollowAPI.followUser(id)
-                .then(data => {
-                    if(data.resultCode === 0){
-                        this.props.follow(id)
-                    }
-                })
-        }
+        this.props.followUnfollow(id, follow)
     }
 
     componentDidMount() {
-        this.props.changeFetchingStatus(true)
-        UsersAPI.getUsers(this.props.usersPage.currentPage,this.props.usersPage.pageSize )
-            .then(data => {
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.items.totalCount)
-                this.props.changeFetchingStatus(false)
-
-            });
+        this.props.getUsers(this.props.usersPage.currentPage, this.props.usersPage.pageSize)
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.changeFetchingStatus(true)
-        this.props.setCurrentPage(pageNumber)
-        UsersAPI.getUsers(pageNumber,this.props.usersPage.pageSize )
-            .then(data => {
-                this.props.setUsers(data.items)
-                this.props.changeFetchingStatus(false)
-            });
+        this.props.getUsers(pageNumber, this.props.usersPage.pageSize)
     }
 
     render() {
@@ -81,6 +43,7 @@ class UsersPageContainer extends React.Component<UsersPropsType>{
                 totalCount={this.props.usersPage.totalCount}
                 currentPage={this.props.usersPage.currentPage}
                 pageSize={this.props.usersPage.pageSize}
+                followingUsers={this.props.usersPage.followingUsers}
                 onPageChanged={this.onPageChanged}
                 changeFollowStatus={this.changeFollowStatus}/>
             }
@@ -96,27 +59,11 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-
 export default connect(mapStateToProps,
     {
-        follow,
-        unfollow,
-        setUsers,
-        setCurrentPage,
-        setTotalUsersCount,
-        changeFetchingStatus
+        getUsers,
+        followUnfollow,
     })(UsersPageContainer)
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*import {connect, useDispatch, useSelector} from "react-redux";

@@ -1,4 +1,4 @@
-.userInfo{
+.userInfo {
     display: flex;
     padding: 20px;
     align-items: center;
@@ -10,11 +10,12 @@
     width: 40px;
 }
 
-.ava{
+.ava {
     display: grid;
     margin: 10px;
 }
-.description{
+
+.description {
     width: 400px;
     height: 100px;
 }
@@ -25,15 +26,16 @@
     padding: 10px;
 }
 
-.descriptionBot{
+.descriptionBot {
     display: flex;
     justify-content: flex-start;
     padding: 10px;
 }
 
-.usersPage{
+.usersPage {
     align-items: center;
 }
-.selectedPage{
+
+.selectedPage {
     font-weight: bold;
 }

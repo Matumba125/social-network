@@ -1,11 +1,11 @@
-.userNewPosts{
+.userNewPosts {
     display: flex;
     align-items: flex-end;
     justify-content: center;
     margin: 15px;
 }
 
-.textarea{
+.textarea {
     resize: none;
     background-color: white;
     border-radius: 15px;
@@ -13,17 +13,18 @@
     margin-right: 10px;
 }
 
-.textarea:focus{
+.textarea:focus {
     border: 1px solid orangered;
     outline: none;
 }
 
-.button{
-   background-color: white;
+.button {
+    background-color: white;
     border-radius: 15px;
     border: 1px solid black;
 }
-.button:hover{
+
+.button:hover {
     color: orangered;
     opacity: 0.5;
 }

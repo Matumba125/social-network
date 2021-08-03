@@ -13,7 +13,7 @@ type MessagePropsType = {
 
 export type DialogsPagePropsType = {
     dialogsPage: DialogsPageDataType
-    addMessage: ()=> void
+    addMessage: () => void
     changeMessageText: (text: string) => void
 }
 

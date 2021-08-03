@@ -4,11 +4,11 @@ import {Dispatch} from "redux";
 import {ActionTypes, AppStateType} from "../../../redux/reduxStore";
 import {RightNavInitialStateType} from "../../../redux/rightNavbarReducer";
 
-type MapStateToPropsType ={
+type MapStateToPropsType = {
     rightnavData: RightNavInitialStateType
 }
 
-type MapDispatchToPropsType ={}
+type MapDispatchToPropsType = {}
 
 export type RightNavProps = MapStateToPropsType & MapDispatchToPropsType
 
@@ -18,8 +18,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch<ActionTypes>) => {
-    return {
-    }
+    return {}
 }
 
 const RightNavbarContainer = connect(mapStateToProps, mapDispatchToProps)(RightNavbar);

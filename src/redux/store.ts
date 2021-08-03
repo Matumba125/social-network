@@ -28,8 +28,8 @@ let store: OldStoreType = {
         },
 
         profilePage: {
-            profile:{
-                photos:{
+            profile: {
+                photos: {
                     small: sveta,
                     large: sveta,
                 },

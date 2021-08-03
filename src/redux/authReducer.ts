@@ -1,4 +1,6 @@
 import {ActionTypes} from "./reduxStore";
+import {Dispatch} from "redux";
+import {AuthorizeAPI} from "../api/api";
 
 
 export type DataType = {
@@ -43,5 +45,15 @@ export const setUserData = (data: DataType) => ({
     data
 } as const)
 
+export const authUser = () => {
+    return (dispatch: Dispatch<ActionTypes>) => {
+
+        AuthorizeAPI.authorizeUser().then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setUserData(data.data))
+            }
+        });
+    }
+}
 
 export default authReducer;
