@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/social-network/static/css/main.92fff2b7.chunk.css",
-    "main.js": "/social-network/static/js/main.a01a2cf8.chunk.js",
-    "main.js.map": "/social-network/static/js/main.a01a2cf8.chunk.js.map",
-    "runtime-main.js": "/social-network/static/js/runtime-main.c8a6ae67.js",
-    "runtime-main.js.map": "/social-network/static/js/runtime-main.c8a6ae67.js.map",
-    "static/js/2.4107c606.chunk.js": "/social-network/static/js/2.4107c606.chunk.js",
-    "static/js/2.4107c606.chunk.js.map": "/social-network/static/js/2.4107c606.chunk.js.map",
-    "static/js/3.f0be80c9.chunk.js": "/social-network/static/js/3.f0be80c9.chunk.js",
-    "static/js/3.f0be80c9.chunk.js.map": "/social-network/static/js/3.f0be80c9.chunk.js.map",
+    "main.css": "/social-network/static/css/main.2033a69e.chunk.css",
+    "main.js": "/social-network/static/js/main.a7050938.chunk.js",
+    "main.js.map": "/social-network/static/js/main.a7050938.chunk.js.map",
+    "runtime-main.js": "/social-network/static/js/runtime-main.b6a8b557.js",
+    "runtime-main.js.map": "/social-network/static/js/runtime-main.b6a8b557.js.map",
+    "static/js/2.e412ab67.chunk.js": "/social-network/static/js/2.e412ab67.chunk.js",
+    "static/js/2.e412ab67.chunk.js.map": "/social-network/static/js/2.e412ab67.chunk.js.map",
+    "static/js/3.f8005887.chunk.js": "/social-network/static/js/3.f8005887.chunk.js",
+    "static/js/3.f8005887.chunk.js.map": "/social-network/static/js/3.f8005887.chunk.js.map",
     "index.html": "/social-network/index.html",
-    "static/css/main.92fff2b7.chunk.css.map": "/social-network/static/css/main.92fff2b7.chunk.css.map",
-    "static/js/2.4107c606.chunk.js.LICENSE.txt": "/social-network/static/js/2.4107c606.chunk.js.LICENSE.txt",
+    "static/css/main.2033a69e.chunk.css.map": "/social-network/static/css/main.2033a69e.chunk.css.map",
+    "static/js/2.e412ab67.chunk.js.LICENSE.txt": "/social-network/static/js/2.e412ab67.chunk.js.LICENSE.txt",
     "static/media/andrey.05d81a41.jpg": "/social-network/static/media/andrey.05d81a41.jpg",
     "static/media/dimych.4cfb0ddb.jpg": "/social-network/static/media/dimych.4cfb0ddb.jpg",
     "static/media/preloader.65c3f468.gif": "/social-network/static/media/preloader.65c3f468.gif",
@@ -20,9 +20,9 @@
     "static/media/wrapper.87eb6080.png": "/social-network/static/media/wrapper.87eb6080.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.c8a6ae67.js",
-    "static/js/2.4107c606.chunk.js",
-    "static/css/main.92fff2b7.chunk.css",
-    "static/js/main.a01a2cf8.chunk.js"
+    "static/js/runtime-main.b6a8b557.js",
+    "static/js/2.e412ab67.chunk.js",
+    "static/css/main.2033a69e.chunk.css",
+    "static/js/main.a7050938.chunk.js"
   ]
 }
