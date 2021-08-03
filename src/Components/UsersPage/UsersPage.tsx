@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import defaultImg from "../../assets/img/sveta.jpg";
 import {PersonAddRounded} from "@material-ui/icons";
 import {UserType} from "../../redux/usersReducer";
+import axios from "axios";
 
 type UsersPagePropsType ={
     users: Array<UserType>
