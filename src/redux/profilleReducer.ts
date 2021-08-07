@@ -3,8 +3,7 @@ import {ActionTypes} from "./reduxStore";
 import {PhotosType} from "./usersReducer";
 import myPhoto from "../assets/img/userAvatar.jpg"
 import {Dispatch} from "redux";
-import {AuthorizeAPI, ProfileAPI} from "../api/api";
-import {setUserData} from "./authReducer";
+import {ProfileAPI} from "../api/api";
 
 
 export type PostType = {

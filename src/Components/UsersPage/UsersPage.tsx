@@ -65,7 +65,9 @@ const UsersPage: React.FC<UsersPagePropsType> = (props) => {
             <Grid>
                 {pages.map(m =>
                     <span className={props.currentPage === m ? style.selectedPage : ''}
-                          onClick={(e) => {props.onPageChanged(m)}}>{m} </span>
+                          onClick={(e) => {
+                              props.onPageChanged(m)
+                          }}>{m} </span>
                 )}
             </Grid>
         </Grid>

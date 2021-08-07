@@ -1,9 +1,10 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import profileReducer, {addPostActionCreator, changePostTextActionCreator, setUserProfile} from "./profilleReducer";
-import dialogsReducer, {addMessageActionCreator, changeMessageTextActionCreator} from "./dialogsReducer";
+import dialogsReducer, {addMessage, changeMessageText} from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";
 import usersReducer, {
-    changeFetchingStatus, changeResponseStatus,
+    changeFetchingStatus,
+    changeResponseStatus,
     follow,
     setCurrentPage,
     setTotalUsersCount,
@@ -17,8 +18,8 @@ import thunkMiddleware from "redux-thunk"
 export type ActionTypes =
     ReturnType<typeof addPostActionCreator> |
     ReturnType<typeof changePostTextActionCreator> |
-    ReturnType<typeof addMessageActionCreator> |
-    ReturnType<typeof changeMessageTextActionCreator> |
+    ReturnType<typeof addMessage> |
+    ReturnType<typeof changeMessageText> |
     ReturnType<typeof follow> |
     ReturnType<typeof unfollow> |
     ReturnType<typeof setUsers> |

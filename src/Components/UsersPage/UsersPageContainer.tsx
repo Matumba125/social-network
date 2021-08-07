@@ -1,11 +1,10 @@
 import {connect} from "react-redux";
-import { followUnfollow, getUsers,
-    InitialStateType,
-} from "../../redux/usersReducer";
+import {followUnfollow, getUsers, InitialStateType,} from "../../redux/usersReducer";
 import {AppStateType} from "../../redux/reduxStore";
 import React from "react";
 import UsersPage from "./UsersPage";
 import Preloader from "../common/Preloader/Preloader";
+import {withAuthRedirect} from "../../HOC/WithAuthRedirect";
 
 type MapStatePropsType = {
     usersPage: InitialStateType
@@ -59,11 +58,13 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
+const AuthRedirectComponent = withAuthRedirect(UsersPageContainer)
+
 export default connect(mapStateToProps,
     {
         getUsers,
         followUnfollow,
-    })(UsersPageContainer)
+    })(AuthRedirectComponent)
 
 
 /*import {connect, useDispatch, useSelector} from "react-redux";

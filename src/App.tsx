@@ -11,6 +11,7 @@ import {Container, Grid, Paper} from "@material-ui/core";
 import UsersPageContainer from "./Components/UsersPage/UsersPageContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
+import Login from "./Components/Login/Login";
 
 
 const App: React.FC = () => {
@@ -38,6 +39,7 @@ const App: React.FC = () => {
                             <Route path={"/social-network/music"} component={Music}/>
                             <Route path={"/social-network/news"} component={News}/>
                             <Route path={"/social-network/settings"} component={Settings}/>
+                            <Route path={"/social-network/login"} component={Login}/>
                         </Paper>
                     </Grid>
                     <RightNavbarContainer/>
