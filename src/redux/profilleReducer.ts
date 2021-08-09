@@ -25,7 +25,7 @@ type ContactsType = {
 
 
 export type ProfileDataType = {
-    aboutMe?: string
+    aboutMe: string
     contacts?: ContactsType
     lookingForAJob?: boolean
     lookingForAJobDescription?: string
@@ -36,12 +36,15 @@ export type ProfileDataType = {
 
 export type ProfileInitialStateType = {
     profile: ProfileDataType
+    textForAboutMe: string
     messageForNewPost: string
     postsData: Array<PostType>
 }
 
 const ADD_POST = 'ADD-POST';
+const SET_ABOUT = 'SET-ABOUT';
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT';
+const CHANGE_ABOUT_TEXT = 'CHANGE-ABOUT-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState: ProfileInitialStateType = {
@@ -50,8 +53,10 @@ let initialState: ProfileInitialStateType = {
             large: myPhoto,
             small: myPhoto,
         },
-        fullName: 'Nikita'
+        fullName: 'Nikita',
+        aboutMe: 'Zdarova',
     },
+    textForAboutMe: '',
     messageForNewPost: '',
     postsData: [
         {
@@ -88,6 +93,21 @@ const profileReducer = (state: ProfileInitialStateType = initialState,
                 ...state,
                 messageForNewPost: action.newText
             }
+        case CHANGE_ABOUT_TEXT:
+            return {
+                ...state,
+                textForAboutMe: action.newText
+            }
+        case SET_ABOUT:
+            return {
+                ...state,
+                profile:{
+                    aboutMe: action.newText,
+                    photos: state.profile.photos,
+                    fullName: state.profile.fullName,
+                },
+                textForAboutMe: ''
+            }
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
@@ -100,14 +120,20 @@ export const addPostActionCreator = () => ({type: ADD_POST} as const)
 
 export const changePostTextActionCreator = (newText: string) => ({
         type: CHANGE_POST_TEXT,
-        newText: newText
-    } as const
-)
+        newText
+    } as const)
 
 export const setUserProfile = (profile: ProfileDataType) => ({
     type: SET_USER_PROFILE,
     profile
 } as const)
+
+export const changeAboutText = (newText: string) => ({
+    type: CHANGE_ABOUT_TEXT,
+    newText
+} as const)
+
+export const setAboutText = (newText: string) => ({type: SET_ABOUT, newText} as const)
 
 export const getProfile = (userId: string) => {
     return (dispatch: Dispatch<ActionTypes>) => {
