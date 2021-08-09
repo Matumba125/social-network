@@ -36,13 +36,13 @@ export type ProfileDataType = {
 
 export type ProfileInitialStateType = {
     profile: ProfileDataType
-    textForAboutMe: string
+    status: string
     messageForNewPost: string
     postsData: Array<PostType>
 }
 
 const ADD_POST = 'ADD-POST';
-const SET_ABOUT = 'SET-ABOUT';
+const SET_STATUS = 'SET-STATUS';
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT';
 const CHANGE_ABOUT_TEXT = 'CHANGE-ABOUT-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -56,7 +56,7 @@ let initialState: ProfileInitialStateType = {
         fullName: 'Nikita',
         aboutMe: 'Zdarova',
     },
-    textForAboutMe: '',
+    status: '',
     messageForNewPost: '',
     postsData: [
         {
@@ -92,21 +92,16 @@ const profileReducer = (state: ProfileInitialStateType = initialState,
             return {
                 ...state,
                 messageForNewPost: action.newText
-            }
+            }/*
         case CHANGE_ABOUT_TEXT:
             return {
                 ...state,
-                textForAboutMe: action.newText
-            }
-        case SET_ABOUT:
+                status: action.newText
+            }*/
+        case SET_STATUS:
             return {
                 ...state,
-                profile:{
-                    aboutMe: action.newText,
-                    photos: state.profile.photos,
-                    fullName: state.profile.fullName,
-                },
-                textForAboutMe: ''
+                status: action.newText
             }
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
@@ -116,12 +111,12 @@ const profileReducer = (state: ProfileInitialStateType = initialState,
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST} as const)
+export const addPost = () => ({type: ADD_POST} as const)
 
-export const changePostTextActionCreator = (newText: string) => ({
-        type: CHANGE_POST_TEXT,
-        newText
-    } as const)
+export const changePostText = (newText: string) => ({
+    type: CHANGE_POST_TEXT,
+    newText
+} as const)
 
 export const setUserProfile = (profile: ProfileDataType) => ({
     type: SET_USER_PROFILE,
@@ -133,7 +128,7 @@ export const changeAboutText = (newText: string) => ({
     newText
 } as const)
 
-export const setAboutText = (newText: string) => ({type: SET_ABOUT, newText} as const)
+export const setStatus = (newText: string) => ({type: SET_STATUS, newText} as const)
 
 export const getProfile = (userId: string) => {
     return (dispatch: Dispatch<ActionTypes>) => {
@@ -142,5 +137,23 @@ export const getProfile = (userId: string) => {
         });
     }
 }
+export const getStatus = (userId: string) => {
+    return (dispatch: Dispatch<ActionTypes>) => {
+        ProfileAPI.getStatus(userId).then(response => {
+            dispatch(setStatus(response.data))
+        });
+    }
+}
+export const updateStatus = (newStatus: string) => {
+    return (dispatch: Dispatch<ActionTypes>) => {
+        ProfileAPI.updateStatus(newStatus).then(response => {
+            console.log(response)
+            if (response.data.resultCode === 0) {
+                dispatch(setStatus(newStatus))
+            }
+        })
+    };
+}
+
 
 export default profileReducer

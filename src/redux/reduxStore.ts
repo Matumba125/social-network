@@ -1,10 +1,5 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import profileReducer, {
-    addPostActionCreator, changeAboutText,
-    changePostTextActionCreator,
-    setAboutText,
-    setUserProfile
-} from "./profilleReducer";
+import profileReducer, {addPost, changeAboutText, changePostText, setStatus, setUserProfile} from "./profilleReducer";
 import dialogsReducer, {addMessage, changeMessageText} from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";
 import usersReducer, {
@@ -21,8 +16,8 @@ import thunkMiddleware from "redux-thunk"
 
 
 export type ActionTypes =
-    ReturnType<typeof addPostActionCreator> |
-    ReturnType<typeof changePostTextActionCreator> |
+    ReturnType<typeof addPost> |
+    ReturnType<typeof changePostText> |
     ReturnType<typeof addMessage> |
     ReturnType<typeof changeMessageText> |
     ReturnType<typeof follow> |
@@ -33,8 +28,8 @@ export type ActionTypes =
     ReturnType<typeof changeFetchingStatus> |
     ReturnType<typeof setUserProfile> |
     ReturnType<typeof setUserData> |
-    ReturnType<typeof changeResponseStatus>|
-    ReturnType<typeof setAboutText>|
+    ReturnType<typeof changeResponseStatus> |
+    ReturnType<typeof setStatus> |
     ReturnType<typeof changeAboutText>
 
 export const rootReducer = combineReducers({

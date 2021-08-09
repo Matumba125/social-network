@@ -5,10 +5,11 @@ import {ProfileDataType} from "../../../redux/profilleReducer";
 import defaultImg from "../../../assets/img/sveta.jpg";
 import Preloader from "../../common/Preloader/Preloader";
 import style from "./ProfileInfo.module.css"
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 
 type ProfileInfoPropsType = {
     profile: ProfileDataType
+    status: string
 }
 
 function ProfileInfo(props: ProfileInfoPropsType) {
@@ -25,7 +26,7 @@ function ProfileInfo(props: ProfileInfoPropsType) {
                                src={props.profile.photos.small !== null ? props.profile.photos.small : defaultImg}/>
                     <div className={style.description}>
                         <span className={style.fullName}>{props.profile.fullName}</span>
-                        <ProfileStatus aboutMe={props.profile.aboutMe}/>
+                        <ProfileStatus status={props.status}/>
                     </div>
                 </div>
             </div>
