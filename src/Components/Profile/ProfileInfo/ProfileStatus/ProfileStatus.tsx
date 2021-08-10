@@ -1,6 +1,7 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {useDispatch} from "react-redux";
 import {updateStatus} from "../../../../redux/profilleReducer";
+import {TextField} from "@material-ui/core";
 
 type ProfileStatusPropsType = {
     status: string
@@ -23,17 +24,29 @@ export const ProfileStatus = React.memo(({status, ...restProps}: ProfileStatusPr
             dispatch(updateStatus(newStatus))
         }
 
+        const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === "Enter") {
+                setEditMode(false)
+                dispatch(updateStatus(newStatus))
+            }
+        }
+
         const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
             setNewStatus(e.currentTarget.value)
         }
 
         return (
-            <>
+            <div style={{height: '32px'}}>
                 {!editMode ?
-                    <span onDoubleClick={onDoubleClickHandler}>{status}</span> :
-                    <input autoFocus={true} onBlur={onBlurHandler} onChange={onChangeHandler} value={newStatus}></input>
+                    <span onDoubleClick={onDoubleClickHandler}>{status ? status : '-----'}</span> :
+                    <TextField autoFocus={true}
+                               onBlur={onBlurHandler}
+                               onKeyPress={onKeyPressHandler}
+                               onChange={onChangeHandler}
+                               value={newStatus}>
+                    </TextField>
                 }
-            </>
+            </div>
         );
 
     }

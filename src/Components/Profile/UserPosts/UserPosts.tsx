@@ -1,9 +1,34 @@
-import React, {ChangeEvent} from 'react'
+import React, {MouseEvent} from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
 import {UsersPostsPropsType} from "./UserPostsContainer";
-import {Grid} from "@material-ui/core";
+import {Button, Grid} from "@material-ui/core";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {RenderTextField} from "../../common/ReduxForm/ReduxFormMaterialUi";
+import {useDispatch} from "react-redux";
+import {addPost} from "../../../redux/profilleReducer";
 
+type AddPostType = {
+    post: string
+}
+
+
+const AddPost: React.FC<InjectedFormProps<AddPostType>> = (props) => {
+
+    const onClickHandler =(e: MouseEvent<HTMLButtonElement>)=>{
+        props.handleSubmit(e)
+        props.reset()
+    }
+
+    return (
+        <form>
+            <Field name={'post'} component={RenderTextField} placeholder={'Type your post'}/>
+            <Button onClick={onClickHandler}>Send</Button>
+        </form>
+    )
+}
+
+const AddPostReduxForm = reduxForm<AddPostType>({form: 'post'})(AddPost)
 
 function UserPosts(props: UsersPostsPropsType) {
 
@@ -18,21 +43,17 @@ function UserPosts(props: UsersPostsPropsType) {
             id={m.id}
         />)
 
-    const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changePostText(e.currentTarget.value)
+    const dispatch = useDispatch()
+
+    const onSubmit = (formData: AddPostType) => {
+        dispatch(addPost(formData.post))
     }
 
-    const onClickHandler = () => {
-        props.addPost();
-    }
 
     return (
         <Grid item container direction={'column'} alignContent={'center'}>
             <div className={style.userNewPosts}>
-                <textarea className={style.textarea}
-                          onChange={onChangeHandler}
-                          value={state.messageForNewPost}></textarea>
-                <button className={style.button} onClick={onClickHandler}>Add Post</button>
+                <AddPostReduxForm onSubmit={onSubmit}/>
             </div>
             {postsElement}
 

@@ -20,11 +20,10 @@ export type DialogsInitialStateType = typeof initialState
 
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const CHANGE_MESSAGE_TEXT = 'CHANGE-MESSAGE-TEXT';
 
 const initialState = {
     dialogsData: [
-        {id: v1(), userName: "Dimych", avatar: dimych},
+        {id: '2', userName: "Dimych", avatar: dimych},
         {id: v1(), userName: "Andrey", avatar: andrey},
         {id: v1(), userName: "Sveta", avatar: sveta},
         {id: v1(), userName: "Sasha"},
@@ -49,18 +48,11 @@ const dialogsReducer = (state: DialogsInitialStateType = initialState,
         case ADD_MESSAGE:
             const newMessage: MessagePropsType = {
                 id: v1(),
-                messageText: state.newMessageText
+                messageText: action.newMessage
             };
             return {
                 ...state,
                 messageData: [...state.messageData, newMessage],
-                newMessageText: ''
-            }
-
-        case CHANGE_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText: action.newText
             }
         default:
             return state;
@@ -69,12 +61,10 @@ const dialogsReducer = (state: DialogsInitialStateType = initialState,
 }
 
 
-export const addMessage = () => ({type: ADD_MESSAGE} as const)
+export const addMessage = (newMessage: string) => ({
+    type: ADD_MESSAGE,
+    newMessage
+} as const)
 
-export const changeMessageText = (newText: string) => ({
-        type: CHANGE_MESSAGE_TEXT,
-        newText: newText
-    } as const
-)
 
 export default dialogsReducer

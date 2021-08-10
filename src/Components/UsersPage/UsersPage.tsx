@@ -16,30 +16,30 @@ type UsersPagePropsType = {
 
 const UsersPage: React.FC<UsersPagePropsType> = (props) => {
 
-    // let pagesCount = Math.ceil(props.totalCount / props.pageSize)
+        // let pagesCount = Math.ceil(props.totalCount / props.pageSize)
 
-    let pages = [];
-    for (let i = 1; i <= 10; i++) {
-        pages.push(i)
+        let pages = [];
+        for (let i = 1; i <= 10; i++) {
+            pages.push(i)
+        }
+
+        return (
+            <div className={style.usersPage}>
+                {props.users.map(m => <UserPage user={m}
+                                                followingUsers={props.followingUsers}
+                                                onPageChanged={props.onPageChanged}
+                                                changeFollowStatus={props.changeFollowStatus}/>)}
+                <Grid>
+                    {pages.map(m =>
+                        <span key={m} className={props.currentPage === m ? style.selectedPage : ''}
+                              onClick={(e) => {
+                                  props.onPageChanged(m)
+                              }}>{m} </span>
+                    )}
+                </Grid>
+            </div>
+        );
     }
-
-    return (
-        <Grid item container direction={'column'} className={style.usersPage}>
-            {props.users.map(m => <UserPage user={m}
-                                            followingUsers={props.followingUsers}
-                                            onPageChanged={props.onPageChanged}
-                                            changeFollowStatus={props.changeFollowStatus}/>)}
-            <Grid>
-                {pages.map(m =>
-                    <span key={m} className={props.currentPage === m ? style.selectedPage : ''}
-                          onClick={(e) => {
-                              props.onPageChanged(m)
-                          }}>{m} </span>
-                )}
-            </Grid>
-        </Grid>
-    );
-}
 ;
 
 export default UsersPage;

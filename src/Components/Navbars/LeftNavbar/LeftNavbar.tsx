@@ -5,7 +5,7 @@ import {Grid, Paper} from "@material-ui/core";
 
 function LeftNavbar() {
     return (
-        <Grid container item className={style.leftNav} xs zeroMinWidth direction="column">
+        <Grid item className={style.leftNav}>
             <Paper className={style.navBlock}>
                 <h2 className={style.navbarTitle}>New Feeds</h2>
             </Paper>
@@ -30,7 +30,6 @@ function LeftNavbar() {
                     <NavLink to="/social-network/settings/">Settings</NavLink>
                 </div>
             </Paper>
-
         </Grid>
     );
 }

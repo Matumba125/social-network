@@ -9,7 +9,9 @@
 .mainInfo {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    height: 150px;
 }
 
 .description {
@@ -18,9 +20,20 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
+    height: 100%;
+}
+
+.description span {
+    height: 45px;
 }
 
 .fullName {
     font-size: 30px;
     font-weight: bold;
+}
+
+.ava {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
 }

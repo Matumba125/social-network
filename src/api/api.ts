@@ -1,4 +1,5 @@
 import axios from "axios";
+import {FormDataType} from "../Components/Login/Login";
 
 const instance = axios.create({
     withCredentials: true,
@@ -41,4 +42,11 @@ export const AuthorizeAPI = {
     authorizeUser: () => {
         return instance.get(`auth/me`).then(response => response.data)
     },
+
+    loginUser: (formData: FormDataType) => {
+        return instance.post('auth/login', formData)
+    },
+    logoutUser: () => {
+        return instance.delete('auth/login')
+    }
 }

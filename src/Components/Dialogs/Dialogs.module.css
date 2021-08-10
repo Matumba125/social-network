@@ -1,6 +1,7 @@
 .dialogs {
     display: flex;
     justify-content: space-around;
+    width: 100%;
 }
 
 .dialogs_items {
@@ -13,26 +14,7 @@
 
 .addMessage {
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-end;
     margin: 15px;
-}
-
-.addMessage textarea {
-    resize: none;
-    background-color: white;
-    border-radius: 15px;
-    border: 1px solid black;
-    margin-right: 10px;
-}
-
-.addMessage textarea:focus {
-    border: 1px solid orangered;
-    outline: none;
-}
-
-.addMessage button {
-    background-color: white;
-    border-radius: 15px;
-    border: 1px solid black;
 }

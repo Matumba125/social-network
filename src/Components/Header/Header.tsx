@@ -33,7 +33,7 @@ function Header(props: HeaderPropsType) {
                     </IconButton>
                 </NavLink>
                 {props.isAuth ? <NavLink to="/social-network/profile">{props.data.login}</NavLink>
-                    : <NavLink to="/social-network/login-page">
+                    : <NavLink to="/social-network/login">
                         <Button variant={"outlined"} color="primary">Login</Button>
                     </NavLink>}
             </Toolbar>

@@ -1,31 +1,8 @@
 .userNewPosts {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     margin: 15px;
 }
 
-.textarea {
-    resize: none;
-    background-color: white;
-    border-radius: 15px;
-    border: 1px solid black;
-    margin-right: 10px;
-}
-
-.textarea:focus {
-    border: 1px solid orangered;
-    outline: none;
-}
-
-.button {
-    background-color: white;
-    border-radius: 15px;
-    border: 1px solid black;
-}
-
-.button:hover {
-    color: orangered;
-    opacity: 0.5;
-}
 

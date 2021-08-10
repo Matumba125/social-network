@@ -12,8 +12,8 @@ function RightNavbar(props: RightNavProps) {
                                                                 avatar={u.avatar}/>)
 
     return (
-        <Grid item xs zeroMinWidth>
-            <Paper color={'inherit'} className={style.rightNav}>
+        <Grid item className={style.rightNav}>
+            <Paper color={'inherit'} className={style.rightNavItem}>
                 <div className={style.rightNavItem}>
                     <h2 className={style.navbarTitle}>Contacts</h2>
                     {contactsElement}

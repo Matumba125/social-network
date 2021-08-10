@@ -37,13 +37,11 @@ export type ProfileDataType = {
 export type ProfileInitialStateType = {
     profile: ProfileDataType
     status: string
-    messageForNewPost: string
     postsData: Array<PostType>
 }
 
 const ADD_POST = 'ADD-POST';
 const SET_STATUS = 'SET-STATUS';
-const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState: ProfileInitialStateType = {
@@ -56,7 +54,6 @@ let initialState: ProfileInitialStateType = {
         aboutMe: 'Zdarova',
     },
     status: '',
-    messageForNewPost: '',
     postsData: [
         {
             id: v1(),
@@ -78,19 +75,12 @@ const profileReducer = (state: ProfileInitialStateType = initialState,
         case ADD_POST:
             const newPost: PostType = {
                 id: v1(),
-                postContent: state.messageForNewPost,
+                postContent: action.newPostText,
                 postLikes: 0
             };
             return {
                 ...state,
                 postsData: [newPost, ...state.postsData],
-                messageForNewPost: ''
-            }
-
-        case CHANGE_POST_TEXT:
-            return {
-                ...state,
-                messageForNewPost: action.newText
             }
         case SET_STATUS:
             return {
@@ -105,12 +95,11 @@ const profileReducer = (state: ProfileInitialStateType = initialState,
     }
 }
 
-export const addPost = () => ({type: ADD_POST} as const)
-
-export const changePostText = (newText: string) => ({
-    type: CHANGE_POST_TEXT,
-    newText
+export const addPost = (newPostText: string) => ({
+    type: ADD_POST,
+    newPostText,
 } as const)
+
 
 export const setUserProfile = (profile: ProfileDataType) => ({
     type: SET_USER_PROFILE,

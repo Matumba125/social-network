@@ -1,6 +1,7 @@
 import {ActionTypes} from "./reduxStore";
 import {Dispatch} from "redux";
 import {AuthorizeAPI} from "../api/api";
+import {FormDataType} from "../Components/Login/Login";
 
 
 export type DataType = {
@@ -45,14 +46,32 @@ export const setUserData = (data: DataType) => ({
     data
 } as const)
 
+
 export const authUser = () => {
     return (dispatch: Dispatch<ActionTypes>) => {
-
         AuthorizeAPI.authorizeUser().then(data => {
             if (data.resultCode === 0) {
                 dispatch(setUserData(data.data))
             }
         });
+    }
+}
+
+export const loginUser = (formData: FormDataType) => {
+    return (dispatch: Dispatch) => {
+        AuthorizeAPI.loginUser(formData).then(response => {
+            console.log(response)
+            if (response.data.resultCode === 0) {
+            }
+        })
+    }
+}
+export const logoutUser = () => {
+    return (dispatch: Dispatch) => {
+        AuthorizeAPI.logoutUser().then(response => {
+            if (response.data.resultCode === 0) {
+            }
+        })
     }
 }
 

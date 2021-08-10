@@ -21,9 +21,8 @@ function ProfileInfo(props: ProfileInfoPropsType) {
             <div className={style.infoContainer}>
                 <CardMedia style={{borderRadius: '10px', marginBottom: '10px'}} component="img" src={wrapper}/>
                 <div className={style.mainInfo}>
-                    <CardMedia style={{borderRadius: '50%', height: '100px', width: '100px'}} component="img"
-                               className={style.ava}
-                               src={props.profile.photos.small !== null ? props.profile.photos.small : defaultImg}/>
+                    <img className={style.ava}
+                         src={props.profile.photos.small !== null ? props.profile.photos.small : defaultImg}/>
                     <div className={style.description}>
                         <span className={style.fullName}>{props.profile.fullName}</span>
                         <ProfileStatus status={props.status}/>
