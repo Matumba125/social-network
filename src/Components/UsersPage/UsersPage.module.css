@@ -1,38 +1,6 @@
-.userInfo {
-    display: flex;
-    padding: 20px;
-    align-items: center;
-}
-
-.img {
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-}
-
-.ava {
-    display: grid;
-    margin: 10px;
-}
-
-.description {
-    width: 400px;
-    height: 100px;
-}
-
-.descriptionTop {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-}
-
-.descriptionBot {
-    display: flex;
-    justify-content: flex-start;
-    padding: 10px;
-}
-
 .usersPage {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 

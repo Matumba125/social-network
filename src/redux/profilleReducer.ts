@@ -44,7 +44,6 @@ export type ProfileInitialStateType = {
 const ADD_POST = 'ADD-POST';
 const SET_STATUS = 'SET-STATUS';
 const CHANGE_POST_TEXT = 'CHANGE-POST-TEXT';
-const CHANGE_ABOUT_TEXT = 'CHANGE-ABOUT-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState: ProfileInitialStateType = {
@@ -92,12 +91,7 @@ const profileReducer = (state: ProfileInitialStateType = initialState,
             return {
                 ...state,
                 messageForNewPost: action.newText
-            }/*
-        case CHANGE_ABOUT_TEXT:
-            return {
-                ...state,
-                status: action.newText
-            }*/
+            }
         case SET_STATUS:
             return {
                 ...state,
@@ -121,11 +115,6 @@ export const changePostText = (newText: string) => ({
 export const setUserProfile = (profile: ProfileDataType) => ({
     type: SET_USER_PROFILE,
     profile
-} as const)
-
-export const changeAboutText = (newText: string) => ({
-    type: CHANGE_ABOUT_TEXT,
-    newText
 } as const)
 
 export const setStatus = (newText: string) => ({type: SET_STATUS, newText} as const)

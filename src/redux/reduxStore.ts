@@ -1,5 +1,5 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import profileReducer, {addPost, changeAboutText, changePostText, setStatus, setUserProfile} from "./profilleReducer";
+import profileReducer, {addPost, changePostText, setStatus, setUserProfile} from "./profilleReducer";
 import dialogsReducer, {addMessage, changeMessageText} from "./dialogsReducer";
 import rightNavbarReducer from "./rightNavbarReducer";
 import usersReducer, {
@@ -29,8 +29,7 @@ export type ActionTypes =
     ReturnType<typeof setUserProfile> |
     ReturnType<typeof setUserData> |
     ReturnType<typeof changeResponseStatus> |
-    ReturnType<typeof setStatus> |
-    ReturnType<typeof changeAboutText>
+    ReturnType<typeof setStatus>
 
 export const rootReducer = combineReducers({
     profilePage: profileReducer,
