@@ -1,6 +1,4 @@
 import React from "react";
-import wrapper from "../../../assets/img/wrapper.png";
-import {CardMedia} from "@material-ui/core";
 import {ProfileDataType} from "../../../redux/profilleReducer";
 import defaultImg from "../../../assets/img/sveta.jpg";
 import Preloader from "../../common/Preloader/Preloader";
@@ -19,9 +17,8 @@ function ProfileInfo(props: ProfileInfoPropsType) {
 
         return (
             <div className={style.infoContainer}>
-                <CardMedia style={{borderRadius: '10px', marginBottom: '10px'}} component="img" src={wrapper}/>
                 <div className={style.mainInfo}>
-                    <img className={style.ava}
+                    <img className={style.ava} alt={`${props.profile.userID} user ava`}
                          src={props.profile.photos.small !== null ? props.profile.photos.small : defaultImg}/>
                     <div className={style.description}>
                         <span className={style.fullName}>{props.profile.fullName}</span>

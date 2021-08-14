@@ -3,11 +3,10 @@ import style from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
-import {Button} from "@material-ui/core";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {RenderTextField} from "../common/ReduxForm/ReduxFormMaterialUi";
 import {useDispatch} from "react-redux";
 import {addMessage} from "../../redux/dialogsReducer";
+import {Button} from "antd";
 
 type AddMessageType = {
     message: string
@@ -16,15 +15,17 @@ type AddMessageType = {
 const AddMessage: React.FC<InjectedFormProps<AddMessageType>> = (props) => {
 
 
-    const onClickHandler =(e: MouseEvent<HTMLButtonElement>)=>{
+    const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
         props.handleSubmit(e)
         props.reset()
     }
 
     return (
         <form>
-            <Field name={'message'} component={RenderTextField} placeholder={'Type your message'}/>
-            <Button onClick={onClickHandler}>Send</Button>
+            <Field name={'message'} component={'input'} placeholder={'Type your message'}/>
+            <div>
+                <Button onClick={onClickHandler}>Send</Button>
+            </div>
         </form>
     )
 }

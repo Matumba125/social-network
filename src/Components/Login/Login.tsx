@@ -1,11 +1,9 @@
 import React, {MouseEvent} from 'react';
-import {Button} from "@material-ui/core";
 import style from './Login.module.css'
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {useDispatch} from "react-redux";
 import {loginUser} from "../../redux/authReducer";
-import {renderCheckbox, RenderTextField} from "../common/ReduxForm/ReduxFormMaterialUi";
-import ProfileContainer from "../Profile/ProfileContainer";
+
 
 export type FormDataType = {
     email: string
@@ -17,19 +15,19 @@ export type FormDataType = {
 const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 
-    const onClickHandler =(e: MouseEvent<HTMLButtonElement>)=>{
+    const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
         props.handleSubmit(e)
         props.reset()
     }
 
     return (
         <form className={style.form}>
-            <Field name={'email'} component={RenderTextField} placeholder={'Login'}/>
-            <Field name={'password'} component={RenderTextField} placeholder={'Password'}/>
+            <Field name={'email'} component={'input'} placeholder={'Login'}/>
+            <Field name={'password'} component={'input'} placeholder={'Password'}/>
             <div className={style.checkbox}>
-                <Field name={'rememberMe'} component={renderCheckbox}/> Remember me
+                <Field name={'rememberMe'} component={'input'} type={'checkbox'}/> Remember me
             </div>
-            <Button onClick={onClickHandler}>Sign In</Button>
+            <button onClick={onClickHandler}>Sign In</button>
         </form>
     )
 };
@@ -41,7 +39,6 @@ const Login = () => {
     const dispatch = useDispatch()
 
     const onSubmit = (formData: FormDataType) => {
-        console.log(formData)
         dispatch(loginUser(formData))
     }
     return (

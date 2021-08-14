@@ -4,6 +4,10 @@
     width: 100%;
 }
 
+.dialogs button {
+    margin-top: 10px;
+}
+
 .dialogs_items {
     padding: 10px;
 }

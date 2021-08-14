@@ -11,7 +11,7 @@ import usersReducer, {
     setUsers,
     unfollow
 } from "./usersReducer";
-import authReducer, {setUserData} from "./authReducer";
+import authReducer, {setUserData, userBeenLogined, userBeenLoginedOut} from "./authReducer";
 import thunkMiddleware from "redux-thunk"
 import {reducer as formReducer} from 'redux-form'
 
@@ -28,7 +28,9 @@ export type ActionTypes =
     ReturnType<typeof setUserProfile> |
     ReturnType<typeof setUserData> |
     ReturnType<typeof changeResponseStatus> |
-    ReturnType<typeof setStatus>
+    ReturnType<typeof setStatus> |
+    ReturnType<typeof userBeenLogined> |
+    ReturnType<typeof userBeenLoginedOut>
 
 export const rootReducer = combineReducers({
     profilePage: profileReducer,

@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "./Header";
+import {HeaderComponent} from "./HeaderComponent";
 import {AuthInitialStateType, authUser} from "../../redux/authReducer";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/reduxStore";
@@ -21,7 +21,7 @@ class HeaderContainer extends React.Component<HeaderContainerPropsType> {
 
     render() {
         return <>
-            <Header data={this.props.data} isAuth={this.props.isAuth}/>
+            <HeaderComponent/>
         </>
     }
 }

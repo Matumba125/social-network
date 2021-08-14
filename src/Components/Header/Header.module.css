@@ -1,14 +1,8 @@
-
-.header {
-    margin-bottom: 30px;
+.userStatus {
+    display: flex;
+    align-items: center;
 }
 
-h1 {
-}
-
-.header img {
-    grid-area: logo;
-    margin: auto;
-    width: 60px;
-    height: 60px;
+.userStatus button {
+    margin-left: 10px;
 }

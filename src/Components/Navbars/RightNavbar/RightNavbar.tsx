@@ -1,7 +1,6 @@
 import React from "react";
 import style from './RightNavbar.module.css';
 import Contacts from "./Contacts/Contacts";
-import {Grid, Paper} from "@material-ui/core";
 import {RightNavProps} from "./RightNavbarContainer";
 
 function RightNavbar(props: RightNavProps) {
@@ -12,8 +11,8 @@ function RightNavbar(props: RightNavProps) {
                                                                 avatar={u.avatar}/>)
 
     return (
-        <Grid item className={style.rightNav}>
-            <Paper color={'inherit'} className={style.rightNavItem}>
+        <div className={style.rightNav}>
+            <div color={'inherit'} className={style.rightNavItem}>
                 <div className={style.rightNavItem}>
                     <h2 className={style.navbarTitle}>Contacts</h2>
                     {contactsElement}
@@ -24,8 +23,8 @@ function RightNavbar(props: RightNavProps) {
                 <div className={style.pagesNavbar}>
                     <h2 className={style.navbarTitle}>Pages</h2>
                 </div>
-            </Paper>
-        </Grid>
+            </div>
+        </div>
     );
 }
 

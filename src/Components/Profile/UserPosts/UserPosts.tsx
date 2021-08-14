@@ -2,11 +2,10 @@ import React, {MouseEvent} from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
 import {UsersPostsPropsType} from "./UserPostsContainer";
-import {Button, Grid} from "@material-ui/core";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {RenderTextField} from "../../common/ReduxForm/ReduxFormMaterialUi";
 import {useDispatch} from "react-redux";
 import {addPost} from "../../../redux/profilleReducer";
+import {Button} from 'antd';
 
 type AddPostType = {
     post: string
@@ -15,15 +14,17 @@ type AddPostType = {
 
 const AddPost: React.FC<InjectedFormProps<AddPostType>> = (props) => {
 
-    const onClickHandler =(e: MouseEvent<HTMLButtonElement>)=>{
+    const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
         props.handleSubmit(e)
         props.reset()
     }
 
     return (
-        <form>
-            <Field name={'post'} component={RenderTextField} placeholder={'Type your post'}/>
-            <Button onClick={onClickHandler}>Send</Button>
+        <form className={style.form}>
+            <Field name={'post'} component={'input'} placeholder={'Type your post'}/>
+            <div>
+                <Button onClick={onClickHandler}>Send</Button>
+            </div>
         </form>
     )
 }
@@ -51,13 +52,12 @@ function UserPosts(props: UsersPostsPropsType) {
 
 
     return (
-        <Grid item container direction={'column'} alignContent={'center'}>
+        <div>
             <div className={style.userNewPosts}>
                 <AddPostReduxForm onSubmit={onSubmit}/>
             </div>
             {postsElement}
-
-        </Grid>
+        </div>
     );
 }
 

@@ -1,8 +1,8 @@
 .userNewPosts {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin: 15px;
+    width: 20%;
 }
 
-
+.form button {
+    margin-top: 10px;
+}

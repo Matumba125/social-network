@@ -16,6 +16,8 @@ export type AuthInitialStateType = {
 }
 
 const SET_USER_DATA = 'SET-USER-DATA';
+const USER_BEEN_LOGINED = 'USER_BEEN_LOGINED'
+const USER_BEEN_LOGINED_OUT = 'USER_BEEN_LOGINED_OUT'
 
 let initialState: AuthInitialStateType = {
     data: {
@@ -36,6 +38,16 @@ const authReducer = (state: AuthInitialStateType = initialState,
                 data: action.data,
                 isAuth: true,
             }
+        case USER_BEEN_LOGINED:
+            return {
+                ...state,
+                isAuth: true
+            }
+        case USER_BEEN_LOGINED_OUT:
+            return {
+                ...state,
+                isAuth: false
+            }
         default:
             return state;
     }
@@ -44,6 +56,14 @@ const authReducer = (state: AuthInitialStateType = initialState,
 export const setUserData = (data: DataType) => ({
     type: SET_USER_DATA,
     data
+} as const)
+
+export const userBeenLogined = () => ({
+    type: USER_BEEN_LOGINED
+} as const)
+
+export const userBeenLoginedOut = () => ({
+    type: USER_BEEN_LOGINED_OUT
 } as const)
 
 
@@ -60,8 +80,8 @@ export const authUser = () => {
 export const loginUser = (formData: FormDataType) => {
     return (dispatch: Dispatch) => {
         AuthorizeAPI.loginUser(formData).then(response => {
-            console.log(response)
             if (response.data.resultCode === 0) {
+                dispatch(userBeenLogined())
             }
         })
     }
@@ -70,6 +90,7 @@ export const logoutUser = () => {
     return (dispatch: Dispatch) => {
         AuthorizeAPI.logoutUser().then(response => {
             if (response.data.resultCode === 0) {
+                dispatch(userBeenLoginedOut())
             }
         })
     }

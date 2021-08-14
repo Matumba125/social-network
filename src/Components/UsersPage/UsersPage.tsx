@@ -1,5 +1,4 @@
 import React from 'react';
-import {Grid} from "@material-ui/core";
 import style from "./UsersPage.module.css";
 import {UserType} from "../../redux/usersReducer";
 import {UserPage} from "./UserPage/UserPage";
@@ -26,17 +25,18 @@ const UsersPage: React.FC<UsersPagePropsType> = (props) => {
         return (
             <div className={style.usersPage}>
                 {props.users.map(m => <UserPage user={m}
+                                                key={m.id}
                                                 followingUsers={props.followingUsers}
                                                 onPageChanged={props.onPageChanged}
                                                 changeFollowStatus={props.changeFollowStatus}/>)}
-                <Grid>
+                <div>
                     {pages.map(m =>
                         <span key={m} className={props.currentPage === m ? style.selectedPage : ''}
                               onClick={(e) => {
                                   props.onPageChanged(m)
                               }}>{m} </span>
                     )}
-                </Grid>
+                </div>
             </div>
         );
     }

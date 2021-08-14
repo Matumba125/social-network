@@ -1,36 +1,48 @@
-import React from 'react';
-import {NavLink} from 'react-router-dom';
-import style from './LeftNavbar.module.css';
-import {Grid, Paper} from "@material-ui/core";
+import React, {useState} from 'react';
+import {Layout, Menu} from "antd";
+import {
+    CustomerServiceOutlined,
+    MailOutlined,
+    NotificationOutlined,
+    SettingOutlined,
+    TeamOutlined,
+    UserOutlined
+} from "@ant-design/icons";
+import {Link} from 'react-router-dom';
+
+const {Sider} = Layout;
 
 function LeftNavbar() {
+
+    const [collapsed, setCollapsed] = useState<boolean>(false)
+
+    const onCollapse = () => {
+        setCollapsed(!collapsed)
+    }
+
     return (
-        <Grid item className={style.leftNav}>
-            <Paper className={style.navBlock}>
-                <h2 className={style.navbarTitle}>New Feeds</h2>
-            </Paper>
-            <Paper className={style.navBlock}>
-                <h2 className={style.navbarTitle}>More Pages</h2>
-                <div className={style.item}>
-                    <NavLink to="/social-network/profile/">Profile</NavLink>
-                </div>
-                <div className={style.item}>
-                    <NavLink to="/social-network/dialogs/">Messages</NavLink>
-                </div>
-                <div className={style.item}>
-                    <NavLink to="/social-network/news/">News</NavLink>
-                </div>
-                <div className={style.item}>
-                    <NavLink to="/social-network/music/">Music</NavLink>
-                </div>
-            </Paper>
-            <Paper className={style.navBlock}>
-                <h2 className={style.navbarTitle}>Account</h2>
-                <div className={style.item}>
-                    <NavLink to="/social-network/settings/">Settings</NavLink>
-                </div>
-            </Paper>
-        </Grid>
+        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+            <Menu theme="dark" mode="inline">
+                <Menu.Item key="1" icon={<NotificationOutlined/>}>
+                    <Link to="/social-network/news/">News</Link>
+                </Menu.Item>
+                <Menu.Item key="2" icon={<UserOutlined/>}>
+                    <Link to="/social-network/profile/">Profile</Link>
+                </Menu.Item>
+                <Menu.Item key="3" icon={<MailOutlined/>}>
+                    <Link to="/social-network/dialogs/">Messages</Link>
+                </Menu.Item>
+                <Menu.Item key="4" icon={<TeamOutlined/>}>
+                    <Link to="/social-network/users-page">Developers</Link>
+                </Menu.Item>
+                <Menu.Item key="5" icon={<CustomerServiceOutlined/>}>
+                    <Link to="/social-network/music/">Music</Link>
+                </Menu.Item>
+                <Menu.Item key="6" icon={<SettingOutlined/>}>
+                    <Link to="/social-network/settings/">Settings</Link>
+                </Menu.Item>
+            </Menu>
+        </Sider>
     );
 }
 
