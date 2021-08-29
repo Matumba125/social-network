@@ -2,11 +2,11 @@
 This project using yarn </br>
 For stable work you need to instal yarn
 
-###`npm install --global yarn`
+### `npm install --global yarn`
 
 To instal dependencies type 
 
-###`yarn`
+### `yarn`
 
 To check project in browser
 
