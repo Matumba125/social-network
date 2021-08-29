@@ -1,5 +1,5 @@
 # Getting Started 
-This project using yarn
+This project using yarn </br>
 For stable work you need to instal yarn
 
 ###`npm install --global yarn`
