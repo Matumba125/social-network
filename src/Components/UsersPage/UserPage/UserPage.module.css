@@ -32,3 +32,16 @@
     padding: 10px;
 
 }
+
+
+@media only screen and (max-width: 1080px) {
+    .descriptionWrapper {
+        max-width: 60%;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .item {
+        max-width: 70%;
+    }
+}

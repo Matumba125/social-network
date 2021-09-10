@@ -1,7 +1,7 @@
 import {ActionTypes} from "./reduxStore";
 import {Dispatch} from "redux";
 import {AuthorizeAPI} from "../api/api";
-import {FormDataType} from "../Components/Login/Login";
+import {FormikErrorType} from "../Components/Login/Login";
 
 
 export type DataType = {
@@ -77,7 +77,7 @@ export const authUser = () => {
     }
 }
 
-export const loginUser = (formData: FormDataType) => {
+export const loginUser = (formData: FormikErrorType) => {
     return (dispatch: Dispatch) => {
         AuthorizeAPI.loginUser(formData).then(response => {
             if (response.data.resultCode === 0) {

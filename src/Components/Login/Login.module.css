@@ -1,13 +1,19 @@
-.form {
+.formWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 150px;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 50px;
+    min-height: 200px;
 }
 
-.checkbox {
+.inputItem{
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+}
+
+.formItem{
+    margin: 0;
 }

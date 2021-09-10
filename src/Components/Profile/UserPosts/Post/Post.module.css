@@ -1,10 +1,35 @@
+.header {
+    display: flex;
+    justify-content: flex-start;
+    width: 40%;
+    align-items: center;
+}
 
 .item {
     margin: 15px;
+    max-width: 40%;
 }
 
-.item img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+.likes {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: 1080px) {
+    .item {
+        max-width: 60%;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .item {
+        max-width: 70%;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .item {
+        max-width: 100%;
+    }
 }
