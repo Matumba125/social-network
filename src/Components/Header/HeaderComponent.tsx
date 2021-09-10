@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 import {logoutUser} from "../../redux/authReducer";
 import {Avatar, Button, PageHeader} from "antd";
@@ -13,10 +13,12 @@ export const HeaderComponent = React.memo(() => {
         const isAuth = useSelector<AppStateType>(state => state.auth.isAuth)
         const login = useSelector<AppStateType>(state => state.auth.data.login)
 
+        useEffect(()=>{},[isAuth, login])
+
 
         const onClickHandler = useCallback(() => {
             dispatch(logoutUser())
-        }, [dispatch, isAuth])
+        }, [dispatch])
 
         return (
             <PageHeader title={'Social Network'} extra={

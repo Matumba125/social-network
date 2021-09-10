@@ -1,9 +1,12 @@
 import React from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Button, Checkbox, Form, Input} from "antd";
 import {useFormik} from 'formik';
 import {loginUser} from "../../redux/authReducer";
 import style from './Login.module.css'
+import {AppStateType} from "../../redux/reduxStore";
+import {Redirect} from "react-router-dom";
+import {getIsAuth} from "../../redux/Selectors";
 
 
 export type FormikErrorType = {
@@ -14,6 +17,8 @@ export type FormikErrorType = {
 
 
 const Login = () => {
+
+    const isAuth = useSelector(getIsAuth)
 
     const dispatch = useDispatch()
 
@@ -47,10 +52,23 @@ const Login = () => {
         },
     })
 
+    if(isAuth){
+        return <Redirect to={'/social-network/profile/:userId?'}/>
+    }
+
     return (
         <Form
             className={style.formWrapper}
             onFinish={formik.handleSubmit}>
+
+            <p>To log in get registered
+                <a href={'https://social-network.samuraijs.com/'}
+                   target={'_blank'}>here
+                </a>
+            </p>
+            <p>or use common test account credentials:</p>
+            <p>Email: free@samuraijs.com</p>
+            <p>Password: free</p>
 
             <div className={style.inputItem}>
                 <Form.Item

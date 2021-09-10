@@ -33,14 +33,11 @@
 
 }
 
-
-@media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 750px) {
     .descriptionWrapper {
-        max-width: 60%;
-    }
-}
+        max-width: 25%;
 
-@media only screen and (max-width: 770px) {
+    }
     .item {
         max-width: 70%;
     }

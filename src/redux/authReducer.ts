@@ -13,11 +13,8 @@ export type DataType = {
 export type AuthInitialStateType = {
     data: DataType
     isAuth: boolean
+    isInitialized: boolean
 }
-
-const SET_USER_DATA = 'SET-USER-DATA';
-const USER_BEEN_LOGINED = 'USER_BEEN_LOGINED'
-const USER_BEEN_LOGINED_OUT = 'USER_BEEN_LOGINED_OUT'
 
 let initialState: AuthInitialStateType = {
     data: {
@@ -25,28 +22,34 @@ let initialState: AuthInitialStateType = {
         email: null,
         login: null,
     },
-    isAuth: false
+    isAuth: false,
+    isInitialized: false
 }
 
 const authReducer = (state: AuthInitialStateType = initialState,
                      action: ActionTypes): AuthInitialStateType => {
 
     switch (action.type) {
-        case SET_USER_DATA:
+        case 'SET-USER-DATA':
             return {
                 ...state,
                 data: action.data,
                 isAuth: true,
             }
-        case USER_BEEN_LOGINED:
+        case 'USER_BEEN_LOGINED':
             return {
                 ...state,
                 isAuth: true
             }
-        case USER_BEEN_LOGINED_OUT:
+        case 'USER_BEEN_LOGINED_OUT':
             return {
                 ...state,
                 isAuth: false
+            }
+        case 'SET-APP-INITIALIZED':
+            return {
+                ...state,
+                isInitialized: action.isInitialized
             }
         default:
             return state;
@@ -54,16 +57,20 @@ const authReducer = (state: AuthInitialStateType = initialState,
 }
 
 export const setUserData = (data: DataType) => ({
-    type: SET_USER_DATA,
+    type: 'SET-USER-DATA',
     data
+} as const)
+export const setAppInitialized = (isInitialized: boolean) => ({
+    type: 'SET-APP-INITIALIZED',
+    isInitialized
 } as const)
 
 export const userBeenLogined = () => ({
-    type: USER_BEEN_LOGINED
+    type: 'USER_BEEN_LOGINED'
 } as const)
 
 export const userBeenLoginedOut = () => ({
-    type: USER_BEEN_LOGINED_OUT
+    type: 'USER_BEEN_LOGINED_OUT'
 } as const)
 
 
@@ -73,7 +80,10 @@ export const authUser = () => {
             if (data.resultCode === 0) {
                 dispatch(setUserData(data.data))
             }
-        });
+            })
+            .finally(() => {
+                dispatch(setAppInitialized(true))
+            })
     }
 }
 

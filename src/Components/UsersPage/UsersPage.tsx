@@ -29,7 +29,7 @@ const UsersPage: React.FC<UsersPagePropsType> = (props) => {
                                                 followingUsers={props.followingUsers}
                                                 onPageChanged={props.onPageChanged}
                                                 changeFollowStatus={props.changeFollowStatus}/>)}
-                <div>
+                <div className={style.pagination}>
                     {pages.map(m =>
                         <span key={m} className={props.currentPage === m ? style.selectedPage : ''}
                               onClick={(e) => {

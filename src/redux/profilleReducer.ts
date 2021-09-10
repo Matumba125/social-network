@@ -29,7 +29,7 @@ export type ProfileDataType = {
     contacts?: ContactsType
     lookingForAJob?: boolean
     lookingForAJobDescription?: string
-    userID?: number
+    userID: string
     photos: PhotosType
     fullName: string
 }
@@ -52,6 +52,7 @@ let initialState: ProfileInitialStateType = {
         },
         fullName: 'Nikita',
         aboutMe: 'Zdarova',
+        userID: '18309',
     },
     status: '',
     postsData: [

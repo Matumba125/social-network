@@ -14,7 +14,7 @@ const {Sider} = Layout;
 
 function LeftNavbar() {
 
-    const [collapsed, setCollapsed] = useState<boolean>(false)
+    const [collapsed, setCollapsed] = useState<boolean>(true)
 
     const onCollapse = () => {
         setCollapsed(!collapsed)

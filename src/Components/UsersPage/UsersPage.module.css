@@ -7,3 +7,12 @@
 .selectedPage {
     font-weight: bold;
 }
+
+
+@media only screen and (max-width: 750px) {
+    .usersPage {
+        align-items: flex-start;
+        margin-right: 40px;
+        padding: 0;
+    }
+}
