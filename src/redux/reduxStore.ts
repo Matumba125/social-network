@@ -13,7 +13,6 @@ import usersReducer, {
 } from "./usersReducer";
 import authReducer, {setAppInitialized, setUserData, userBeenLogined, userBeenLoginedOut} from "./authReducer";
 import thunkMiddleware from "redux-thunk"
-import {reducer as formReducer} from 'redux-form'
 
 
 export type ActionTypes =
@@ -39,7 +38,6 @@ export const rootReducer = combineReducers({
     rightNavbar: rightNavbarReducer,
     users: usersReducer,
     auth: authReducer,
-    form: formReducer,
 });
 
 export type AppStateType = ReturnType<typeof rootReducer>

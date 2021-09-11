@@ -1,41 +1,31 @@
 import React from 'react';
 import style from "./UsersPage.module.css";
-import {UserType} from "../../redux/usersReducer";
+import {getUsers} from "../../redux/usersReducer";
 import {UserPage} from "./UserPage/UserPage";
+import {Pagination} from "antd";
+import {useDispatch, useSelector} from "react-redux";
+import {getCurrentPage, getPageSize, getTotalUsersCount, getUsersData} from "../../redux/Selectors";
 
-type UsersPagePropsType = {
-    users: Array<UserType>
-    pageSize: number
-    totalCount: number
-    currentPage: number
-    followingUsers: number[]
-    onPageChanged: (pageNumber: number) => void
-    changeFollowStatus: (id: number, follow: boolean) => void
-}
 
-const UsersPage: React.FC<UsersPagePropsType> = (props) => {
+const UsersPage: React.FC = () => {
 
-        // let pagesCount = Math.ceil(props.totalCount / props.pageSize)
+        const dispatch = useDispatch()
 
-        let pages = [];
-        for (let i = 1; i <= 10; i++) {
-            pages.push(i)
-        }
+        const users = useSelector(getUsersData)
+        const currentPage = useSelector(getCurrentPage)
+        const pageSize = useSelector(getPageSize)
+        const totalCount = useSelector(getTotalUsersCount)
 
         return (
             <div className={style.usersPage}>
-                {props.users.map(m => <UserPage user={m}
-                                                key={m.id}
-                                                followingUsers={props.followingUsers}
-                                                onPageChanged={props.onPageChanged}
-                                                changeFollowStatus={props.changeFollowStatus}/>)}
+                {users.map(m => <UserPage user={m} key={m.id}/>)}
                 <div className={style.pagination}>
-                    {pages.map(m =>
-                        <span key={m} className={props.currentPage === m ? style.selectedPage : ''}
-                              onClick={(e) => {
-                                  props.onPageChanged(m)
-                              }}>{m} </span>
-                    )}
+                        <Pagination
+                            current={currentPage}
+                            pageSize={pageSize}
+                            total={totalCount}
+                            onChange={(page)=>dispatch(getUsers(page, pageSize))}
+                        />
                 </div>
             </div>
         );

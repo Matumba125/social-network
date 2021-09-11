@@ -13,7 +13,7 @@ export type PhotosType = {
 }
 
 export type UserType = {
-    id: number
+    id: string
     name: string
     avatar: string
     followed: boolean
@@ -29,7 +29,7 @@ export type InitialStateType = {
     currentPage: number
     isFetching: boolean
     responseInProgress: boolean
-    followingUsers: Array<number>
+    followingUsers: Array<string>
 }
 
 const FOLLOW = 'FOLLOW';
@@ -90,11 +90,11 @@ const usersReducer = (state: InitialStateType = initialState,
     }
 }
 
-export const follow = (id: number) => ({
+export const follow = (id: string) => ({
     type: FOLLOW,
     id
 } as const)
-export const unfollow = (id: number) => ({
+export const unfollow = (id: string) => ({
     type: UNFOLLOW,
     id
 } as const)
@@ -114,7 +114,7 @@ export const changeFetchingStatus = (isFetching: boolean) => ({
     type: CHANGE_FETCHING_STATUS,
     isFetching
 } as const)
-export const changeResponseStatus = (responseInProgress: boolean, id: number) => ({
+export const changeResponseStatus = (responseInProgress: boolean, id: string) => ({
     type: CHANGE_RESPONSE_STATUS,
     responseInProgress,
     id,
@@ -128,14 +128,14 @@ export const getUsers = (currentPage: number, pageSize: number) => {
         UsersAPI.getUsers(currentPage, pageSize)
             .then(data => {
                 dispatch(setUsers(data.items))
-                dispatch(setTotalUsersCount(data.items.totalCount))
+                dispatch(setTotalUsersCount(data.totalCount))
                 dispatch(changeFetchingStatus(false))
 
             });
     }
 }
 
-export const followUnfollow = (id: number, following: boolean) => {
+export const followUnfollow = (id: string, following: boolean) => {
     return (dispatch: Dispatch<ActionTypes>) => {
         dispatch(changeResponseStatus(true, id))
         if (following) {

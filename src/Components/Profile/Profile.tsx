@@ -1,14 +1,20 @@
 import React, {useEffect} from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import UserPostsContainer from "./UserPosts/UserPostsContainer";
-import {Redirect} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {getProfile, getStatus} from "../../redux/profilleReducer";
-import {getIsAuth, getUserId} from "../../redux/Selectors";
+import {useParams} from 'react-router-dom';
+import UserPosts from "./UserPosts/UserPosts";
 
-function Profile() {
 
-    let userId = useSelector(getUserId)
+type UserIdType = {
+    userId: string
+}
+
+export const Profile = () => {
+
+    let params = useParams<UserIdType>()
+
+    let userId = params.userId
 
     const dispatch = useDispatch()
 
@@ -18,18 +24,12 @@ function Profile() {
         }
         dispatch(getProfile(userId))
         dispatch(getStatus(userId))
-    },[])
-
-    const isAuth = useSelector(getIsAuth)
-
-    if(!isAuth){
-        return <Redirect to={'/social-network/login'}/>
-    }
+    },[userId])
 
     return (
         <>
             <ProfileInfo/>
-            <UserPostsContainer/>
+            <UserPosts/>
         </>
     );
 }

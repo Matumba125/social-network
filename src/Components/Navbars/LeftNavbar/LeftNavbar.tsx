@@ -27,7 +27,7 @@ function LeftNavbar() {
                     <Link to="/social-network/news/">News</Link>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<UserOutlined/>}>
-                    <Link to="/social-network/profile/">Profile</Link>
+                    <Link to="/social-network/profile/18309">Profile</Link>
                 </Menu.Item>
                 <Menu.Item key="3" icon={<MailOutlined/>}>
                     <Link to="/social-network/dialogs/">Messages</Link>

@@ -1,42 +1,21 @@
-import React, {MouseEvent} from 'react'
+import React from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
-import {UsersPostsPropsType} from "./UserPostsContainer";
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addPost} from "../../../redux/profilleReducer";
-import {Button} from 'antd';
-
-type AddPostType = {
-    post: string
-}
+import {Formik} from "formik";
+import {Form, FormItem, Input, SubmitButton} from "formik-antd";
+import {getUserPostsData} from "../../../redux/Selectors";
 
 
-const AddPost: React.FC<InjectedFormProps<AddPostType>> = (props) => {
-
-    const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
-        props.handleSubmit(e)
-        props.reset()
-    }
-
-    return (
-        <form className={style.form}>
-            <Field name={'post'} component={'input'} placeholder={'Type your post'}/>
-            <div>
-                <Button onClick={onClickHandler}>Send</Button>
-            </div>
-        </form>
-    )
-}
-
-const AddPostReduxForm = reduxForm<AddPostType>({form: 'post'})(AddPost)
-
-function UserPosts(props: UsersPostsPropsType) {
-
-    let state = props.profilePage
 
 
-    let postsElement = state.postsData.map(m =>
+function UserPosts() {
+
+    const postData = useSelector(getUserPostsData)
+
+
+    let postsElement = postData.map(m =>
         <Post
             key={m.id}
             postContent={m.postContent}
@@ -46,15 +25,29 @@ function UserPosts(props: UsersPostsPropsType) {
 
     const dispatch = useDispatch()
 
-    const onSubmit = (formData: AddPostType) => {
-        dispatch(addPost(formData.post))
-    }
-
-
     return (
         <div>
             <div className={style.userNewPosts}>
-                <AddPostReduxForm onSubmit={onSubmit}/>
+                <Formik
+                    initialValues={{
+                        post: ''
+                    }}
+                    onSubmit={(values, action) => {
+                        dispatch(addPost(values.post))
+                        action.resetForm()
+                    }}
+                    render={() => (
+                        <Form>
+                            <FormItem
+                                label={'Your Post'}
+                                name={'post'}
+                            >
+                                <Input.TextArea name={'post'}/>
+                            </FormItem>
+                            <SubmitButton>Post</SubmitButton>
+                        </Form>
+                    )}
+                />
             </div>
             {postsElement}
         </div>

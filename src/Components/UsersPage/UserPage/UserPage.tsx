@@ -2,34 +2,36 @@ import React from 'react';
 import style from "./UserPage.module.css";
 import {NavLink} from "react-router-dom";
 import defaultImg from "../../../assets/img/sveta.jpg";
-import {UserType} from "../../../redux/usersReducer";
+import {followUnfollow, UserType} from "../../../redux/usersReducer";
 import {Button, Card} from "antd";
 import {UserAddOutlined, UserDeleteOutlined} from "@ant-design/icons";
+import {useDispatch, useSelector} from "react-redux";
+import {getFollowingUsers} from "../../../redux/Selectors";
 
 
 type UserPagePropsType = {
     user: UserType
-    followingUsers: number[]
-    onPageChanged: (pageNumber: number) => void
-    changeFollowStatus: (id: number, follow: boolean) => void
 }
 
 export const UserPage = React.memo(({
                                         user,
-                                        followingUsers,
-                                        changeFollowStatus,
-                                        onPageChanged,
                                         ...restProps
                                     }: UserPagePropsType) => {
+
+        const dispatch = useDispatch()
+
+        const followingUsers = useSelector(getFollowingUsers)
+
         return (
             <div className={style.userInfo} key={user.id}>
                 <div className={style.ava}>
-                    <NavLink to={'/social-network/profile/' + user.id}>
+                    <NavLink to={'/social-network/profile/' + user.id}
+                    >
                         <img src={user.photos.small !== null ? user.photos.small : defaultImg}
                              alt={user.id + ' avatar'}
                              className={style.img}/>
                     </NavLink>
-                    <Button size={'small'} onClick={() => changeFollowStatus(user.id, user.followed)}
+                    <Button size={'small'} onClick={() => dispatch(followUnfollow(user.id, user.followed))}
                             disabled={followingUsers.some(id => id === user.id)}
                             icon={!user.followed ? <UserAddOutlined/> : <UserDeleteOutlined/>}
                             shape={"circle"}
@@ -37,7 +39,7 @@ export const UserPage = React.memo(({
                     >
                     </Button>
                 </div>
-                <Card title={<NavLink to={'/social-network/profile/' + user.id}
+                <Card title={<NavLink to={'/social-network/profile/'+ user.id}
                                       style={{textDecoration: 'none', color: 'black'}}>{user.name}</NavLink>}
                       className={style.descriptionWrapper}>
 
