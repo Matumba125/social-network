@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import style from "./UsersPage.module.css";
 import {getUsers} from "../../redux/usersReducer";
 import {UserPage} from "./UserPage/UserPage";
@@ -15,6 +15,10 @@ const UsersPage: React.FC = () => {
         const currentPage = useSelector(getCurrentPage)
         const pageSize = useSelector(getPageSize)
         const totalCount = useSelector(getTotalUsersCount)
+
+        useEffect(()=>{
+                dispatch(getUsers(currentPage,pageSize))
+        },[users, currentPage, pageSize])
 
         return (
             <div className={style.usersPage}>
