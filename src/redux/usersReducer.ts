@@ -2,10 +2,6 @@ import {ActionTypes} from "./reduxStore";
 import {FollowAPI, UsersAPI} from "../api/api";
 import {Dispatch} from "redux";
 
-/*type AddressType ={
-    country: string
-    city: string
-}*/
 
 export type PhotosType = {
     large: string
@@ -19,7 +15,6 @@ export type UserType = {
     followed: boolean
     status: string
     photos: PhotosType
-    /*address: AddressType*/
 }
 
 export type InitialStateType = {
@@ -39,7 +34,6 @@ const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const CHANGE_FETCHING_STATUS = 'CHANGE-FETCHING-STATUS';
 const CHANGE_RESPONSE_STATUS = 'CHANGE-RESPONSE-STATUS';
-const SET_PAGE_SIZE = 'SET-PAGE-SIZE';
 
 let initialState: InitialStateType = {
     users: [],

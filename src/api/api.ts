@@ -1,5 +1,6 @@
 import axios from "axios";
 import {FormikErrorType} from "../Components/Login/Login";
+import {ProfileUpdatingType} from "../redux/profilleReducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -30,6 +31,9 @@ export const ProfileAPI = {
     },
     getStatus: (userId: string) => {
         return instance.get(`profile/status/${userId}`);
+    },
+    updateProfile: (data: ProfileUpdatingType) =>{
+      return instance.put(`profile`, data)
     },
     updateStatus: (status: string) => {
         return instance.put(`profile/status`, {

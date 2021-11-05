@@ -13,7 +13,7 @@ export const RoutingComponent: React.FC = () => {
 
     const isAuth = useSelector(getIsAuth)
 
-    if(!isAuth){
+    if (!isAuth) {
         return <Redirect to={'/social-network/login'}/>
     }
 
@@ -21,12 +21,8 @@ export const RoutingComponent: React.FC = () => {
     return (
         <>
             <Route path={"/social-network/dialogs"} render={() => <Dialogs/>}/>
-
-            <Route path={"/social-network/profile/:userId?"} render={() => <Profile />}/>
-
+            <Route path={"/social-network/profile/:userId?"} render={() => <Profile/>}/>
             <Route path={"/social-network/users-page"} render={() => <UsersPage/>}/>
-
-
             <Route path={"/social-network/music"} component={Music}/>
             <Route path={"/social-network/news"} component={News}/>
             <Route path={"/social-network/settings"} component={Settings}/>

@@ -37,3 +37,8 @@
     width: 100px;
     height: 100px;
 }
+
+.workStatus{
+    font-size: 14px;
+    font-weight: normal;
+}

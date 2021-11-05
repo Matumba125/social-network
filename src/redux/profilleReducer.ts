@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {ActionTypes} from "./reduxStore";
+import store, {ActionTypes} from "./reduxStore";
 import {PhotosType} from "./usersReducer";
 import myPhoto from "../assets/img/userAvatar.jpg"
 import {Dispatch} from "redux";
@@ -13,15 +13,24 @@ export type PostType = {
 }
 
 type ContactsType = {
-    facebook: string
-    website: string
-    vk: string
-    twitter: string
-    instagram: string
-    youtube: string
-    github: string
-    mainLink: string
+    facebook?: string
+    website?: string
+    vk?: string
+    twitter?: string
+    instagram?: string
+    youtube?: string
+    github?: string
+    mainLink?: string
 }
+
+type AdditionalUpdatingType = {
+    lookingForAJob?: boolean
+    lookingForAJobDescription?: string
+    fullName: string
+}
+
+export type ProfileUpdatingType = ContactsType & AdditionalUpdatingType
+
 
 
 export type ProfileDataType = {
@@ -132,6 +141,33 @@ export const updateStatus = (newStatus: string) => {
             }
         })
     };
+}
+
+export const updateProfile = (data: ProfileUpdatingType) => {
+    const state = store.getState()
+    const updatedProfile = {
+        userID: state.profilePage.profile.userID,
+        lookingForAJob: data.lookingForAJob,
+        lookingForAJobDescription: data.lookingForAJobDescription,
+        fullName: data.fullName,
+        contacts: {
+            github: data.github,
+            vk: data.vk,
+            facebook: data.facebook,
+            instagram: data.instagram,
+            twitter: data.twitter,
+            website: data.website,
+            youtube: data.youtube,
+            mainLink: data.mainLink,
+        }
+    }
+    return (dispatch: Dispatch) =>{
+       ProfileAPI.updateProfile(updatedProfile)
+           .then(()=>{
+               //@ts-ignore
+               dispatch(getProfile(updatedProfile.userID))
+           })
+    }
 }
 
 
