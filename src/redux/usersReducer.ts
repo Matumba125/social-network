@@ -39,6 +39,7 @@ const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const CHANGE_FETCHING_STATUS = 'CHANGE-FETCHING-STATUS';
 const CHANGE_RESPONSE_STATUS = 'CHANGE-RESPONSE-STATUS';
+const SET_PAGE_SIZE = 'SET-PAGE-SIZE';
 
 let initialState: InitialStateType = {
     users: [],
@@ -120,14 +121,13 @@ export const changeResponseStatus = (responseInProgress: boolean, id: string) =>
     id,
 } as const)
 
-
 export const getUsers = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch<ActionTypes>) => {
-        dispatch(setCurrentPage(currentPage))
         dispatch(changeFetchingStatus(true))
         UsersAPI.getUsers(currentPage, pageSize)
             .then(data => {
                 dispatch(setUsers(data.items))
+                dispatch(setCurrentPage(currentPage))
                 dispatch(setTotalUsersCount(data.totalCount))
                 dispatch(changeFetchingStatus(false))
 

@@ -29,7 +29,7 @@ export type ActionTypes =
     ReturnType<typeof changeResponseStatus> |
     ReturnType<typeof setStatus> |
     ReturnType<typeof userBeenLogined> |
-    ReturnType<typeof userBeenLoginedOut>|
+    ReturnType<typeof userBeenLoginedOut> |
     ReturnType<typeof setAppInitialized>
 
 export const rootReducer = combineReducers({

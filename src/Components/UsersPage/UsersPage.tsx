@@ -18,7 +18,7 @@ const UsersPage: React.FC = () => {
 
         useEffect(()=>{
                 dispatch(getUsers(currentPage,pageSize))
-        },[users, currentPage, pageSize])
+        },[currentPage, pageSize])
 
         return (
             <div className={style.usersPage}>
