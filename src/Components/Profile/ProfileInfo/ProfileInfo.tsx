@@ -85,23 +85,62 @@ function ProfileInfo() {
                     <div className={style.userDataContainer}>
                         {(profilePage.profile.userId === currentUserId) &&
                         <Button className={style.editButton} onClick={onEditClick}>Edit Profile</Button>}
-                        {profilePage.profile.aboutMe && <Card title={'About Me:'}  className={style.aboutCard}> {profilePage.profile.aboutMe}</Card>}
+                        {profilePage.profile.aboutMe &&
+                        <Card title={'About Me:'} className={style.aboutCard}> {profilePage.profile.aboutMe}</Card>}
                         {profilePage.profile.contacts?.github &&
-                        <p><GithubOutlined/> <a className={style.socialLink}>{profilePage.profile.contacts?.github}</a>
-                        </p>}
-                        {profilePage.profile.contacts?.facebook && <p><FacebookOutlined/> <a
-                            className={style.socialLink}>{profilePage.profile.contacts?.facebook}</a></p>}
-                        {profilePage.profile.contacts?.instagram && <p><InstagramOutlined/> <a
-                            className={style.socialLink}>{profilePage.profile.contacts?.instagram}</a></p>}
-                        {profilePage.profile.contacts?.twitter && <p><TwitterOutlined/> <a
-                            className={style.socialLink}>{profilePage.profile.contacts?.twitter}</a></p>}
-                        {profilePage.profile.contacts?.youtube && <p><YoutubeOutlined/> <a
-                            className={style.socialLink}>{profilePage.profile.contacts?.youtube}</a></p>}
+                        <a
+                            href={profilePage.profile.contacts?.github}
+                            className={style.socialLink}>
+                            <GithubOutlined/>
+                            {`  ${profilePage.profile.contacts?.github}`}
+                        </a>}
+                        {profilePage.profile.contacts?.facebook &&
+                        <a
+                            href={profilePage.profile.contacts?.facebook}
+                            className={style.socialLink}>
+                            <FacebookOutlined/>
+                            {`  ${profilePage.profile.contacts?.facebook}`}
+                        </a>}
+
+                        {profilePage.profile.contacts?.instagram &&
+                        <a
+                            href={profilePage.profile.contacts?.twitter}
+                            className={style.socialLink}>
+                            <InstagramOutlined/>
+                            `{`  ${profilePage.profile.contacts?.instagram}`}
+                        </a>}
+
+                        {profilePage.profile.contacts?.twitter &&
+                        <a
+                            href={profilePage.profile.contacts?.twitter}
+                            className={style.socialLink}>
+                            <TwitterOutlined/>
+                            {`  ${profilePage.profile.contacts?.twitter}`}
+                        </a>}
+
+                        {profilePage.profile.contacts?.youtube &&
+                        <a
+                            href={profilePage.profile.contacts?.youtube}
+                            className={style.socialLink}>
+                            <YoutubeOutlined/>
+                            {`  ${profilePage.profile.contacts?.youtube}`}
+                        </a>}
+
                         {profilePage.profile.contacts?.website &&
-                        <p><GlobalOutlined/> <a className={style.socialLink}>{profilePage.profile.contacts?.website}</a>
-                        </p>}
-                        {profilePage.profile.contacts?.mainLink && <p><ShareAltOutlined/> <a
-                            className={style.socialLink}>{profilePage.profile.contacts?.mainLink}</a></p>}
+                        <a
+                            href={profilePage.profile.contacts?.website}
+                            className={style.socialLink}>
+                            <GlobalOutlined/>
+                            {`  ${profilePage.profile.contacts?.website}`}
+                        </a>}
+
+                        {profilePage.profile.contacts?.mainLink &&
+                        <a
+                            href={profilePage.profile.contacts?.mainLink}
+                            className={style.socialLink}>
+                            <ShareAltOutlined/>
+                            {`  ${profilePage.profile.contacts?.mainLink}`}
+                        </a>}
                     </div>
                 </div>
             </>
