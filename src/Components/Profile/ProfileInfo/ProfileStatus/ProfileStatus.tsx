@@ -1,7 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {useDispatch} from "react-redux";
 import {updateStatus} from "../../../../redux/profilleReducer";
-import {Input} from "antd";
+import {Button, Input} from "antd";
+import {EditOutlined} from "@ant-design/icons";
 
 type ProfileStatusPropsType = {
     status: string
@@ -38,7 +39,10 @@ export const ProfileStatus = React.memo(({status, ...restProps}: ProfileStatusPr
         return (
             <div style={{height: '32px'}}>
                 {!editMode ?
-                    <span onDoubleClick={onDoubleClickHandler}>{status ? status : '-----'}</span> :
+                    <div>
+                        <span onDoubleClick={onDoubleClickHandler}>{status ? status : '-----'}</span>
+                        <Button type={'text'} icon={<EditOutlined/>} onClick={onDoubleClickHandler}/>
+                    </div> :
                     <Input autoFocus={true}
                            onBlur={onBlurHandler}
                            onKeyPress={onKeyPressHandler}
