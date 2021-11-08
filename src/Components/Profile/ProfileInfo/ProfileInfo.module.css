@@ -65,3 +65,9 @@
 .editButton{
     width: 100px;
 }
+
+.aboutCard{
+    margin-top: 20px;
+    word-wrap:break-word;
+    max-width: 300px;
+}

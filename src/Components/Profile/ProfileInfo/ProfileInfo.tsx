@@ -6,7 +6,7 @@ import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentUserId, getProfilePage} from "../../../redux/Selectors";
 import ProfileSettings from "./ProfileSettings/ProfileSettings";
-import {Avatar, Badge, Button} from "antd";
+import {Avatar, Badge, Button, Card} from "antd";
 import {updatePhoto} from "../../../redux/profilleReducer";
 import ProfilePhotoChange from "./ProfilePhotoChange/ProfilePhotoChange";
 import {
@@ -85,6 +85,7 @@ function ProfileInfo() {
                     <div className={style.userDataContainer}>
                         {(profilePage.profile.userId === currentUserId) &&
                         <Button className={style.editButton} onClick={onEditClick}>Edit Profile</Button>}
+                        {profilePage.profile.aboutMe && <Card title={'About Me:'}  className={style.aboutCard}> {profilePage.profile.aboutMe}</Card>}
                         {profilePage.profile.contacts?.github &&
                         <p><GithubOutlined/> <a className={style.socialLink}>{profilePage.profile.contacts?.github}</a>
                         </p>}
