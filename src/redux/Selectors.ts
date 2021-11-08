@@ -9,17 +9,18 @@ export const getIsAuth = (state: AppStateType): boolean => {
 export const getIsInitialized = (state: AppStateType): boolean => {
     return state.auth.isInitialized
 }
+export const getCurrentUserId = (state: AppStateType): string => {
+    return state.auth.data.id
+}
 
 export const getProfilePage = (state: AppStateType): ProfileInitialStateType => {
     return state.profilePage
 }
 export const getUserId = (state: AppStateType): string => {
-    return state.profilePage.profile.userID
+    return state.profilePage.profile.userId
 }
 
-type UsersType = Array<UserType>
-
-export const getUsersData = (state: AppStateType): UsersType => {
+export const getUsersData = (state: AppStateType): Array<UserType> => {
     return state.users.users
 }
 

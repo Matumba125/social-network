@@ -1,6 +1,7 @@
 import axios from "axios";
 import {FormikErrorType} from "../Components/Login/Login";
 import {ProfileUpdatingType} from "../redux/profilleReducer";
+import {UploadChangeParam} from "antd/lib/upload";
 
 const instance = axios.create({
     withCredentials: true,
@@ -32,14 +33,26 @@ export const ProfileAPI = {
     getStatus: (userId: string) => {
         return instance.get(`profile/status/${userId}`);
     },
-    updateProfile: (data: ProfileUpdatingType) =>{
-      return instance.put(`profile`, data)
+    updateProfile: (data: ProfileUpdatingType) => {
+        return instance.put(`profile`, data)
     },
     updateStatus: (status: string) => {
         return instance.put(`profile/status`, {
             status: status
         })
     },
+    updatePhoto: (image: File) => {
+        const formData = new FormData()
+        //@ts-ignore
+        formData.append('image', image)
+        return instance.put('profile/photo', formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        )
+    }
 }
 
 export const AuthorizeAPI = {

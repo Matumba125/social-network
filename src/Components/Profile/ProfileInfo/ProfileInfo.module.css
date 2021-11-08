@@ -31,6 +31,10 @@
     font-size: 30px;
     font-weight: bold;
 }
+.avaWrapper{
+    display: flex;
+    align-items: flex-end;
+}
 
 .ava {
     border-radius: 50%;
@@ -41,4 +45,23 @@
 .workStatus{
     font-size: 14px;
     font-weight: normal;
+}
+
+.userDataContainer{
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+}
+
+.userDataContainer p{
+    margin-top: 10px;
+}
+
+.socialLink{
+    text-decoration: none;
+    color: black;
+}
+
+.editButton{
+    width: 100px;
 }

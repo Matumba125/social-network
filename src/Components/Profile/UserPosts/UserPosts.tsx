@@ -5,15 +5,18 @@ import {useDispatch, useSelector} from "react-redux";
 import {addPost} from "../../../redux/profilleReducer";
 import {Formik} from "formik";
 import {Form, FormItem, Input, SubmitButton} from "formik-antd";
-import {getUserPostsData} from "../../../redux/Selectors";
-
-
+import {getCurrentUserId, getProfilePage, getUserId, getUserPostsData} from "../../../redux/Selectors";
 
 
 function UserPosts() {
 
     const postData = useSelector(getUserPostsData)
 
+
+    const currentUserId = useSelector(getCurrentUserId)
+    const userId = useSelector(getUserId)
+
+    const isCurrentProfileBelongsToUser = currentUserId === userId
 
     let postsElement = postData.map(m =>
         <Post
@@ -38,13 +41,15 @@ function UserPosts() {
                     }}
                     render={() => (
                         <Form>
-                            <FormItem
-                                label={'Your Post'}
-                                name={'post'}
-                            >
-                                <Input.TextArea name={'post'}/>
-                            </FormItem>
-                            <SubmitButton>Post</SubmitButton>
+                            {isCurrentProfileBelongsToUser && <div>
+                                <FormItem
+                                    label={'Your Post'}
+                                    name={'post'}
+                                >
+                                    <Input.TextArea name={'post'}/>
+                                </FormItem>
+                                <SubmitButton>Post</SubmitButton>
+                            </div>}
                         </Form>
                     )}
                 />

@@ -5,9 +5,9 @@ import {FormikErrorType} from "../Components/Login/Login";
 
 
 export type DataType = {
-    id: number | null
-    email: string | null
-    login: string | null
+    id: string
+    email: string
+    login: string
 }
 
 export type AuthInitialStateType = {
@@ -18,9 +18,9 @@ export type AuthInitialStateType = {
 
 let initialState: AuthInitialStateType = {
     data: {
-        id: null,
-        email: null,
-        login: null,
+        id: '',
+        email: '',
+        login: '',
     },
     isAuth: false,
     isInitialized: false

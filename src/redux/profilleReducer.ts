@@ -4,6 +4,8 @@ import {PhotosType} from "./usersReducer";
 import myPhoto from "../assets/img/userAvatar.jpg"
 import {Dispatch} from "redux";
 import {ProfileAPI} from "../api/api";
+import {UploadChangeParam} from "antd/lib/upload";
+import {UploadFile} from "antd/es/upload/interface";
 
 
 export type PostType = {
@@ -23,14 +25,15 @@ type ContactsType = {
     mainLink?: string
 }
 
+
 type AdditionalUpdatingType = {
     lookingForAJob?: boolean
     lookingForAJobDescription?: string
     fullName: string
+    aboutMe: string
 }
 
 export type ProfileUpdatingType = ContactsType & AdditionalUpdatingType
-
 
 
 export type ProfileDataType = {
@@ -38,7 +41,7 @@ export type ProfileDataType = {
     contacts?: ContactsType
     lookingForAJob?: boolean
     lookingForAJobDescription?: string
-    userID: string
+    userId: string
     photos: PhotosType
     fullName: string
 }
@@ -59,9 +62,9 @@ let initialState: ProfileInitialStateType = {
             large: myPhoto,
             small: myPhoto,
         },
-        fullName: 'Nikita',
-        aboutMe: 'Zdarova',
-        userID: '18309',
+        fullName: '',
+        aboutMe: '',
+        userId: '',
     },
     status: '',
     postsData: [
@@ -146,10 +149,11 @@ export const updateStatus = (newStatus: string) => {
 export const updateProfile = (data: ProfileUpdatingType) => {
     const state = store.getState()
     const updatedProfile = {
-        userID: state.profilePage.profile.userID,
+        userID: state.profilePage.profile.userId,
         lookingForAJob: data.lookingForAJob,
-        lookingForAJobDescription: data.lookingForAJobDescription,
+        lookingForAJobDescription: data.lookingForAJobDescription ? data.lookingForAJobDescription : '-',
         fullName: data.fullName,
+        aboutMe: data.aboutMe ? data.aboutMe : '-',
         contacts: {
             github: data.github,
             vk: data.vk,
@@ -159,14 +163,25 @@ export const updateProfile = (data: ProfileUpdatingType) => {
             website: data.website,
             youtube: data.youtube,
             mainLink: data.mainLink,
-        }
+        },
     }
     return (dispatch: Dispatch) =>{
        ProfileAPI.updateProfile(updatedProfile)
            .then(()=>{
                //@ts-ignore
-               dispatch(getProfile(updatedProfile.userID))
+               dispatch(getProfile(state.auth.data.id))
            })
+    }
+}
+
+export const updatePhoto = (image: File) =>{
+    const userId = store.getState().auth.data.id
+    return (dispatch: Dispatch)=>{
+        ProfileAPI.updatePhoto(image)
+            .then(()=>{
+                //@ts-ignore
+                dispatch(getProfile(userId))
+            })
     }
 }
 

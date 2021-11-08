@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getProfile, getStatus} from "../../redux/profilleReducer";
 import {useParams} from 'react-router-dom';
 import UserPosts from "./UserPosts/UserPosts";
+import {getCurrentUserId} from "../../redux/Selectors";
 
 
 type UserIdType = {
@@ -16,11 +17,13 @@ export const Profile = () => {
 
     let userId = params.userId
 
+    const currentUserId = useSelector(getCurrentUserId)
+
     const dispatch = useDispatch()
 
     useEffect(()=>{
         if (!userId ||userId === ":userId") {
-            userId = '18309';
+            userId = currentUserId;
         }
         dispatch(getProfile(userId))
         dispatch(getStatus(userId))

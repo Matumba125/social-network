@@ -10,7 +10,7 @@ import {HeartFilled, HeartOutlined} from "@ant-design/icons"
 
 function Post(props: PostType) {
 
-    const userImage = useSelector<AppStateType, string>(state => state.profilePage.profile.photos.small)
+    const userImage = useSelector<AppStateType, string | undefined>(state => state.profilePage.profile.photos.small)
     const userName = useSelector<AppStateType, string>(state => state.profilePage.profile.fullName)
 
     const [like, setLike] = useState<boolean>(false)
