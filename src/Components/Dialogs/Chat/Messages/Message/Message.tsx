@@ -10,7 +10,7 @@ const Message: React.FC<ChatMessageType> = (props) => {
         <div className={style.message}>
             <Avatar
                 src={props.photo && props.photo}
-                icon={props.photo && <UserOutlined/>}
+                icon={!props.photo && <UserOutlined/>}
                 className={style.avatar}
                 size={50}/>
             <div className={style.svgAppendix}>
