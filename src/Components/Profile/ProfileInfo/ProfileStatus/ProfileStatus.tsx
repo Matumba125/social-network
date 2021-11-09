@@ -6,9 +6,10 @@ import {EditOutlined} from "@ant-design/icons";
 
 type ProfileStatusPropsType = {
     status: string
+    isProfileBelongsToUser: boolean
 }
 
-export const ProfileStatus = React.memo(({status, ...restProps}: ProfileStatusPropsType) => {
+export const ProfileStatus = React.memo(({status, isProfileBelongsToUser, ...restProps}: ProfileStatusPropsType) => {
 
         const dispatch = useDispatch()
 
@@ -41,7 +42,11 @@ export const ProfileStatus = React.memo(({status, ...restProps}: ProfileStatusPr
                 {!editMode ?
                     <div>
                         <span onDoubleClick={onDoubleClickHandler}>{status ? status : '-----'}</span>
-                        <Button type={'text'} icon={<EditOutlined/>} onClick={onDoubleClickHandler}/>
+                        {isProfileBelongsToUser &&
+                        <Button
+                            type={'text'}
+                            icon={<EditOutlined/>}
+                            onClick={onDoubleClickHandler}/>}
                     </div> :
                     <Input autoFocus={true}
                            onBlur={onBlurHandler}

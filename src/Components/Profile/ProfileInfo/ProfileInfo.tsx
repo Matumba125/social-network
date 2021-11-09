@@ -16,7 +16,7 @@ import {
     GlobalOutlined,
     InstagramOutlined,
     ShareAltOutlined,
-    TwitterOutlined,
+    TwitterOutlined, UserOutlined,
     YoutubeOutlined
 } from "@ant-design/icons";
 
@@ -29,6 +29,7 @@ function ProfileInfo() {
 
     const profilePage = useSelector(getProfilePage)
     const currentUserId = useSelector(getCurrentUserId)
+    const isProfileBelongsToUser = profilePage.profile.userId === currentUserId
 
     const [image, setImage] = useState<File>()
 
@@ -87,11 +88,12 @@ function ProfileInfo() {
                             <Avatar
                                 className={style.ava}
                                 alt={`${profilePage.profile.userId} user ava`}
-                                src={profilePage.profile.photos.small ? profilePage.profile.photos.small : defaultImg}/>
-                            <Button
+                                src={profilePage.profile.photos.small && profilePage.profile.photos.small}
+                                icon={!profilePage.profile.photos.small && <UserOutlined/>}/>
+                            {isProfileBelongsToUser && <Button
                                 type={'text'}
                                 icon={<EditOutlined/>}
-                                onClick={onPhotoClick}/>
+                                onClick={onPhotoClick}/>}
                         </div>
                         <div className={style.description}>
 
@@ -102,12 +104,12 @@ function ProfileInfo() {
                                 (Open to work)
                             </span>}
                         </span>
-                            <ProfileStatus status={profilePage.status}/>
+                            <ProfileStatus isProfileBelongsToUser={isProfileBelongsToUser}  status={profilePage.status}/>
                         </div>
                     </div>
                     <div className={style.userDataContainer}>
 
-                        {(profilePage.profile.userId === currentUserId) &&
+                        {isProfileBelongsToUser &&
                         <Button
                             className={style.editButton}
                             onClick={onEditClick}>
