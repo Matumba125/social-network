@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from 'react';
 import TextArea from "antd/lib/input/TextArea";
 import style from './AddMessageForm.module.css'
 import {Button} from "antd";
@@ -13,25 +13,33 @@ export const AddMessageForm: React.FC<AddMessageFormPropsType> = ({wsChannel, ..
     const [newMessage, setNewMessage] = useState<string>('')
     const [isReady, setIsReady] = useState<boolean>(false)
 
-    useEffect(()=>{
-        const openHandler = ()=>{
+    useEffect(() => {
+        const openHandler = () => {
             setIsReady(true)
         };
         wsChannel && wsChannel.addEventListener('open', openHandler)
-        return()=>{
+        return () => {
             wsChannel?.removeEventListener('open', openHandler)
         }
-    },[wsChannel])
+    }, [wsChannel])
 
-    const onMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) =>{
+    const onMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setNewMessage(e.target.value)
     }
 
-    const sendMessage = () =>{
-        if(!newMessage){
+    const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        if(e.key === 'Enter' && !e.shiftKey){
+            e.preventDefault()
+            sendMessage()
+        }
+    }
+
+
+    const sendMessage = () => {
+        if (!newMessage) {
             return
         }
-       wsChannel && wsChannel.send(newMessage)
+        wsChannel && wsChannel.send(newMessage)
         setNewMessage('')
     }
 
@@ -40,9 +48,10 @@ export const AddMessageForm: React.FC<AddMessageFormPropsType> = ({wsChannel, ..
 
             <TextArea
                 className={style.messageInput}
-                autoSize={{ minRows: 1,}}
+                autoSize={{minRows: 1,}}
                 value={newMessage}
                 onChange={onMessageTextHandler}
+                onKeyPress={onEnterPressHandler}
             />
 
             <Button
