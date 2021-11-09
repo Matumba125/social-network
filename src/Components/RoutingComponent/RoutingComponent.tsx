@@ -7,7 +7,12 @@ import Settings from "../Settings/Settings";
 import {useSelector} from "react-redux";
 import {getIsAuth} from "../../redux/Selectors";
 import UsersPage from "../UsersPage/UsersPage";
-import Dialogs from "../Dialogs/Dialogs";
+import {withSuspense} from "../../HOC/withSuspense";
+
+
+const Dialogs = React.lazy(()=> import('../Dialogs/Dialogs'))
+
+const SuspendedDialogs = withSuspense(Dialogs)
 
 export const RoutingComponent: React.FC = () => {
 
@@ -20,7 +25,7 @@ export const RoutingComponent: React.FC = () => {
 
     return (
         <>
-            <Route path={"/social-network/dialogs"} render={() => <Dialogs/>}/>
+            <Route path={"/social-network/dialogs"} render={() => <SuspendedDialogs/>}/>
             <Route path={"/social-network/profile/:userId?"} render={() => <Profile/>}/>
             <Route path={"/social-network/users-page"} render={() => <UsersPage/>}/>
             <Route path={"/social-network/music"} component={Music}/>

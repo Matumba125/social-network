@@ -1,5 +1,4 @@
 import React, {ChangeEvent, useState} from "react";
-import defaultImg from "../../../assets/img/sveta.jpg";
 import Preloader from "../../common/Preloader/Preloader";
 import style from "./ProfileInfo.module.css"
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
@@ -16,7 +15,8 @@ import {
     GlobalOutlined,
     InstagramOutlined,
     ShareAltOutlined,
-    TwitterOutlined, UserOutlined,
+    TwitterOutlined,
+    UserOutlined,
     YoutubeOutlined
 } from "@ant-design/icons";
 

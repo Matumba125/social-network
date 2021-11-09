@@ -11,11 +11,6 @@ export type DialogsItemPropsType = {
     avatar?: string
 }
 
-export type MessagePropsType = {
-    messageText: string
-    id: string
-}
-
 export type DialogsInitialStateType = typeof initialState
 
 
@@ -30,14 +25,6 @@ const initialState = {
         {id: v1(), userName: "Viktor"},
         {id: v1(), userName: "Valera"}
     ] as Array<DialogsItemPropsType>,
-
-    messageData: [
-        {id: v1(), messageText: "HI"},
-        {id: v1(), messageText: "Hello"},
-        {id: v1(), messageText: "YO"}
-    ] as Array<MessagePropsType>,
-
-    newMessageText: ''
 }
 
 const dialogsReducer = (state: DialogsInitialStateType = initialState,
@@ -45,15 +32,6 @@ const dialogsReducer = (state: DialogsInitialStateType = initialState,
 
 
     switch (action.type) {
-        case ADD_MESSAGE:
-            const newMessage: MessagePropsType = {
-                id: v1(),
-                messageText: action.newMessage
-            };
-            return {
-                ...state,
-                messageData: [...state.messageData, newMessage],
-            }
         default:
             return state;
     }

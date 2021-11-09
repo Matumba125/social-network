@@ -1,0 +1,8 @@
+.messagesWrapper{
+    width: 70%;
+    height: 90%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+.messagesWrapper::-webkit-scrollbar { width: 0 !important }

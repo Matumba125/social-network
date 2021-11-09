@@ -1,6 +1,8 @@
 .dialogs {
     display: flex;
     width: 100%;
+    position: relative;
+    height: 90vh;
 }
 
 .dialogs button {

@@ -1,0 +1,48 @@
+.message {
+    display: flex;
+    align-items: flex-end;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.avatar{
+    margin-right: 10px;
+}
+
+.messageContent {
+    padding: 10px;
+    border-radius: 5px 5px 5px 0;
+    background-color: rgb(24, 37, 51);
+}
+
+.svgAppendix {
+    overflow: hidden;
+    position: absolute;
+    left: 3.82rem;
+    bottom: 0.55rem;
+    width: 0.5625rem;
+    height: 1.125rem;
+    font-size: 1rem !important;
+}
+
+.name {
+    font-size: 20px;
+    color: rgb(180, 123, 184);
+    text-align: left;
+}
+
+.text {
+    min-width: 150px;
+    max-width: 300px;
+    word-wrap: break-word;
+    color: rgb(245, 245, 245);
+    text-align: left;
+    padding-left: 5px;
+}
+
+.time {
+    display: flex;
+    justify-content: flex-end;
+    color: rgb(109, 127, 143);
+}

@@ -15,6 +15,8 @@ import Login from "./Components/Login/Login";
 const {Content, Footer} = Layout;
 
 
+
+
 const App: React.FC = () => {
 
     const isInitialized = useSelector(getIsInitialized)
@@ -23,7 +25,7 @@ const App: React.FC = () => {
 
     useEffect(() => {
         dispatch(authUser())
-    }, [])
+    }, [dispatch])
 
 
     if (!isInitialized) {
