@@ -4,15 +4,13 @@
     align-items: center;
 }
 
-.selectedPage {
-    font-weight: bold;
+.usersList{
+    width: 60vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-
-@media only screen and (max-width: 750px) {
-    .usersPage {
-        align-items: flex-start;
-        margin-right: 40px;
-        padding: 0;
-    }
+.selectedPage {
+    font-weight: bold;
 }

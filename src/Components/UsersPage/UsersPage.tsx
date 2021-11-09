@@ -16,20 +16,24 @@ const UsersPage: React.FC = () => {
         const pageSize = useSelector(getPageSize)
         const totalCount = useSelector(getTotalUsersCount)
 
-        useEffect(()=>{
-                dispatch(getUsers(currentPage,pageSize))
-        },[currentPage, pageSize])
+        useEffect(() => {
+            dispatch(getUsers(currentPage, pageSize))
+        }, [])
 
         return (
             <div className={style.usersPage}>
-                {users.map(m => <UserPage user={m} key={m.id}/>)}
+                <div className={style.usersList}>
+                    {users.map(m => <UserPage user={m} key={m.id}/>)}
+                </div>
                 <div className={style.pagination}>
-                        <Pagination
-                            current={currentPage}
-                            pageSize={pageSize}
-                            total={totalCount}
-                            onChange={(page)=>dispatch(getUsers(page, pageSize))}
-                        />
+                    <Pagination
+                        current={currentPage}
+                        pageSize={pageSize}
+                        total={totalCount}
+                        responsive={true}
+                        pageSizeOptions={[]}
+                        onChange={(page) => dispatch(getUsers(page, pageSize))}
+                    />
                 </div>
             </div>
         );

@@ -37,7 +37,7 @@ const CHANGE_RESPONSE_STATUS = 'CHANGE-RESPONSE-STATUS';
 
 let initialState: InitialStateType = {
     users: [],
-    pageSize: 5,
+    pageSize: 16,
     totalCount: 0,
     currentPage: 1,
     isFetching: false,

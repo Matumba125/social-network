@@ -1,7 +1,6 @@
 import axios from "axios";
 import {FormikErrorType} from "../Components/Login/Login";
 import {ProfileUpdatingType} from "../redux/profilleReducer";
-import {UploadChangeParam} from "antd/lib/upload";
 
 const instance = axios.create({
     withCredentials: true,

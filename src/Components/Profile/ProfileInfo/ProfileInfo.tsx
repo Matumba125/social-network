@@ -6,12 +6,18 @@ import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentUserId, getProfilePage} from "../../../redux/Selectors";
 import ProfileSettings from "./ProfileSettings/ProfileSettings";
-import {Avatar, Badge, Button, Card} from "antd";
+import {Avatar, Button, Card} from "antd";
 import {updatePhoto} from "../../../redux/profilleReducer";
 import ProfilePhotoChange from "./ProfilePhotoChange/ProfilePhotoChange";
 import {
-    EditOutlined, FacebookOutlined, GithubOutlined,
-    GlobalOutlined, InstagramOutlined, ShareAltOutlined, TwitterOutlined, YoutubeOutlined
+    EditOutlined,
+    FacebookOutlined,
+    GithubOutlined,
+    GlobalOutlined,
+    InstagramOutlined,
+    ShareAltOutlined,
+    TwitterOutlined,
+    YoutubeOutlined
 } from "@ant-design/icons";
 
 function ProfileInfo() {
@@ -63,30 +69,58 @@ function ProfileInfo() {
 
         return (
             <>
-                <ProfileSettings visible={modalStatus} onSubmitClick={onSubmitClick} onCancelClick={onCancelClick}
-                                 profile={profilePage}/>
-                <ProfilePhotoChange visible={changePhoto} onSubmitClick={onPhotoSubmitClick}
-                                    onCancelClick={onPhotoCloseClick} selectPhoto={selectPhoto}/>
+                <ProfileSettings
+                    visible={modalStatus}
+                    onSubmitClick={onSubmitClick}
+                    onCancelClick={onCancelClick}
+                    profile={profilePage}/>
+
+                <ProfilePhotoChange
+                    visible={changePhoto}
+                    onSubmitClick={onPhotoSubmitClick}
+                    onCancelClick={onPhotoCloseClick}
+                    selectPhoto={selectPhoto}/>
+
                 <div className={style.infoContainer}>
                     <div className={style.mainInfo}>
                         <div className={style.avaWrapper}>
-                            <Avatar className={style.ava} alt={`${profilePage.profile.userId} user ava`}
-                                    src={profilePage.profile.photos.small !== null ? profilePage.profile.photos.small : defaultImg}/>
-                            <Button type={'text'} icon={<EditOutlined/>} onClick={onPhotoClick}/>
+                            <Avatar
+                                className={style.ava}
+                                alt={`${profilePage.profile.userId} user ava`}
+                                src={profilePage.profile.photos.small ? profilePage.profile.photos.small : defaultImg}/>
+                            <Button
+                                type={'text'}
+                                icon={<EditOutlined/>}
+                                onClick={onPhotoClick}/>
                         </div>
                         <div className={style.description}>
-                        <span className={style.fullName}>{profilePage.profile.fullName}
+
+                        <span className={style.fullName}>
+                            {profilePage.profile.fullName}
                             {profilePage.profile.lookingForAJob &&
-                            <span className={style.workStatus}>(Open to work)</span>}
+                            <span className={style.workStatus}>
+                                (Open to work)
+                            </span>}
                         </span>
                             <ProfileStatus status={profilePage.status}/>
                         </div>
                     </div>
                     <div className={style.userDataContainer}>
+
                         {(profilePage.profile.userId === currentUserId) &&
-                        <Button className={style.editButton} onClick={onEditClick}>Edit Profile</Button>}
+                        <Button
+                            className={style.editButton}
+                            onClick={onEditClick}>
+                            Edit Profile
+                        </Button>}
+
                         {profilePage.profile.aboutMe &&
-                        <Card title={'About Me:'} className={style.aboutCard}> {profilePage.profile.aboutMe}</Card>}
+                        <Card
+                            title={'About Me:'}
+                            className={style.aboutCard}>
+                            {profilePage.profile.aboutMe}
+                        </Card>}
+
                         {profilePage.profile.contacts?.github &&
                         <a
                             href={profilePage.profile.contacts?.github}

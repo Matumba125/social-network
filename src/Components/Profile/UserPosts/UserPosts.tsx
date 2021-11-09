@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addPost} from "../../../redux/profilleReducer";
 import {Formik} from "formik";
 import {Form, FormItem, Input, SubmitButton} from "formik-antd";
-import {getCurrentUserId, getProfilePage, getUserId, getUserPostsData} from "../../../redux/Selectors";
+import {getCurrentUserId, getUserId, getUserPostsData} from "../../../redux/Selectors";
 
 
 function UserPosts() {

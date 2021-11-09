@@ -10,7 +10,7 @@ type ProfilePhotoPropsType = {
 
 const ProfilePhotoChange: React.FC<ProfilePhotoPropsType> = props => {
     return (
-        <Modal  visible={props.visible} onOk={props.onSubmitClick} onCancel={props.onCancelClick}>
+        <Modal visible={props.visible} onOk={props.onSubmitClick} onCancel={props.onCancelClick}>
             <input onChange={props.selectPhoto} type={'file'}/>
         </Modal>
     );

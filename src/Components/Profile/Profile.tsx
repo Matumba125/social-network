@@ -21,13 +21,13 @@ export const Profile = () => {
 
     const dispatch = useDispatch()
 
-    useEffect(()=>{
-        if (!userId ||userId === ":userId") {
+    useEffect(() => {
+        if (!userId || userId === ":userId") {
             userId = currentUserId;
         }
         dispatch(getProfile(userId))
         dispatch(getStatus(userId))
-    },[userId])
+    }, [userId])
 
     return (
         <>

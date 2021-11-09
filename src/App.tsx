@@ -26,8 +26,8 @@ const App: React.FC = () => {
     }, [])
 
 
-    if(!isInitialized){
-        return <LoadingOutlined style={{fontSize: "48px"}} />
+    if (!isInitialized) {
+        return <LoadingOutlined style={{fontSize: "48px"}}/>
     }
 
     return (

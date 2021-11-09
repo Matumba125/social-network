@@ -31,7 +31,8 @@
     font-size: 30px;
     font-weight: bold;
 }
-.avaWrapper{
+
+.avaWrapper {
     display: flex;
     align-items: flex-end;
 }
@@ -42,33 +43,33 @@
     height: 100px;
 }
 
-.workStatus{
+.workStatus {
     font-size: 14px;
     font-weight: normal;
 }
 
-.userDataContainer{
+.userDataContainer {
     display: flex;
     align-self: flex-start;
     flex-direction: column;
 }
 
-.userDataContainer p{
+.userDataContainer p {
     margin-top: 10px;
 }
 
-.socialLink{
+.socialLink {
     margin-top: 10px;
     text-decoration: none;
     color: black;
 }
 
-.editButton{
+.editButton {
     width: 100px;
 }
 
-.aboutCard{
+.aboutCard {
     margin-top: 20px;
-    word-wrap:break-word;
+    word-wrap: break-word;
     max-width: 300px;
 }

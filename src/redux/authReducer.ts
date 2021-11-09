@@ -80,7 +80,7 @@ export const authUser = () => {
             if (data.resultCode === 0) {
                 dispatch(setUserData(data.data))
             }
-            })
+        })
             .finally(() => {
                 dispatch(setAppInitialized(true))
             })

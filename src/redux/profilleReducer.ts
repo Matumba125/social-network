@@ -4,8 +4,6 @@ import {PhotosType} from "./usersReducer";
 import myPhoto from "../assets/img/userAvatar.jpg"
 import {Dispatch} from "redux";
 import {ProfileAPI} from "../api/api";
-import {UploadChangeParam} from "antd/lib/upload";
-import {UploadFile} from "antd/es/upload/interface";
 
 
 export type PostType = {
@@ -165,20 +163,20 @@ export const updateProfile = (data: ProfileUpdatingType) => {
             mainLink: data.mainLink,
         },
     }
-    return (dispatch: Dispatch) =>{
-       ProfileAPI.updateProfile(updatedProfile)
-           .then(()=>{
-               //@ts-ignore
-               dispatch(getProfile(state.auth.data.id))
-           })
+    return (dispatch: Dispatch) => {
+        ProfileAPI.updateProfile(updatedProfile)
+            .then(() => {
+                //@ts-ignore
+                dispatch(getProfile(state.auth.data.id))
+            })
     }
 }
 
-export const updatePhoto = (image: File) =>{
+export const updatePhoto = (image: File) => {
     const userId = store.getState().auth.data.id
-    return (dispatch: Dispatch)=>{
+    return (dispatch: Dispatch) => {
         ProfileAPI.updatePhoto(image)
-            .then(()=>{
+            .then(() => {
                 //@ts-ignore
                 dispatch(getProfile(userId))
             })

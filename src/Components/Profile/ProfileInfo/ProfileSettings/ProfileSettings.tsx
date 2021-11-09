@@ -1,12 +1,10 @@
 import Modal from 'antd/lib/modal/Modal';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {ProfileInitialStateType, updateProfile} from "../../../../redux/profilleReducer";
 import {useFormik} from "formik";
 import {useDispatch} from "react-redux";
-import {Button, Checkbox, Input, Upload} from "antd";
+import {Checkbox, Input} from "antd";
 import style from './ProfileSettings.module.css'
-import {UploadOutlined} from "@ant-design/icons/lib/icons";
-import {UploadFile} from "antd/es/upload/interface";
 
 type ProfileSettingsPropsType = {
     visible: boolean
@@ -46,7 +44,6 @@ const ProfileSettings: React.FC<ProfileSettingsPropsType> = props => {
     const submitForm = () => {
         formik.handleSubmit()
     }
-
 
 
     return (

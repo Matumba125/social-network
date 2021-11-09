@@ -13,7 +13,8 @@ export const HeaderComponent = React.memo(() => {
         const isAuth = useSelector<AppStateType>(state => state.auth.isAuth)
         const login = useSelector<AppStateType>(state => state.auth.data.login)
 
-        useEffect(()=>{},[isAuth, login])
+        useEffect(() => {
+        }, [isAuth, login])
 
 
         const onClickHandler = useCallback(() => {
