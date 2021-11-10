@@ -1,27 +1,17 @@
-import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import TextArea from "antd/lib/input/TextArea";
 import style from './AddMessageForm.module.css'
 import {Button} from "antd";
 import {SendOutlined} from '@ant-design/icons';
+import {useDispatch} from "react-redux";
+import {sendMessage} from '../../../../redux/chatReducer';
 
-type AddMessageFormPropsType = {
-    wsChannel: WebSocket | null
-}
 
-export const AddMessageForm: React.FC<AddMessageFormPropsType> = ({wsChannel, ...restProps}) => {
+export const AddMessageForm: React.FC = () => {
 
     const [newMessage, setNewMessage] = useState<string>('')
-    const [isReady, setIsReady] = useState<boolean>(false)
 
-    useEffect(() => {
-        const openHandler = () => {
-            setIsReady(true)
-        };
-        wsChannel && wsChannel.addEventListener('open', openHandler)
-        return () => {
-            wsChannel?.removeEventListener('open', openHandler)
-        }
-    }, [wsChannel])
+   const dispatch = useDispatch()
 
     const onMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setNewMessage(e.target.value)
@@ -30,16 +20,15 @@ export const AddMessageForm: React.FC<AddMessageFormPropsType> = ({wsChannel, ..
     const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if(e.key === 'Enter' && !e.shiftKey){
             e.preventDefault()
-            sendMessage()
+            sendMessageHandler()
         }
     }
 
-
-    const sendMessage = () => {
+    const sendMessageHandler = () => {
         if (!newMessage) {
             return
         }
-        wsChannel && wsChannel.send(newMessage)
+        dispatch(sendMessage(newMessage))
         setNewMessage('')
     }
 
@@ -58,8 +47,7 @@ export const AddMessageForm: React.FC<AddMessageFormPropsType> = ({wsChannel, ..
                 icon={<SendOutlined style={{color: 'rgba(0, 0, 0, 0.85)'}}/>}
                 type={'text'}
                 className={style.sendBtn}
-                onClick={sendMessage}
-                disabled={!isReady}
+                onClick={sendMessageHandler}
             />
         </div>
     );

@@ -1,27 +1,17 @@
 import React, {useEffect, useState} from 'react';
+import {ChatMessageType} from '../../../../api/chat-api';
 
 import Message from "./Message/Message";
 import style from './Messages.module.css'
+import {useSelector} from "react-redux";
+import {AppStateType} from "../../../../redux/reduxStore";
 
 
-export type ChatMessageType = {
-    message: string
-    photo: string
-    userId: string
-    userName: string
-    first?: boolean
-    last?: boolean
-    unique?: boolean
-}
+export const Messages: React.FC= () => {
 
-type MessagesType = {
-    wsChannel: WebSocket | null
-}
-
-export const Messages: React.FC<MessagesType> = ({wsChannel, ...restProps}) => {
-
-    const [messages, setMessages] = useState<ChatMessageType[]>([])
     const [finalSortedMessages, setFinalSortedMessages] = useState<ChatMessageType[]>([])
+
+    const messages = useSelector<AppStateType, ChatMessageType[]>(state => state.chat.messages)
 
     useEffect(()=>{
         const sortedMessages = messages.slice()
@@ -45,23 +35,6 @@ export const Messages: React.FC<MessagesType> = ({wsChannel, ...restProps}) => {
         }
         setFinalSortedMessages(sortedMessages)
     }, [messages])
-
-
-    useEffect(() => {
-        const onOpenHandler = (e: MessageEvent) => {
-            const newMessages = JSON.parse(e.data);
-            setMessages((prevMessages) => [...prevMessages, ...newMessages])
-            const elem = document.getElementById('data');
-            setTimeout(() => {if(elem) {
-                elem.scrollTop = elem.scrollHeight;
-            }}, 5)
-        };
-        wsChannel?.addEventListener('message', onOpenHandler)
-
-        return () => {
-            wsChannel?.removeEventListener('message', onOpenHandler)
-        }
-    }, [wsChannel])
 
     return (
         <div id={'data'} className={style.messagesWrapper}>

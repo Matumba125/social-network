@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import style from "./Message.module.css";
 import {Avatar} from "antd";
 import {UserOutlined} from "@ant-design/icons";
-import {ChatMessageType} from '../Messages';
+import {ChatMessageType} from '../../../../../api/chat-api';
 
 
 const Message: React.FC<ChatMessageType> = (props) => {

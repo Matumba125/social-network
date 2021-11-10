@@ -13,6 +13,7 @@ import usersReducer, {
 } from "./usersReducer";
 import authReducer, {setAppInitialized, setUserData, userBeenLogined, userBeenLoginedOut} from "./authReducer";
 import thunkMiddleware from "redux-thunk"
+import chatReducer, {setMessages} from "./chatReducer";
 
 
 export type ActionTypes =
@@ -30,7 +31,8 @@ export type ActionTypes =
     ReturnType<typeof setStatus> |
     ReturnType<typeof userBeenLogined> |
     ReturnType<typeof userBeenLoginedOut> |
-    ReturnType<typeof setAppInitialized>
+    ReturnType<typeof setAppInitialized>|
+    ReturnType<typeof setMessages>
 
 export const rootReducer = combineReducers({
     profilePage: profileReducer,
@@ -38,6 +40,7 @@ export const rootReducer = combineReducers({
     rightNavbar: rightNavbarReducer,
     users: usersReducer,
     auth: authReducer,
+    chat: chatReducer,
 });
 
 export type AppStateType = ReturnType<typeof rootReducer>
