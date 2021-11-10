@@ -29,6 +29,7 @@ export const Messages: React.FC<MessagesType> = ({wsChannel, ...restProps}) => {
             for (let i = 0; i < sortedMessages.length; i++) {
                 if (sortedMessages[i].userId === sortedMessages[i + 1]?.userId && sortedMessages[i].userId !== sortedMessages[i - 1]?.userId) {
                     sortedMessages[i].first = true
+                    sortedMessages[i].unique = false
                     let k = i
                     while (sortedMessages[k].userId === sortedMessages[k + 1]?.userId && sortedMessages[k + 1].userId) {
                         k++
@@ -61,9 +62,6 @@ export const Messages: React.FC<MessagesType> = ({wsChannel, ...restProps}) => {
             wsChannel?.removeEventListener('message', onOpenHandler)
         }
     }, [wsChannel])
-
-
-
 
     return (
         <div id={'data'} className={style.messagesWrapper}>
