@@ -27,6 +27,7 @@ export const Profile = () => {
             setUserId(currentUserId)
         }
         dispatch(getProfile(userId))
+
         dispatch(getStatus(userId))
     }, [userId, currentUserId])
 
