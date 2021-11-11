@@ -26,10 +26,13 @@ export const Profile = () => {
         if (!userId || userId === ":userId") {
             setUserId(currentUserId)
         }
+        if (userId !== ":userId") {
+            setUserId(params.userId)
+        }
         dispatch(getProfile(userId))
 
         dispatch(getStatus(userId))
-    }, [userId, currentUserId])
+    }, [userId, params]);
 
     return (
         <>

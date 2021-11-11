@@ -5,7 +5,7 @@ import {Dispatch} from "redux";
 
 export type PhotosType = {
     large?: string
-    small?: string
+    small: string
 }
 
 export type UserType = {

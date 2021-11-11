@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {NavLink} from "react-router-dom";
 import {logoutUser} from "../../redux/authReducer";
 import {Avatar, Button, PageHeader} from "antd";
@@ -9,12 +9,18 @@ import {AppStateType} from "../../redux/reduxStore";
 
 export const HeaderComponent = React.memo(() => {
 
+        const [avatar, setAvatar] = useState<string>('')
+
         const dispatch = useDispatch()
         const isAuth = useSelector<AppStateType>(state => state.auth.isAuth)
         const login = useSelector<AppStateType>(state => state.auth.data.login)
+        const ava = useSelector<AppStateType, string>(state => state.profilePage.profile.photos.small)
 
         useEffect(() => {
-        }, [isAuth, login])
+            if(ava){
+                setAvatar(ava)
+            }
+        }, [isAuth, login, ava])
 
 
         const onClickHandler = useCallback(() => {
@@ -26,7 +32,10 @@ export const HeaderComponent = React.memo(() => {
                 isAuth ?
                     <div className={style.userStatus}>
                         <NavLink to="/social-network/profile">
-                            <Avatar style={{backgroundColor: '#87d068'}} icon={<UserOutlined/>}/>
+                            <Avatar
+                                style={{backgroundColor: '#87d068'}}
+                                src={avatar && avatar}
+                                icon={!avatar && <UserOutlined/>}/>
                             {login}
                         </NavLink>
                         <Button onClick={onClickHandler}>Log Out</Button>
