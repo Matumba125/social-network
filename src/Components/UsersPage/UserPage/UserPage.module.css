@@ -8,6 +8,7 @@
     height: 285px;
     position: relative;
     margin: 20px;
+    border-radius: 0.8rem;
 }
 
 .description {

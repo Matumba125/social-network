@@ -20,8 +20,6 @@ const {Content, Footer} = Layout;
 const App: React.FC = () => {
 
     const isInitialized = useSelector(getIsInitialized)
-    const isAuth = useSelector(getIsAuth)
-    const userId = useSelector(getCurrentUserId)
 
 
     const dispatch = useDispatch()

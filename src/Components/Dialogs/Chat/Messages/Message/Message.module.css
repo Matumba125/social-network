@@ -36,7 +36,7 @@
 .svgAppendix {
     overflow: hidden;
     position: absolute;
-    left: 3.21rem;
+    left: 3.26rem;
     bottom: -0.06rem;
     width: 0.5625rem;
     height: 1.125rem;
@@ -96,8 +96,8 @@
 .userAppendix {
     overflow: hidden;
     position: absolute;
-    left: 7.5rem;
-    bottom: -0.06rem;
+    left: 7.43rem;
+    bottom: -0.065rem;
     width: 0.5625rem;
     height: 1.125rem;
     font-size: 1rem !important;

@@ -12,4 +12,13 @@
     top: 85%;
     left: 95%;
 }
+
+@media screen and (max-width: 500px){
+    .badge{
+        left: 90%;
+    }
+    .messagesWrapper{
+        width: 95%;
+    }
+}
 .messagesWrapper::-webkit-scrollbar { width: 0 !important }

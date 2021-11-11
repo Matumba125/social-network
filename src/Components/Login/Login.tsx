@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {MouseEvent} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Formik} from 'formik';
+import {useFormik} from 'formik';
 import {loginUser} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
 import {getIsAuth} from "../../redux/Selectors";
-import {Checkbox, Form, FormItem, Input, SubmitButton} from "formik-antd";
 import style from './Login.module.css'
+import {Button, Card, Checkbox, Input} from "antd";
 
 
 export type FormikErrorType = {
@@ -21,23 +21,18 @@ const Login = () => {
 
     const dispatch = useDispatch()
 
-    if (isAuth) {
-        return <Redirect to={'/social-network/profile/:userId?'}/>
-    }
-
-    return (
-        <Formik
-            initialValues={{
+    const formik = useFormik({
+            initialValues: {
                 email: '',
                 password: '',
                 rememberMe: false
-            }}
-            onSubmit={(values, actions) => {
+            },
+            onSubmit: (values, actions) => {
                 dispatch(loginUser(values));
                 actions.resetForm()
-            }
-            }
-            validate={values => {
+            },
+
+            validate: values => {
                 const errors: FormikErrorType = {};
 
                 if (!values.email) {
@@ -53,45 +48,71 @@ const Login = () => {
                 }
 
                 return errors;
-            }}
-            render={() => (
-                <Form
+
+            }
+        }
+    )
+
+    const onClick = (e: MouseEvent<HTMLElement>) => {
+        e.preventDefault()
+        formik.submitForm()
+    }
+
+    if (isAuth) {
+        return <Redirect to={'/social-network/profile/:userId?'}/>
+    }
+
+    return (
+        <div className={style.loginWrapper}>
+            <Card className={style.mainWrapper}>
+                <h1 className={style.title}>Login</h1>
+                <form
                     className={style.formWrapper}
                 >
-                    <p>To log in get registered
-                        <a href={'https://social-network.samuraijs.com/'}
-                           target={'_blank'}>here
-                        </a>
-                    </p>
-                    <p>or use common test account credentials:</p>
-                    <p>Email: free@samuraijs.com</p>
-                    <p>Password: free</p>
-
-                    <FormItem
-                        label="Email"
-                        name={'email'}
-                    >
-                        <Input name={'email'}/>
-                    </FormItem>
+                    <div>
+                        <p>To log in get registered
+                            <a href={'https://social-network.samuraijs.com/'}>
+                                {' here'}
+                            </a>
+                            <p>
+                                or use common test account credentials:
+                            </p>
+                        </p>
+                        <p>Email: free@samuraijs.com</p>
+                        <p>Password: free</p>
+                    </div>
 
 
-                    <FormItem
-                        label="Password"
-                        name={'password'}
-                    >
-                        <Input.Password name={'password'}/>
-                    </FormItem>
+                    <div>
+                        <Input
+                            className={style.inputItem}
+                            placeholder={'Email'}
+                            {...formik.getFieldProps('email')}
+                        />
+                    </div>
 
-                    <FormItem
-                        name={'rememberMe'}
-                    >
-                        <Checkbox name={'rememberMe'}>RememberMe</Checkbox>
-                    </FormItem>
-                    <SubmitButton>Login</SubmitButton>
-                </Form>
-            )
-            }
-        />
+                    <div>
+                        <Input
+                            className={style.inputItem}
+                            type={'password'}
+                            placeholder={'Password'}
+                            {...formik.getFieldProps('password')}
+                        />
+                    </div>
+
+
+                    <Checkbox
+                        name={'rememberMe'}>
+                        RememberMe
+                    </Checkbox>
+                    <Button
+                        type={'primary'}
+                        className={style.submitBtn}
+                        onClick={onClick}>
+                        Login</Button>
+                </form>
+            </Card>
+        </div>
     )
 }
 
