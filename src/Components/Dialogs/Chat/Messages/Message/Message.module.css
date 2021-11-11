@@ -3,6 +3,7 @@
     align-items: flex-end;
     margin: 1px 0 0 60px;
     box-sizing: border-box;
+    justify-self: flex-end;
 }
 
 .lastMessageWrapper{
@@ -11,6 +12,7 @@
     margin-bottom: 10px;
     position: relative;
     box-sizing: border-box;
+    justify-self: flex-end;
 }
 
 .avatar{
