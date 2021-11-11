@@ -21,7 +21,6 @@ const App: React.FC = () => {
 
     const isInitialized = useSelector(getIsInitialized)
 
-
     const dispatch = useDispatch()
 
     useEffect(() => {

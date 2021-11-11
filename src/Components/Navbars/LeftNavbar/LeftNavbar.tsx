@@ -9,10 +9,14 @@ import {
     UserOutlined
 } from "@ant-design/icons";
 import {Link} from 'react-router-dom';
+import {useSelector} from "react-redux";
+import {getIsAuth} from "../../../redux/Selectors";
 
 const {Sider} = Layout;
 
 function LeftNavbar() {
+
+    const isAuth = useSelector(getIsAuth)
 
     const [collapsed, setCollapsed] = useState<boolean>(true)
 
@@ -21,7 +25,10 @@ function LeftNavbar() {
     }
 
     return (
-        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+        <Sider
+            style={{ visibility: `${isAuth ? 'visible' : 'hidden'}`}}
+            collapsible collapsed={collapsed}
+            onCollapse={onCollapse}>
             <Menu theme="dark" mode="inline">
                 <Menu.Item key="1" icon={<NotificationOutlined/>}>
                     <Link to="/social-network/news/">News</Link>

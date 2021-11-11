@@ -47,7 +47,12 @@ const ProfileSettings: React.FC<ProfileSettingsPropsType> = props => {
 
 
     return (
-        <Modal title={'Profile settings'} visible={props.visible} onOk={submitForm} onCancel={props.onCancelClick}>
+        <Modal
+            className={style.modalWrapper}
+            title={'Profile settings'}
+            visible={props.visible}
+            onOk={submitForm}
+            onCancel={props.onCancelClick}>
             <form className={style.form}>
                 <div>
                     <h4>Full Name</h4>

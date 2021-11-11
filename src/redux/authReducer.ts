@@ -89,11 +89,14 @@ export const authUser = () => {
 
 export const loginUser = (formData: FormikErrorType) => {
     return (dispatch: Dispatch) => {
-        AuthorizeAPI.loginUser(formData).then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(userBeenLogined())
-            }
-        })
+        AuthorizeAPI.loginUser(formData)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(userBeenLogined())
+                    // @ts-ignore
+                    dispatch(authUser())
+                }
+            })
     }
 }
 export const logoutUser = () => {

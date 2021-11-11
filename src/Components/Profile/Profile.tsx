@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {useDispatch, useSelector} from "react-redux";
 import {getProfile, getStatus} from "../../redux/profilleReducer";
@@ -15,7 +15,8 @@ export const Profile = () => {
 
     let params = useParams<UserIdType>()
 
-    let userId = params.userId
+
+    const [userId, setUserId] = useState<string>(params.userId)
 
     const currentUserId = useSelector(getCurrentUserId)
 
@@ -23,11 +24,11 @@ export const Profile = () => {
 
     useEffect(() => {
         if (!userId || userId === ":userId") {
-            userId = currentUserId;
+            setUserId(currentUserId)
         }
         dispatch(getProfile(userId))
         dispatch(getStatus(userId))
-    }, [userId])
+    }, [userId, currentUserId])
 
     return (
         <>
