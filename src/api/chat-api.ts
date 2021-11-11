@@ -72,6 +72,7 @@ export type ChatMessageType = {
     first?: boolean
     last?: boolean
     unique?: boolean
+    userMessage?: boolean
 }
 
 type MessageReceivedSubscriberType = (messages: ChatMessageType[]) => void

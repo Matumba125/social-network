@@ -17,8 +17,10 @@ export const ProfileStatus = React.memo(({status, isProfileBelongsToUser, ...res
         const [newStatus, setNewStatus] = useState<string>(status)
 
         const onDoubleClickHandler = () => {
-            setEditMode(true)
-            setNewStatus(status)
+            if(isProfileBelongsToUser){
+                setEditMode(true)
+                setNewStatus(status)
+        }
         }
 
         const onBlurHandler = () => {

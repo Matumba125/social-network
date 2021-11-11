@@ -86,7 +86,7 @@ function ProfileInfo() {
                     <div className={style.mainInfo}>
                         <div className={style.avaWrapper}>
                             <Avatar
-                                className={style.ava}
+                                size={100}
                                 alt={`${profilePage.profile.userId} user ava`}
                                 src={profilePage.profile.photos.small && profilePage.profile.photos.small}
                                 icon={!profilePage.profile.photos.small && <UserOutlined/>}/>

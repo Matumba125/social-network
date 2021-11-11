@@ -9,7 +9,7 @@
 .badge{
     position: absolute;
     z-index: 1000;
-    top: 83%;
-    left: 80%;
+    top: 85%;
+    left: 95%;
 }
 .messagesWrapper::-webkit-scrollbar { width: 0 !important }

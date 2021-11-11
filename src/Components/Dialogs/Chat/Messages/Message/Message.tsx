@@ -13,7 +13,7 @@ const Message: React.FC<ChatMessageType> = (props) => {
 
     return (
         <div className={messageWrapperStyle}>
-            {(props.last || props.unique) &&
+          {(props.last || props.unique) &&
             <NavLink to={'/social-network/profile/' + props.userId}><Avatar
                 src={props.photo && props.photo}
                 icon={!props.photo && <UserOutlined/>}
@@ -44,13 +44,13 @@ const Message: React.FC<ChatMessageType> = (props) => {
                 </div>
             </NavLink>
             }
-            <div className={messageStyle}>
-                {(props.first || props.unique) &&
+                <div className={messageStyle}>
+            {(props.first || props.unique) &&
                 <NavLink to={'/social-network/profile/' + props.userId}>
                 <div className={style.name}>{props.userName}</div>
                 </NavLink>}
                 <div className={style.text}>{props.message}</div>
-            </div>
+                </div>
         </div>
 
     );

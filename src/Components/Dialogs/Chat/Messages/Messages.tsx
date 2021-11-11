@@ -6,14 +6,17 @@ import style from './Messages.module.css'
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../../../redux/reduxStore";
 import {Badge, Button} from "antd";
-import { DownCircleOutlined } from '@ant-design/icons/lib/icons';
+import {DownCircleOutlined} from '@ant-design/icons/lib/icons';
+import {getCurrentUserId} from "../../../../redux/Selectors";
+import UserMessage from "./Message/UserMessage";
 
 
-export const Messages: React.FC= () => {
+export const Messages: React.FC = () => {
 
     const [finalSortedMessages, setFinalSortedMessages] = useState<ChatMessageType[]>([])
 
     const messages = useSelector<AppStateType, ChatMessageType[]>(state => state.chat.messages)
+    const currentUserId = useSelector(getCurrentUserId)
 
     const [autoScroll, setAutoScroll] = useState<boolean>(true)
 
@@ -21,9 +24,14 @@ export const Messages: React.FC= () => {
 
     const elem = document.getElementById('data');
 
-    useEffect(()=>{
+    useEffect(() => {
         const sortedMessages = messages.slice()
         if (messages) {
+            for (let i = 0; i < sortedMessages.length; i++) {
+                if (sortedMessages[i].userId === currentUserId) {
+                    sortedMessages[i].userMessage = true
+                }
+            }
             for (let i = 0; i < sortedMessages.length; i++) {
                 if (sortedMessages[i].userId === sortedMessages[i + 1]?.userId && sortedMessages[i].userId !== sortedMessages[i - 1]?.userId) {
                     sortedMessages[i].first = true
@@ -32,7 +40,7 @@ export const Messages: React.FC= () => {
                     while (sortedMessages[k].userId === sortedMessages[k + 1]?.userId && sortedMessages[k + 1].userId) {
                         k++
                     }
-                    sortedMessages[k-1].last = false
+                    sortedMessages[k - 1].last = false
                     sortedMessages[k].last = true
                     i = k
                 }
@@ -42,7 +50,7 @@ export const Messages: React.FC= () => {
             }
         }
         setFinalSortedMessages(sortedMessages)
-        setMessagesCounter(messagesCounter +1 )
+        setMessagesCounter(messagesCounter + 1)
 
         setTimeout(() => {
             if (elem && autoScroll) {
@@ -51,18 +59,19 @@ export const Messages: React.FC= () => {
         }, 5)
     }, [messages])
 
-    const onScrollHandler = (e: UIEvent<HTMLDivElement>) =>{
+    const onScrollHandler = (e: UIEvent<HTMLDivElement>) => {
         const element = e.currentTarget
-        if(Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 150){
+        if (Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 150) {
             setAutoScroll(true)
         } else {
             setAutoScroll(false)
         }
     }
 
-    const onButtonClickHandler = () =>{
+    const onButtonClickHandler = () => {
         if (elem) {
             elem.scrollTop = elem.scrollHeight;
+            setMessagesCounter(0)
         }
     }
 
@@ -73,7 +82,7 @@ export const Messages: React.FC= () => {
                 type={"text"}
                 icon={
                     <Badge count={messagesCounter} size={'small'}>
-                        <DownCircleOutlined/>
+                        <DownCircleOutlined style={{fontSize: '25px'}}/>
                     </Badge>
                 }
                 className={style.badge}
@@ -82,6 +91,13 @@ export const Messages: React.FC= () => {
             />}
 
             {finalSortedMessages.map((m: ChatMessageType, i) =>
+                m.userMessage ?
+                    <UserMessage
+                        message={m.message}
+                        last={m.last}
+                        first={m.first}
+                        unique={m.unique}
+                        /> :
                 <Message
                     key={i}
                     userName={m.userName}

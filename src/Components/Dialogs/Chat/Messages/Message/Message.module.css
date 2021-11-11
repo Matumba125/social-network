@@ -6,7 +6,7 @@
     justify-self: flex-end;
 }
 
-.lastMessageWrapper{
+.lastMessageWrapper {
     display: flex;
     align-items: flex-end;
     margin-bottom: 10px;
@@ -15,21 +15,21 @@
     justify-self: flex-end;
 }
 
-.avatar{
+.avatar {
     margin-right: 10px;
 }
 
 .messageContent {
     padding: 10px;
-    border-radius: 5px;
-    background-color: rgb(24, 37, 51);
+    border-radius: 0.75rem;
+    background-color: rgb(33,33,33);
 }
 
-.lastMessage{
+.lastMessage {
     padding: 10px;
     margin: 1px 0 0 10px;
-    border-radius: 5px 5px 5px 0;
-    background-color: rgb(24, 37, 51);
+    border-radius: 0.75rem 0.75rem 0.75rem 0;
+    background-color: rgb(33,33,33);
     box-sizing: border-box;
 }
 
@@ -44,9 +44,9 @@
 }
 
 .name {
-    font-size: 20px;
-    color: rgb(180, 123, 184);
+    color: #faa774;
     text-align: left;
+    font-size: calc(16px - .125rem);
 }
 
 .text {
@@ -58,8 +58,56 @@
     padding-left: 5px;
 }
 
-.time {
+/*user styles*/
+
+.userLastMessageWrapper {
     display: flex;
-    justify-content: flex-end;
-    color: rgb(109, 127, 143);
+    align-items: flex-end;
+    margin-bottom: 10px;
+    position: relative;
+    box-sizing: border-box;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.userMessage {
+    display: flex;
+    align-items: flex-end;
+    margin: 1px 30px 0 0;
+    box-sizing: border-box;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.userMessageContent {
+    padding: 10px;
+    border-radius: 0.75rem;
+    background-color: rgb(135, 116, 225);
+}
+
+.userLastMessage {
+    padding: 10px;
+    margin: 1px 30px 0 0;
+    border-radius: 0.75rem 0.75rem 0 0.75rem;
+    background-color: rgb(135, 116, 225);
+    box-sizing: border-box;
+}
+
+.userAppendix {
+    overflow: hidden;
+    position: absolute;
+    left: 7.5rem;
+    bottom: -0.06rem;
+    width: 0.5625rem;
+    height: 1.125rem;
+    font-size: 1rem !important;
+}
+
+.userText {
+    min-width: 100px;
+    max-width: 150px;
+    word-wrap: break-word;
+    color: rgb(245, 245, 245);
+    text-align: right;
+    padding-left: 5px;
 }

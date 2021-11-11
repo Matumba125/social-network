@@ -7,9 +7,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {LoadingOutlined} from "@ant-design/icons";
 import {HeaderComponent} from "./Components/Header/HeaderComponent";
 import {authUser} from "./redux/authReducer";
-import {getIsInitialized} from "./redux/Selectors";
+import {getCurrentUserId, getIsAuth, getIsInitialized} from "./redux/Selectors";
 import {RoutingComponent} from "./Components/RoutingComponent/RoutingComponent";
-import {Route} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import Login from "./Components/Login/Login";
 
 const {Content, Footer} = Layout;
@@ -20,6 +20,9 @@ const {Content, Footer} = Layout;
 const App: React.FC = () => {
 
     const isInitialized = useSelector(getIsInitialized)
+    const isAuth = useSelector(getIsAuth)
+    const userId = useSelector(getCurrentUserId)
+
 
     const dispatch = useDispatch()
 

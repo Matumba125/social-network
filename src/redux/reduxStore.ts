@@ -1,7 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import profileReducer, {addPost, setStatus, setUserProfile} from "./profilleReducer";
 import dialogsReducer, {addMessage} from "./dialogsReducer";
-import rightNavbarReducer from "./rightNavbarReducer";
 import usersReducer, {
     changeFetchingStatus,
     changeResponseStatus,
@@ -39,7 +38,6 @@ export type ActionTypes =
 export const rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
-    rightNavbar: rightNavbarReducer,
     users: usersReducer,
     auth: authReducer,
     chat: chatReducer,

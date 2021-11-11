@@ -4,28 +4,3 @@
     position: relative;
     height: 90vh;
 }
-
-.dialogs button {
-    margin-top: 10px;
-}
-
-.dialogs_items {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 30%;
-}
-
-.messages {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.addMessage {
-    display: flex;
-    align-items: center;
-    margin: 15px;
-}

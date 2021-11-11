@@ -37,12 +37,6 @@
     align-items: flex-end;
 }
 
-.ava {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-}
-
 .workStatus {
     font-size: 14px;
     font-weight: normal;
