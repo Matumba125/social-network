@@ -111,6 +111,7 @@ function ProfileInfo() {
 
                         {isProfileBelongsToUser &&
                         <Button
+                            type={'ghost'}
                             className={style.editButton}
                             onClick={onEditClick}>
                             Edit Profile

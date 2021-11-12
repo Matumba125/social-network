@@ -31,10 +31,10 @@ const UserMessage: React.FC<UserMessageType> = React.memo((props) => {
                         <g fill="none" fillRule="evenodd">
                             <path
                                 d="M6 17H0V0c.193 2.84.876 5.767 2.05 8.782.904 2.325 2.446 4.485 4.625 6.48A1 1 0 016 17z"
-                                fill="rgb(135,116,225)" filter="url(#a)"/>
+                                fill="#1890ff" filter="url(#a)"/>
                             <path
                                 d="M6 17H0V0c.193 2.84.876 5.767 2.05 8.782.904 2.325 2.446 4.485 4.625 6.48A1 1 0 016 17z"
-                                fill="rgb(135,116,225)" className="corner"/>
+                                fill="#1890ff" className="corner"/>
                         </g>
                     </svg>
                 </div>

@@ -6,30 +6,14 @@
 }
 
 .item {
-    margin: 15px;
-    max-width: 40%;
+    border-radius: 8px;
+    margin: 15px 0;
+    padding: 0;
+    width: 100%;
 }
 
 .likes {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-}
-
-@media only screen and (max-width: 1080px) {
-    .item {
-        max-width: 60%;
-    }
-}
-
-@media only screen and (max-width: 770px) {
-    .item {
-        max-width: 70%;
-    }
-}
-
-@media only screen and (max-width: 540px) {
-    .item {
-        max-width: 100%;
-    }
 }

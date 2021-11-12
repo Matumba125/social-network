@@ -6,6 +6,7 @@ import {Redirect} from "react-router-dom";
 import {getIsAuth} from "../../redux/Selectors";
 import style from './Login.module.css'
 import {Button, Card, Checkbox, Input} from "antd";
+import './Login.css'
 
 
 export type FormikErrorType = {
@@ -89,6 +90,7 @@ const Login = () => {
                             placeholder={'Email'}
                             {...formik.getFieldProps('email')}
                         />
+                        {formik.errors.email &&<p className={style.errorMessage}>{formik.errors.email}</p>}
                     </div>
 
                     <div>
@@ -98,11 +100,12 @@ const Login = () => {
                             placeholder={'Password'}
                             {...formik.getFieldProps('password')}
                         />
+                        {formik.errors.password &&<p className={style.errorMessage}>{formik.errors.password}</p>}
                     </div>
 
 
                     <Checkbox
-                        name={'rememberMe'}>
+                        {...formik.getFieldProps('rememberMe')}>
                         RememberMe
                     </Checkbox>
                     <Button

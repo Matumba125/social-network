@@ -1,17 +1,17 @@
-import React from 'react'
+import React, {MouseEvent} from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
 import {useDispatch, useSelector} from "react-redux";
 import {addPost} from "../../../redux/profilleReducer";
-import {Formik} from "formik";
-import {Form, FormItem, Input, SubmitButton} from "formik-antd";
+import {useFormik} from "formik";
 import {getCurrentUserId, getUserId, getUserPostsData} from "../../../redux/Selectors";
+import {Button} from "antd";
+import TextArea from 'antd/lib/input/TextArea';
 
 
 function UserPosts() {
 
     const postData = useSelector(getUserPostsData)
-
 
     const currentUserId = useSelector(getCurrentUserId)
     const userId = useSelector(getUserId)
@@ -28,31 +28,40 @@ function UserPosts() {
 
     const dispatch = useDispatch()
 
+    const formik = useFormik({
+        initialValues: {
+            post: ''
+        },
+        onSubmit: (values, action) => {
+            dispatch(addPost(values.post))
+            action.resetForm()
+        }
+    })
+
+    const onButtonClickHandler = (e: MouseEvent<HTMLElement>) =>{
+        e.preventDefault()
+        formik.submitForm()
+    }
+
     return (
-        <div>
+        <div className={style.postsWrapper}>
             <div className={style.userNewPosts}>
-                <Formik
-                    initialValues={{
-                        post: ''
-                    }}
-                    onSubmit={(values, action) => {
-                        dispatch(addPost(values.post))
-                        action.resetForm()
-                    }}
-                    render={() => (
-                        <Form>
-                            {isCurrentProfileBelongsToUser && <div>
-                                <FormItem
-                                    label={'Your Post'}
-                                    name={'post'}
-                                >
-                                    <Input.TextArea name={'post'}/>
-                                </FormItem>
-                                <SubmitButton>Post</SubmitButton>
-                            </div>}
-                        </Form>
-                    )}
-                />
+                <form>
+                    {isCurrentProfileBelongsToUser &&
+                    <div className={style.formWrapper}>
+                        <TextArea
+                            className={style.textArea}
+                            autoSize={{minRows: 1,}}
+                            placeholder={'Enter your new post'}
+                            {...formik.getFieldProps('post')}
+                        />
+                        <Button
+                            type={'primary'}
+                            className={style.submitBtn}
+                            onClick={onButtonClickHandler}
+                        >Post</Button>
+                    </div>}
+                </form>
             </div>
             {postsElement}
         </div>

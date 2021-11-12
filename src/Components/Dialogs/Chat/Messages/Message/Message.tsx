@@ -35,10 +35,10 @@ const Message: React.FC<ChatMessageType> = React.memo((props) => {
                             <g fill="none" fillRule="evenodd">
                                 <path
                                     d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z"
-                                    fill="rgb(24, 37, 51)" filter="url(#a)"/>
+                                    fill="rgba(0, 0, 0, 0.85)" filter="url(#a)"/>
                                 <path
                                     d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z"
-                                    fill="rgb(24, 37, 51)" className="corner"/>
+                                    fill="rgba(0, 0, 0, 0.85)" className="corner"/>
                             </g>
                         </svg>
                     </div>

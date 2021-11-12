@@ -37,6 +37,7 @@
 }
 
 .followBtn {
+    border-radius: 8px;
     position: absolute;
     top: 80%;
 }

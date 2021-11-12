@@ -4,12 +4,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .mainWrapper {
     width: 352px;
-    height: 400px;
+    min-height: 440px;
     border-radius: 8px;
+    margin-right: 80px;
 }
 
 .title {
@@ -26,14 +28,24 @@
 }
 
 .inputItem {
+    border-radius: 8px;
     width: 302px;
-    margin: 5px 0;
+    margin: 10px 0;
+}
+
+.checkBox{
+    border-radius: 8px !important;
 }
 
 .submitBtn {
+    border-radius: 8px;
     align-self: center;
     margin-top: 10px;
     width: 302px;
+}
+
+.errorMessage{
+    color: red;
 }
 
 @media screen and (max-width: 500px) {
@@ -43,7 +55,7 @@
 
     .mainWrapper {
         width: 200px;
-        height: 480px;
+        height: 520px;
     }
 
     .inputItem {

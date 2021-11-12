@@ -10,13 +10,14 @@ import {
 } from "@ant-design/icons";
 import {Link} from 'react-router-dom';
 import {useSelector} from "react-redux";
-import {getIsAuth} from "../../../redux/Selectors";
+import {getCurrentUserId, getIsAuth} from "../../../redux/Selectors";
 
 const {Sider} = Layout;
 
 function LeftNavbar() {
 
     const isAuth = useSelector(getIsAuth)
+    const currentUserId = useSelector(getCurrentUserId)
 
     const [collapsed, setCollapsed] = useState<boolean>(true)
 
@@ -39,7 +40,7 @@ function LeftNavbar() {
                     <Link to="/social-network/news/">News</Link>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<UserOutlined/>}>
-                    <Link to="/social-network/profile/18309">Profile</Link>
+                    <Link to={`/social-network/profile/${currentUserId}`}>Profile</Link>
                 </Menu.Item>
                 <Menu.Item key="3" icon={<MailOutlined/>}>
                     <Link to="/social-network/dialogs/">Messages</Link>

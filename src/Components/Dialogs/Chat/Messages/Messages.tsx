@@ -55,6 +55,7 @@ export const Messages: React.FC = () => {
         setTimeout(() => {
             if (elem && autoScroll) {
                 elem.scrollTop = elem.scrollHeight;
+                setMessagesCounter(0)
             }
         }, 5)
     }, [messages])

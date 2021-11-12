@@ -4,7 +4,6 @@ import 'antd/dist/antd.css'
 import {Layout} from 'antd';
 import LeftNavbar from "./Components/Navbars/LeftNavbar/LeftNavbar";
 import {useDispatch, useSelector} from "react-redux";
-import {LoadingOutlined} from "@ant-design/icons";
 import {HeaderComponent} from "./Components/Header/HeaderComponent";
 import {authUser} from "./redux/authReducer";
 import {getIsInitialized} from "./redux/Selectors";
@@ -19,6 +18,7 @@ const {Content, Footer} = Layout;
 const App: React.FC = () => {
 
     const isInitialized = useSelector(getIsInitialized)
+
 
     const dispatch = useDispatch()
 
@@ -36,6 +36,7 @@ const App: React.FC = () => {
             <HeaderComponent/>
 
             <Layout style={{minHeight: '100vh'}}>
+
                 <LeftNavbar/>
                 <Layout className="site-layout">
                     <Content style={{margin: '0 16px'}}>
@@ -44,7 +45,7 @@ const App: React.FC = () => {
                             <Route path={"/social-network/login"} component={Login}/>
                         </div>
                     </Content>
-                    <Footer style={{textAlign: 'center'}}>Social Network ©2021 by Matumba125</Footer>
+                    <Footer style={{textAlign: 'center', marginRight: '80px'}}>Social Network ©2021 by Matumba125</Footer>
                 </Layout>
             </Layout>
 
