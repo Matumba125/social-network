@@ -2,10 +2,10 @@ import React, {createElement, useState} from 'react';
 import {PostType} from '../../../../redux/profilleReducer';
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../../../redux/reduxStore";
-import defaultImg from "../../../../assets/img/sveta.jpg";
 import {Avatar, Card, Comment, Tooltip} from "antd";
 import {DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined, UserOutlined} from '@ant-design/icons';
 import style from './Post.module.css'
+import Linkify from 'react-linkify';
 
 function Post(props: PostType) {
 
@@ -45,7 +45,7 @@ function Post(props: PostType) {
     ]
 
     return (
-        <Card size={'small'} className={style.item} >
+        <Card size={'small'} className={style.item}>
             <Comment
                 actions={actions}
                 author={<h3 style={{fontWeight: 'bold'}}>{userName}</h3>}
@@ -55,7 +55,7 @@ function Post(props: PostType) {
                                 alt={'userImage'}/>}
                 content={
                     <p>
-                        {props.postContent}
+                        <Linkify>{props.postContent}</Linkify>
                     </p>
                 }
             />

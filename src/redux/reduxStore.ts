@@ -33,7 +33,7 @@ export type ActionTypes =
     ReturnType<typeof setAppInitialized> |
     ReturnType<typeof setMessages> |
     ReturnType<typeof setIsReady> |
-    ReturnType<typeof stopChatAC>|
+    ReturnType<typeof stopChatAC> |
     ReturnType<typeof setLoadingStatus>
 
 export const rootReducer = combineReducers({

@@ -33,7 +33,7 @@
     margin: 10px 0;
 }
 
-.checkBox{
+.checkBox {
     border-radius: 8px !important;
 }
 
@@ -44,7 +44,7 @@
     width: 302px;
 }
 
-.errorMessage{
+.errorMessage {
     color: red;
 }
 

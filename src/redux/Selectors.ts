@@ -20,7 +20,7 @@ export const getUserId = (state: AppStateType): string => {
     return state.profilePage.profile.userId
 }
 
-export const getIsLoading = (state: AppStateType): boolean =>{
+export const getIsLoading = (state: AppStateType): boolean => {
     return state.profilePage.isLoading
 }
 

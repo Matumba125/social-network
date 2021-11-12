@@ -1,4 +1,4 @@
-.profileWrapper{
+.profileWrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -6,12 +6,12 @@
     align-items: center;
 }
 
-.infoWrapper{
+.infoWrapper {
     min-width: 500px;
 }
 
-@media screen and (max-width: 600px){
-    .infoWrapper{
+@media screen and (max-width: 600px) {
+    .infoWrapper {
         min-width: 0;
         max-width: 500px;
     }

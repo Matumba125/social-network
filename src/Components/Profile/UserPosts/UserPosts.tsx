@@ -38,7 +38,7 @@ function UserPosts() {
         }
     })
 
-    const onButtonClickHandler = (e: MouseEvent<HTMLElement>) =>{
+    const onButtonClickHandler = (e: MouseEvent<HTMLElement>) => {
         e.preventDefault()
         formik.submitForm()
     }

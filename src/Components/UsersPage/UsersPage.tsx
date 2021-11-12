@@ -28,7 +28,7 @@ const UsersPage: React.FC = () => {
             dispatch(getUsers(currentPage, pageSize))
         }, [])
 
-        if(isFetching){
+        if (isFetching) {
             return <Preloader/>
         }
 

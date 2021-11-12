@@ -90,7 +90,7 @@ const Login = () => {
                             placeholder={'Email'}
                             {...formik.getFieldProps('email')}
                         />
-                        {formik.errors.email &&<p className={style.errorMessage}>{formik.errors.email}</p>}
+                        {formik.errors.email && <p className={style.errorMessage}>{formik.errors.email}</p>}
                     </div>
 
                     <div>
@@ -100,7 +100,7 @@ const Login = () => {
                             placeholder={'Password'}
                             {...formik.getFieldProps('password')}
                         />
-                        {formik.errors.password &&<p className={style.errorMessage}>{formik.errors.password}</p>}
+                        {formik.errors.password && <p className={style.errorMessage}>{formik.errors.password}</p>}
                     </div>
 
 

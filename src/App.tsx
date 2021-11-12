@@ -45,7 +45,8 @@ const App: React.FC = () => {
                             <Route path={"/social-network/login"} component={Login}/>
                         </div>
                     </Content>
-                    <Footer style={{textAlign: 'center', marginRight: '80px'}}>Social Network ©2021 by Matumba125</Footer>
+                    <Footer style={{textAlign: 'center', marginRight: '80px'}}>Social Network ©2021 by
+                        Matumba125</Footer>
                 </Layout>
             </Layout>
 

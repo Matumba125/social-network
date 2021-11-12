@@ -4,6 +4,7 @@ import {Avatar} from "antd";
 import {UserOutlined} from "@ant-design/icons";
 import {ChatMessageType} from '../../../../../api/chat-api';
 import {NavLink} from 'react-router-dom';
+import Linkify from "react-linkify";
 
 
 const Message: React.FC<ChatMessageType> = React.memo((props) => {
@@ -49,7 +50,7 @@ const Message: React.FC<ChatMessageType> = React.memo((props) => {
                     <NavLink to={'/social-network/profile/' + props.userId}>
                         <div className={style.name}>{props.userName}</div>
                     </NavLink>}
-                    <div className={style.text}>{props.message}</div>
+                    <div className={style.text}><Linkify>{props.message}</Linkify></div>
                 </div>
             </div>
 
