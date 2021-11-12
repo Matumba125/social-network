@@ -1,4 +1,4 @@
-import React, {MouseEvent} from 'react'
+import React, {KeyboardEvent, MouseEvent} from 'react'
 import style from './UserPosts.module.css'
 import Post from "./Post/Post"
 import {useDispatch, useSelector} from "react-redux";
@@ -43,6 +43,14 @@ function UserPosts() {
         formik.submitForm()
     }
 
+    const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault()
+            formik.submitForm()
+        }
+    }
+
+
     return (
         <div className={style.postsWrapper}>
             <div className={style.userNewPosts}>
@@ -50,6 +58,7 @@ function UserPosts() {
                     {isCurrentProfileBelongsToUser &&
                     <div className={style.formWrapper}>
                         <TextArea
+                            onKeyPress={onEnterPressHandler}
                             className={style.textArea}
                             autoSize={{minRows: 1,}}
                             placeholder={'Enter your new post'}
