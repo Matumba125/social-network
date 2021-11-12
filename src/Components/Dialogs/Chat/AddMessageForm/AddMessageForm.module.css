@@ -1,4 +1,4 @@
-.addMessage{
+.addMessage {
     position: absolute;
     min-width: 70%;
     display: flex;
@@ -8,7 +8,7 @@
     margin-top: 10px;
 }
 
-.addMessage::before{
+.addMessage::before {
     content: "";
     position: absolute;
     top: -10px;
@@ -22,11 +22,11 @@
             rgba(217, 217, 217, 0) 100%);
 }
 
-.messageInput{
+.messageInput {
     width: 70%;
     margin-right: 5px;
 }
 
-.sendBtn{
+.sendBtn {
     width: 30px;
 }

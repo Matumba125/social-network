@@ -20,6 +20,10 @@ export const getUserId = (state: AppStateType): string => {
     return state.profilePage.profile.userId
 }
 
+export const getIsLoading = (state: AppStateType): boolean =>{
+    return state.profilePage.isLoading
+}
+
 export const getUsersData = (state: AppStateType): Array<UserType> => {
     return state.users.users
 }
@@ -36,6 +40,11 @@ export const getCurrentPage = (state: AppStateType): number => {
 export const getFollowingUsers = (state: AppStateType): string[] => {
     return state.users.followingUsers
 }
+
+export const getUsersFetchingStatus = (state: AppStateType): boolean => {
+    return state.users.isFetching
+}
+
 export const getDialogsPageData = (state: AppStateType): DialogsInitialStateType => {
     return state.dialogsPage
 }

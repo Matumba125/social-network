@@ -104,7 +104,7 @@ function ProfileInfo() {
                                 (Open to work)
                             </span>}
                         </span>
-                            <ProfileStatus isProfileBelongsToUser={isProfileBelongsToUser}  status={profilePage.status}/>
+                            <ProfileStatus isProfileBelongsToUser={isProfileBelongsToUser} status={profilePage.status}/>
                         </div>
                     </div>
                     <div className={style.userDataContainer}>

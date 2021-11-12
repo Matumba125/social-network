@@ -97,17 +97,17 @@ export const Messages: React.FC = () => {
                         last={m.last}
                         first={m.first}
                         unique={m.unique}
-                        /> :
-                <Message
-                    key={i}
-                    userName={m.userName}
-                    message={m.message}
-                    userId={m.userId}
-                    photo={m.photo}
-                    first={m.first}
-                    last={m.last}
-                    unique={m.unique}
-                />
+                    /> :
+                    <Message
+                        key={i}
+                        userName={m.userName}
+                        message={m.message}
+                        userId={m.userId}
+                        photo={m.photo}
+                        first={m.first}
+                        last={m.last}
+                        unique={m.unique}
+                    />
             )}
 
         </div>

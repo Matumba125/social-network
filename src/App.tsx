@@ -7,14 +7,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {LoadingOutlined} from "@ant-design/icons";
 import {HeaderComponent} from "./Components/Header/HeaderComponent";
 import {authUser} from "./redux/authReducer";
-import {getCurrentUserId, getIsAuth, getIsInitialized} from "./redux/Selectors";
+import {getIsInitialized} from "./redux/Selectors";
 import {RoutingComponent} from "./Components/RoutingComponent/RoutingComponent";
-import {Redirect, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Login from "./Components/Login/Login";
+import Preloader from "./Components/common/Preloader/Preloader";
 
 const {Content, Footer} = Layout;
-
-
 
 
 const App: React.FC = () => {
@@ -29,7 +28,7 @@ const App: React.FC = () => {
 
 
     if (!isInitialized) {
-        return <LoadingOutlined style={{fontSize: "48px"}}/>
+        return <Preloader/>
     }
 
     return (

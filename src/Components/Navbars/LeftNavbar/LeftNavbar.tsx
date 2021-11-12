@@ -26,11 +26,16 @@ function LeftNavbar() {
 
     return (
         <Sider
-            style={{ visibility: `${isAuth ? 'visible' : 'hidden'}`}}
+            style={{visibility: `${isAuth ? 'visible' : 'hidden'}`}}
             collapsible collapsed={collapsed}
             onCollapse={onCollapse}>
-            <Menu theme="dark" mode="inline">
-                <Menu.Item key="1" icon={<NotificationOutlined/>}>
+            <Menu
+                /*selectedKeys={}*/
+                theme="dark"
+                mode="inline">
+                <Menu.Item
+                    key="1"
+                    icon={<NotificationOutlined/>}>
                     <Link to="/social-network/news/">News</Link>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<UserOutlined/>}>

@@ -1,11 +1,10 @@
 import React from "react";
+import {ErrorPage} from "../common/ErrorPage/ErrorPage";
 
 
 function Music() {
     return (
-        <div>
-            Music
-        </div>
+        <ErrorPage/>
     )
 }
 

@@ -4,7 +4,14 @@ import {getUsers} from "../../redux/usersReducer";
 import {UserPage} from "./UserPage/UserPage";
 import {Pagination} from "antd";
 import {useDispatch, useSelector} from "react-redux";
-import {getCurrentPage, getPageSize, getTotalUsersCount, getUsersData} from "../../redux/Selectors";
+import {
+    getCurrentPage,
+    getPageSize,
+    getTotalUsersCount,
+    getUsersData,
+    getUsersFetchingStatus
+} from "../../redux/Selectors";
+import Preloader from "../common/Preloader/Preloader";
 
 
 const UsersPage: React.FC = () => {
@@ -15,10 +22,15 @@ const UsersPage: React.FC = () => {
         const currentPage = useSelector(getCurrentPage)
         const pageSize = useSelector(getPageSize)
         const totalCount = useSelector(getTotalUsersCount)
+        const isFetching = useSelector(getUsersFetchingStatus)
 
         useEffect(() => {
             dispatch(getUsers(currentPage, pageSize))
         }, [])
+
+        if(isFetching){
+            return <Preloader/>
+        }
 
         return (
             <div className={style.usersPage}>

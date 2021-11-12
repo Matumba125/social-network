@@ -46,7 +46,7 @@ export const setIsReady = (isReady: boolean) => ({
     isReady
 } as const)
 
-export const stopChatAC = () =>({
+export const stopChatAC = () => ({
     type: 'chat/STOP-CHAT'
 } as const)
 
@@ -74,15 +74,15 @@ const statusHandler = (dispatch: Dispatch<ActionTypes>) => {
 export const startChat = () => {
     return async (dispatch: Dispatch<ActionTypes>) => {
         chatAPI.start()
-        chatAPI.subscribe('messagesReceived',newMessageHandler(dispatch));
-        chatAPI.subscribe('statusChanged',statusHandler(dispatch));
+        chatAPI.subscribe('messagesReceived', newMessageHandler(dispatch));
+        chatAPI.subscribe('statusChanged', statusHandler(dispatch));
     }
 }
 
 export const stopChat = () => {
     return async (dispatch: Dispatch<ActionTypes>) => {
-        chatAPI.unsubscribe('messagesReceived',newMessageHandler(dispatch));
-        chatAPI.unsubscribe('statusChanged',statusHandler(dispatch));
+        chatAPI.unsubscribe('messagesReceived', newMessageHandler(dispatch));
+        chatAPI.unsubscribe('statusChanged', statusHandler(dispatch));
         dispatch(stopChatAC())
         chatAPI.stop()
     }

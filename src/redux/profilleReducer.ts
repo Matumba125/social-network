@@ -1,7 +1,6 @@
 import {v1} from "uuid";
 import store, {ActionTypes} from "./reduxStore";
 import {PhotosType} from "./usersReducer";
-import myPhoto from "../assets/img/userAvatar.jpg"
 import {Dispatch} from "redux";
 import {ProfileAPI} from "../api/api";
 
@@ -47,6 +46,7 @@ export type ProfileDataType = {
 export type ProfileInitialStateType = {
     profile: ProfileDataType
     status: string
+    isLoading: boolean
     postsData: Array<PostType>
 }
 
@@ -57,14 +57,15 @@ const SET_USER_PROFILE = 'SET-USER-PROFILE';
 let initialState: ProfileInitialStateType = {
     profile: {
         photos: {
-            large: myPhoto,
-            small: myPhoto,
+            large: '',
+            small: '',
         },
         fullName: '',
         aboutMe: '',
         userId: '',
     },
     status: '',
+    isLoading: false,
     postsData: [
         {
             id: v1(),
@@ -101,6 +102,11 @@ const profileReducer = (state: ProfileInitialStateType = initialState,
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
+        case "profile/SET-LOADING":
+            return {
+                ...state,
+                isLoading: action.isLoading
+            }
         default:
             return state;
     }
@@ -117,13 +123,22 @@ export const setUserProfile = (profile: ProfileDataType) => ({
     profile
 } as const)
 
+export const setLoadingStatus = (isLoading: boolean) => ({
+    type: 'profile/SET-LOADING',
+    isLoading
+} as const)
+
 export const setStatus = (newText: string) => ({type: SET_STATUS, newText} as const)
 
 export const getProfile = (userId: string) => {
-    return (dispatch: Dispatch<ActionTypes>) => {
-        ProfileAPI.getProfileInfo(userId).then(data => {
-            dispatch(setUserProfile(data))
-        });
+    return async (dispatch: Dispatch<ActionTypes>) => {
+        try {
+            dispatch(setLoadingStatus(true))
+            const res = await ProfileAPI.getProfileInfo(userId)
+            dispatch(setUserProfile(res.data))
+        } finally {
+            dispatch(setLoadingStatus(false))
+        }
     }
 }
 export const getStatus = (userId: string) => {

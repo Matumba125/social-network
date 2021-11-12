@@ -1,5 +1,5 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import profileReducer, {addPost, setStatus, setUserProfile} from "./profilleReducer";
+import profileReducer, {addPost, setLoadingStatus, setStatus, setUserProfile} from "./profilleReducer";
 import dialogsReducer, {addMessage} from "./dialogsReducer";
 import usersReducer, {
     changeFetchingStatus,
@@ -30,10 +30,11 @@ export type ActionTypes =
     ReturnType<typeof setStatus> |
     ReturnType<typeof userBeenLogined> |
     ReturnType<typeof userBeenLoginedOut> |
-    ReturnType<typeof setAppInitialized>|
-    ReturnType<typeof setMessages>|
-    ReturnType<typeof setIsReady>|
-    ReturnType<typeof stopChatAC>
+    ReturnType<typeof setAppInitialized> |
+    ReturnType<typeof setMessages> |
+    ReturnType<typeof setIsReady> |
+    ReturnType<typeof stopChatAC>|
+    ReturnType<typeof setLoadingStatus>
 
 export const rootReducer = combineReducers({
     profilePage: profileReducer,

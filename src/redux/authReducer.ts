@@ -2,6 +2,7 @@ import {ActionTypes} from "./reduxStore";
 import {Dispatch} from "redux";
 import {AuthorizeAPI} from "../api/api";
 import {FormikErrorType} from "../Components/Login/Login";
+import {getProfile, getStatus} from "./profilleReducer";
 
 
 export type DataType = {
@@ -79,6 +80,10 @@ export const authUser = () => {
         AuthorizeAPI.authorizeUser().then(data => {
             if (data.resultCode === 0) {
                 dispatch(setUserData(data.data))
+                //@ts-ignore
+                dispatch(getProfile(data.data.id))
+                // @ts-ignore
+                dispatch(getStatus(data.data.id))
             }
         })
             .finally(() => {

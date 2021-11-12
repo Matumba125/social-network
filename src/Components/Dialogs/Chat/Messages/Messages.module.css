@@ -1,4 +1,4 @@
-.messagesWrapper{
+.messagesWrapper {
     min-width: 70%;
     height: 90%;
     overflow-y: auto;
@@ -6,19 +6,23 @@
     flex-direction: column;
 }
 
-.badge{
+.badge {
     position: absolute;
     z-index: 1000;
     top: 85%;
     left: 95%;
 }
 
-@media screen and (max-width: 500px){
-    .badge{
+@media screen and (max-width: 500px) {
+    .badge {
         left: 90%;
     }
-    .messagesWrapper{
+
+    .messagesWrapper {
         width: 95%;
     }
 }
-.messagesWrapper::-webkit-scrollbar { width: 0 !important }
+
+.messagesWrapper::-webkit-scrollbar {
+    width: 0 !important
+}

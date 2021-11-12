@@ -116,16 +116,16 @@ export const changeResponseStatus = (responseInProgress: boolean, id: string) =>
 } as const)
 
 export const getUsers = (currentPage: number, pageSize: number) => {
-    return (dispatch: Dispatch<ActionTypes>) => {
+    return async (dispatch: Dispatch<ActionTypes>) => {
         dispatch(changeFetchingStatus(true))
-        UsersAPI.getUsers(currentPage, pageSize)
-            .then(data => {
-                dispatch(setUsers(data.items))
-                dispatch(setCurrentPage(currentPage))
-                dispatch(setTotalUsersCount(data.totalCount))
-                dispatch(changeFetchingStatus(false))
-
-            });
+        try {
+            const data = await UsersAPI.getUsers(currentPage, pageSize)
+            dispatch(setUsers(data.items))
+            dispatch(setCurrentPage(currentPage))
+            dispatch(setTotalUsersCount(data.totalCount))
+        } finally {
+            dispatch(changeFetchingStatus(false))
+        }
     }
 }
 

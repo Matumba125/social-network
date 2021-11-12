@@ -37,7 +37,7 @@
 }
 
 @media screen and (max-width: 500px) {
-    .loginWrapper{
+    .loginWrapper {
         width: 100%;
     }
 
@@ -50,7 +50,7 @@
         width: 150px;
     }
 
-    .submitBtn{
+    .submitBtn {
         width: 150px;
     }
 }

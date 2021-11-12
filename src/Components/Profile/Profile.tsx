@@ -4,7 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getProfile, getStatus} from "../../redux/profilleReducer";
 import {useParams} from 'react-router-dom';
 import UserPosts from "./UserPosts/UserPosts";
-import {getCurrentUserId} from "../../redux/Selectors";
+import {getCurrentUserId, getIsLoading} from "../../redux/Selectors";
+import Preloader from "../common/Preloader/Preloader";
 
 
 type UserIdType = {
@@ -19,6 +20,7 @@ export const Profile = () => {
     const [userId, setUserId] = useState<string>(params.userId)
 
     const currentUserId = useSelector(getCurrentUserId)
+    const isLoading = useSelector(getIsLoading)
 
     const dispatch = useDispatch()
 
@@ -30,9 +32,14 @@ export const Profile = () => {
             setUserId(params.userId)
         }
         dispatch(getProfile(userId))
-
         dispatch(getStatus(userId))
     }, [userId, params]);
+
+    if(isLoading){
+        return (
+            <Preloader/>
+        )
+    }
 
     return (
         <>

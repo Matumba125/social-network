@@ -14,14 +14,14 @@ export const AddMessageForm: React.FC = () => {
 
     const isReady = useSelector<AppStateType, boolean>(state => state.chat.isReady)
 
-   const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     const onMessageTextHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setNewMessage(e.target.value)
     }
 
     const onEnterPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-        if(e.key === 'Enter' && !e.shiftKey){
+        if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault()
             sendMessageHandler()
         }

@@ -10,7 +10,7 @@ import UsersPage from "../UsersPage/UsersPage";
 import {withSuspense} from "../../HOC/withSuspense";
 
 
-const Dialogs = React.lazy(()=> import('../Dialogs/Dialogs'))
+const Dialogs = React.lazy(() => import('../Dialogs/Dialogs'))
 
 const SuspendedDialogs = withSuspense(Dialogs)
 

@@ -22,14 +22,14 @@
 .messageContent {
     padding: 10px;
     border-radius: 0.75rem;
-    background-color: rgb(33,33,33);
+    background-color: rgb(33, 33, 33);
 }
 
 .lastMessage {
     padding: 10px;
     margin: 1px 0 0 10px;
     border-radius: 0.75rem 0.75rem 0.75rem 0;
-    background-color: rgb(33,33,33);
+    background-color: rgb(33, 33, 33);
     box-sizing: border-box;
 }
 

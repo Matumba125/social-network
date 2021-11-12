@@ -19,7 +19,7 @@
     font-size: 13px;
 }
 
-.linksWrapper{
+.linksWrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +27,7 @@
 
 }
 
-.nameLink{
+.nameLink {
     text-decoration: none;
     color: #000c17;
     font-weight: bold;
@@ -36,12 +36,12 @@
 
 }
 
-.followBtn{
+.followBtn {
     position: absolute;
     top: 80%;
 }
 
-.userStatus{
+.userStatus {
     text-align: center;
     word-wrap: break-word;
 }

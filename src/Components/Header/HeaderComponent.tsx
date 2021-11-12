@@ -17,7 +17,7 @@ export const HeaderComponent = React.memo(() => {
         const ava = useSelector<AppStateType, string>(state => state.profilePage.profile.photos.small)
 
         useEffect(() => {
-            if(ava){
+            if (ava) {
                 setAvatar(ava)
             }
         }, [isAuth, login, ava])

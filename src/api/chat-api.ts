@@ -5,7 +5,7 @@ let subscribers = {
 
 let ws: WebSocket
 
-const statusNotify = (status: boolean) =>{
+const statusNotify = (status: boolean) => {
     subscribers['statusChanged'].forEach(s => s(status))
 }
 
@@ -24,7 +24,7 @@ const messageHandler = (e: MessageEvent) => {
 
 };
 
-const cleanUp = () =>{
+const cleanUp = () => {
     ws?.removeEventListener('close', closeHandler)
     ws?.removeEventListener('message', messageHandler)
     ws?.removeEventListener('open', openHandler)
@@ -41,10 +41,10 @@ function createChannel() {
 }
 
 export const chatAPI = {
-    start(){
+    start() {
         createChannel()
     },
-    stop(){
+    stop() {
         subscribers['messagesReceived'] = []
         subscribers['statusChanged'] = []
         cleanUp()
