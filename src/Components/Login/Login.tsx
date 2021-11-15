@@ -75,12 +75,7 @@ const Login = () => {
                             <a href={'https://social-network.samuraijs.com/'}>
                                 {' here'}
                             </a>
-                            <p>
-                                or use common test account credentials:
-                            </p>
                         </p>
-                        <p>Email: free@samuraijs.com</p>
-                        <p>Password: free</p>
                     </div>
 
 
@@ -105,6 +100,7 @@ const Login = () => {
 
 
                     <Checkbox
+                        className={style.checkBox}
                         {...formik.getFieldProps('rememberMe')}>
                         RememberMe
                     </Checkbox>
@@ -115,6 +111,11 @@ const Login = () => {
                         Login</Button>
                 </form>
             </Card>
+            <div className={style.testData}>
+                <p>You can also use common test account credentials:</p>
+                <p>Email: free@samuraijs.com</p>
+                <p>Password: free</p>
+            </div>
         </div>
     )
 }
