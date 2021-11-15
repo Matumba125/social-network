@@ -38,10 +38,15 @@ export const HeaderComponent = React.memo(() => {
                                 icon={!avatar && <UserOutlined/>}/>
                             {login}
                         </NavLink>
-                        <Button onClick={onClickHandler}>Log Out</Button>
+                        <Button
+                            className={style.btn}
+                            onClick={onClickHandler}
+                        >Log Out</Button>
                     </div>
                     : <NavLink to="/social-network/login">
-                        <Button color="primary">Login</Button>
+                        <Button
+                            className={style.btn}
+                            color="primary">Login</Button>
                     </NavLink>
             }/>
         )
