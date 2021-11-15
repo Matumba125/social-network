@@ -8,7 +8,6 @@ import {ProfileAPI} from "../api/api";
 export type PostType = {
     id: string
     postContent: string
-    postLikes: number
 }
 
 type ContactsType = {
@@ -69,14 +68,12 @@ let initialState: ProfileInitialStateType = {
     postsData: [
         {
             id: v1(),
-            postContent: "Hello World !!!",
-            postLikes: 15,
+            postContent: "It's a test data"
 
         },
         {
             id: v1(),
-            postContent: "It's my first post!!",
-            postLikes: 28
+            postContent: "Current API doesn't support posts"
         }
     ],
 }
@@ -87,8 +84,7 @@ const profileReducer = (state: ProfileInitialStateType = initialState,
         case ADD_POST:
             const newPost: PostType = {
                 id: v1(),
-                postContent: action.newPostText,
-                postLikes: 0
+                postContent: action.newPostText
             };
             return {
                 ...state,
@@ -143,7 +139,8 @@ export const getProfile = (userId: string) => {
 }
 export const getStatus = (userId: string) => {
     return (dispatch: Dispatch<ActionTypes>) => {
-        ProfileAPI.getStatus(userId).then(response => {
+        ProfileAPI.getStatus(userId)
+            .then(response => {
             dispatch(setStatus(response.data))
         });
     }

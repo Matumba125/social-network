@@ -22,7 +22,6 @@ function UserPosts() {
         <Post
             key={m.id}
             postContent={m.postContent}
-            postLikes={m.postLikes}
             id={m.id}
         />)
 
