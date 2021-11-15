@@ -19,10 +19,10 @@ export const Messages: React.FC = () => {
     const currentUserId = useSelector(getCurrentUserId)
 
     const [autoScroll, setAutoScroll] = useState<boolean>(true)
-
     const [messagesCounter, setMessagesCounter] = useState<number>(-2)
 
     const elem = document.getElementById('data');
+
 
     useEffect(() => {
         const sortedMessages = messages.slice()
@@ -49,7 +49,7 @@ export const Messages: React.FC = () => {
                 }
             }
         }
-        setFinalSortedMessages(sortedMessages)
+        setFinalSortedMessages(sortedMessages.reverse())
         setMessagesCounter(messagesCounter + 1)
 
         setTimeout(() => {
@@ -78,7 +78,10 @@ export const Messages: React.FC = () => {
 
 
     return (
-        <div id={'data'} className={style.messagesWrapper} onScroll={onScrollHandler}>
+        <div
+            id={'data'}
+            className={style.messagesWrapper}
+            onScroll={onScrollHandler}>
             {!autoScroll && <Button
                 type={"text"}
                 icon={
@@ -94,6 +97,7 @@ export const Messages: React.FC = () => {
             {finalSortedMessages.map((m: ChatMessageType, i) =>
                 m.userMessage ?
                     <UserMessage
+                        key={i}
                         message={m.message}
                         last={m.last}
                         first={m.first}
@@ -110,7 +114,6 @@ export const Messages: React.FC = () => {
                         unique={m.unique}
                     />
             )}
-
         </div>
     );
 };

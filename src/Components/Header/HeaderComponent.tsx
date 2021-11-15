@@ -33,7 +33,6 @@ export const HeaderComponent = React.memo(() => {
                     <div className={style.userStatus}>
                         <NavLink to="/social-network/profile">
                             <Avatar
-                                style={{backgroundColor: '#87d068'}}
                                 src={avatar && avatar}
                                 icon={!avatar && <UserOutlined/>}/>
                             {login}
@@ -46,7 +45,8 @@ export const HeaderComponent = React.memo(() => {
                     : <NavLink to="/social-network/login">
                         <Button
                             className={style.btn}
-                            color="primary">Login</Button>
+                            color="primary"
+                        >Login</Button>
                     </NavLink>
             }/>
         )

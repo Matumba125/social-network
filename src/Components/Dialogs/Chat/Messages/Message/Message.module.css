@@ -3,16 +3,14 @@
     align-items: flex-end;
     margin: 1px 0 0 60px;
     box-sizing: border-box;
-    justify-self: flex-end;
 }
 
 .lastMessageWrapper {
     display: flex;
     align-items: flex-end;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
     position: relative;
     box-sizing: border-box;
-    justify-self: flex-end;
 }
 
 .avatar {
@@ -55,7 +53,6 @@
     word-wrap: break-word;
     color: rgb(245, 245, 245);
     text-align: left;
-    padding-left: 5px;
 }
 
 /*user styles*/
@@ -63,7 +60,6 @@
 .userLastMessageWrapper {
     display: flex;
     align-items: flex-end;
-    margin-bottom: 10px;
     position: relative;
     box-sizing: border-box;
     justify-self: flex-end;
@@ -73,7 +69,7 @@
 .userMessage {
     display: flex;
     align-items: flex-end;
-    margin: 1px 30px 0 0;
+    margin: 1px 10px 0 0;
     box-sizing: border-box;
     justify-self: flex-end;
     align-self: flex-end;
@@ -87,7 +83,7 @@
 
 .userLastMessage {
     padding: 10px;
-    margin: 1px 30px 0 0;
+    margin: 1px 10px 0 0;
     border-radius: 0.75rem 0.75rem 0 0.75rem;
     background-color: #1890ff;
     box-sizing: border-box;
@@ -109,5 +105,4 @@
     word-wrap: break-word;
     color: rgb(245, 245, 245);
     text-align: right;
-    padding-left: 5px;
 }

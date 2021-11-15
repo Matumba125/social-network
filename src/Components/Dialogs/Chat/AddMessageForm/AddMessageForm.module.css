@@ -23,6 +23,7 @@
 }
 
 .messageInput {
+    background: transparent;
     border-radius: 8px;
     width: 95%;
     margin-right: 5px;

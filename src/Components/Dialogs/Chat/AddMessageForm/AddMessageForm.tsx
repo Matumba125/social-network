@@ -39,6 +39,7 @@ export const AddMessageForm: React.FC = () => {
         <div className={style.addMessage}>
 
             <TextArea
+                placeholder={'New message'}
                 className={style.messageInput}
                 autoSize={{minRows: 1,}}
                 value={newMessage}
