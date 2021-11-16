@@ -5,7 +5,7 @@ import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentUserId, getProfilePage} from "../../../redux/Selectors";
 import ProfileSettings from "./ProfileSettings/ProfileSettings";
-import {Avatar, Button, Card} from "antd";
+import {Avatar, Button, Card, Image} from "antd";
 import {updatePhoto} from "../../../redux/profilleReducer";
 import ProfilePhotoChange from "./ProfilePhotoChange/ProfilePhotoChange";
 import {
@@ -88,8 +88,8 @@ function ProfileInfo() {
                             <Avatar
                                 size={100}
                                 alt={`${profilePage.profile.userId} user ava`}
-                                src={profilePage.profile.photos.small && profilePage.profile.photos.small}
-                                icon={!profilePage.profile.photos.small && <UserOutlined/>}/>
+                                src={<Image src={ profilePage.profile.photos.large && profilePage.profile.photos.large}/>}
+                                icon={!profilePage.profile.photos.large && <UserOutlined/>}/>
                             {isProfileBelongsToUser && <Button
                                 type={'text'}
                                 icon={<EditOutlined/>}

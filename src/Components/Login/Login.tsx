@@ -102,7 +102,7 @@ const Login = () => {
                     <Checkbox
                         className={style.checkBox}
                         {...formik.getFieldProps('rememberMe')}>
-                        RememberMe
+                        Remember Me
                     </Checkbox>
                     <Button
                         type={'primary'}

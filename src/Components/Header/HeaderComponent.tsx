@@ -41,13 +41,7 @@ export const HeaderComponent = React.memo(() => {
                             className={style.btn}
                             onClick={onClickHandler}
                         >Log Out</Button>
-                    </div>
-                    : <NavLink to="/social-network/login">
-                        <Button
-                            className={style.btn}
-                            color="primary"
-                        >Login</Button>
-                    </NavLink>
+                    </div> : ''
             }/>
         )
     }

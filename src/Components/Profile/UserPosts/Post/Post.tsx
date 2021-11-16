@@ -49,7 +49,7 @@ function Post(props: PostType) {
             <Comment
                 actions={actions}
                 author={<h3 style={{fontWeight: 'bold'}}>{userName}</h3>}
-                avatar={<Avatar size={'large'}
+                avatar={<Avatar size={32}
                                 src={userImage && userImage}
                                 icon={!userImage && <UserOutlined/>}
                                 alt={'userImage'}/>}
