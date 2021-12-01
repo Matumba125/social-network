@@ -88,7 +88,7 @@ function ProfileInfo() {
                             <Avatar
                                 size={100}
                                 alt={`${profilePage.profile.userId} user ava`}
-                                src={<Image src={ profilePage.profile.photos.large && profilePage.profile.photos.large}/>}
+                                src={profilePage.profile.photos.large && <Image src={ profilePage.profile.photos.large}/>}
                                 icon={!profilePage.profile.photos.large && <UserOutlined/>}/>
                             {isProfileBelongsToUser && <Button
                                 type={'text'}
